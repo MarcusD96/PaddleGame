@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CharSel : MonoBehaviour
-{
+public class CharSel : MonoBehaviour {
     public GameObject[] SelMenu = new GameObject[5];
+
+    public GameManager gm;
 
     public Text[] DescStuff = new Text[5];
     public Image DescPort;
@@ -24,8 +25,7 @@ public class CharSel : MonoBehaviour
     public string[,] ClassDesc = new string[8, 8];
 
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start () {
         SelScreen = 0;
         SelMenu[0].SetActive(true);
         //Vetran
@@ -102,44 +102,38 @@ public class CharSel : MonoBehaviour
         ClassDesc[7, 7] = "Reaper";
     }
 
-    public void Back()
-    {
-        if (SelScreen >= 1)
-        {
+    public void Back () {
+        if (SelScreen >= 1) {
             SelMenu[SelScreen].SetActive(false);
             SelScreen--;
             SelMenu[SelScreen].SetActive(true);
-        }
-        else{
-            GameManager.MainMenu();
+        } else {
+            gm.MainMenu();
         }
     }
-   
-    public void Next()
-    {
+
+    public void Next () {
         SelMenu[SelScreen].SetActive(false);
         SelScreen = 0;
         SelMenu[SelScreen].SetActive(true);
 
         SelPort[PlayerSel[1]].color = Color.red;
 
-        PartySheet.ClassSelect(MemNum, DescStuff[0].text);
+       // PartySheet.ClassSelect(MemNum, DescStuff[0].text);
     }
 
-    public void Race(int Member)
-    {
+    public void Race (int Member) {
         SelMenu[SelScreen].SetActive(false);
         SelScreen = 1;
         SelMenu[SelScreen].SetActive(true);
 
         MemNum = Member;
 
- 
+
 
     }
 
-    public void Class(int Race)
-    {
+    public void Class (int Race) {
         SelMenu[SelScreen].SetActive(false);
         SelScreen = 2;
         SelMenu[SelScreen].SetActive(true);
@@ -147,8 +141,7 @@ public class CharSel : MonoBehaviour
         PlayerSel[0] = Race;
     }
 
-    public void Sub(int Class)
-    {
+    public void Sub (int Class) {
         SelMenu[SelScreen].SetActive(false);
         SelScreen = 3;
         SelMenu[SelScreen].SetActive(true);
@@ -165,8 +158,7 @@ public class CharSel : MonoBehaviour
 
     }
 
-    public void Desc(int Sub)
-    {
+    public void Desc (int Sub) {
         SelMenu[SelScreen].SetActive(false);
         SelScreen = 4;
         SelMenu[SelScreen].SetActive(true);
