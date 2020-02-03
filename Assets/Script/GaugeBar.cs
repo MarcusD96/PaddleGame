@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GaugeBar : MonoBehaviour
-{
+public class GaugeBar : MonoBehaviour {
     private Mana mana;
     public Image playerBar, enemyBar, spAtkBar;
 
 
-    private void Awake()
-    {
+    private void Awake () {
         //playerBar = transform.Find("PlayerBar").GetComponent<Image>();
         playerBar.fillAmount = 1;
 
@@ -22,54 +20,47 @@ public class GaugeBar : MonoBehaviour
         mana = new Mana();
     }
 
-    private void Update()
-    {
+    private void Update () {
         mana.Update();
 
         spAtkBar.fillAmount = mana.NormalizeMana();
     }
 
-    public void UpdatePlayerHealth(float x)
-    {
-        playerBar.fillAmount -= x; 
+    public void UpdatePlayerHealth (float x) {
+        playerBar.fillAmount -= x;
     }
-    public void UpdateEnemyHealth(float x)
-    {
+    public void UpdateEnemyHealth (float x) {
         enemyBar.fillAmount -= x;
     }
-    public void UpdatePlayerSpAtk(float x)
-    {
+    public void UpdatePlayerSpAtk (float x) {
         spAtkBar.fillAmount -= x;
+        if(spAtkBar.fillAmount < 0) {
+            spAtkBar.fillAmount = 0;
+        }
     }
 
 }
 
-public class Mana
-{
+public class Mana {
     public const int MAX_MANA = 100;
 
     private float manaAmount, ManaRegenAmount;
 
-    public Mana()
-    {
+    public Mana () {
         manaAmount = 0;
         ManaRegenAmount = 30f;
     }
 
-    public void Update()
-    {
+    public void Update () {
         manaAmount += ManaRegenAmount * Time.deltaTime;
     }
 
-    public void UseMana(int amount)
-    {
-        if (manaAmount >= amount)
-        {
+    public void UseMana (int amount) {
+        if(manaAmount >= amount) {
             manaAmount -= amount;
         }
     }
-    public float NormalizeMana()
-    {
+    public float NormalizeMana () {
         return manaAmount / MAX_MANA;
     }
 }
