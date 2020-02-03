@@ -22,6 +22,7 @@ public class PlayerBall : Ball
         BallStart();
         tag = "Ball";
         COMBO = 0;
+        ComboNum.text = "COMBO: " + COMBO;
     }
 
     // Update is called once per frame
@@ -37,7 +38,7 @@ public class PlayerBall : Ball
             case "Paddle":  //ball hits paddle
                 SoundManager.PlaySound("BallPaddle");
                 COMBO += 1;
-                ComboNum.text = COMBO.ToString();
+                ComboNum.text = "COMBO: " + COMBO;
                 constantSpeed = new Vector2(x + COMBO, y + COMBO);
                 Debug.Log(COMBO);
                 break;
@@ -45,12 +46,17 @@ public class PlayerBall : Ball
             case "BallSideBad": //ball hits enemy side wall
                 SoundManager.PlaySound("BallBad");
                 COMBO = 0;
-                ComboNum.text = COMBO.ToString();
+                ComboNum.text = "COMBO: " + COMBO;
                 constantSpeed = new Vector2(x + COMBO, y + COMBO);
                 break;
 
             case "BallSide":    //ball hits player side wall
                 SoundManager.PlaySound("BallWall");
+                break;
+            case "Enemy":
+                SoundManager.PlaySound("BallWall");
+                FindObjectOfType<GaugeBar>().UpdateEnemyHealth(.1f);
+
                 break;
 
             default:

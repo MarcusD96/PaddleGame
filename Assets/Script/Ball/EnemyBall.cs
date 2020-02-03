@@ -36,9 +36,10 @@ public class EnemyBall : Ball
         {
             case "Paddle":  //ball hits paddle
                 SoundManager.PlaySound("BallBad");
+                FindObjectOfType<GaugeBar>().UpdatePlayerHealth(.1f);
                 Destroy(gameObject);
-                Destroy(collision.gameObject);
-                SceneManager.LoadScene("Battle");
+                //Destroy(collision.gameObject);
+                //SceneManager.LoadScene("Battle");
                 
                 break;
 

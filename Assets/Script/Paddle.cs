@@ -94,7 +94,7 @@ public class Paddle : MonoBehaviour
         }
         if (Input.GetKey(KeyCode.E))
         {
-            rb.rotation = ZeroAngle;
+            FindObjectOfType<GaugeBar>().UpdatePlayerSpAtk(.5f);
         }
         if (Input.GetKey(KeyCode.Q))
         {
