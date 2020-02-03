@@ -70,6 +70,7 @@
     <Compile Include="Assets\Script\FPSCounter.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\GaugeBar.cs" />
+    <Compile Include="Assets\Script\HealthBar.cs" />
     <Compile Include="Assets\Script\Paddle.cs" />
     <Compile Include="Assets\Script\SoundManager.cs" />
     <Reference Include="Unity.Timeline.Editor">
