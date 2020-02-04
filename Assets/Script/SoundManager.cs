@@ -2,13 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager : MonoBehaviour
-{
+public class SoundManager : MonoBehaviour {
     public static AudioClip BallPaddle, BallBad, BallWall;
     static AudioSource audioSRC;
 
-    void Start()
-    {
+    void Start () {
         BallPaddle = Resources.Load<AudioClip>("BallPaddle");
         BallBad = Resources.Load<AudioClip>("BallBad");
         BallWall = Resources.Load<AudioClip>("BallWall");
@@ -17,15 +15,12 @@ public class SoundManager : MonoBehaviour
         audioSRC = GetComponent<AudioSource>();
     }
 
-    void Update()
-    {
+    void Update () {
 
     }
 
-    public static void PlaySound(string clip)
-    {
-        switch (clip)
-        {
+    public static void PlaySound (string clip) {
+        switch(clip) {
             case "BallPaddle":
                 audioSRC.PlayOneShot(BallPaddle);
                 break;

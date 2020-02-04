@@ -3,26 +3,28 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Paddle : MonoBehaviour
-{
+public class Paddle : MonoBehaviour {
 
-    public Rigidbody2D rb;
+    public GameObject noMansLand, topBorder, bottomBorder, leftBorder;
+
+    Rigidbody2D rb;
     //public Transform t;
 
     public float speed;
-    private float moveValue, moveValueZ;
+    private float moveValueZ;
     private float ZeroAngle, NinetyAngle;
+
+    Vector3 mousePosition_, direction;
+
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start () {
         tag = "Paddle";
         name = "Paddle";
 
         rb = GetComponent<Rigidbody2D>();
 
-        if (speed == 0)
-        {
-            speed = 5;
+        if(speed == 0) {
+            speed = 20;
         }
 
         ZeroAngle = rb.rotation;
@@ -30,75 +32,49 @@ public class Paddle : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        moveValue = 0;
+    void Update () {
         moveValueZ = 0;
         Controls();
-        if (rb)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, moveValue * speed);
-            rb.transform.Rotate(0, 0, moveValueZ * speed);
+
+        if(CheckPosition()) {
+            mousePosition_ = Camera.main.ScreenToWorldPoint(Input.mousePosition); //follow mouse stuff
+            direction = (mousePosition_ - transform.position).normalized;
+            rb.velocity = new Vector3(direction.x * speed, direction.y * speed, direction.z * speed);
         }
+
+        rb.transform.Rotate(0, 0, moveValueZ * speed);
     }
 
-    void Controls()
-    {
-        /*
-        switch (Input.anyKeyDown.ToString().ToLower())
-        {
-            case "w":  //ball hits paddle
-                moveValue = 1;
-                break;
-
-            case "s": //ball hits enemy side wall
-                moveValue = -1;
-                break;
-
-            case "a":    //ball hits player side wall
-                moveValueZ = 1;
-                break;
-
-            case "d":
-                moveValueZ = 1;
-                break;
-
-            case "e":  //ball hits top or bottom wall
-                rb.rotation = ZeroAngle;
-                break;
-
-            case "q":  //ball hits top or bottom wall
-                rb.rotation = NinetyAngle;
-                break;
-
-            default:
-                break;
-        }*/
-        if (Input.GetKey(KeyCode.W))
-        {
-            moveValue = 0.75f;
-        }
-        if (Input.GetKey(KeyCode.S))
-        {
-            moveValue = -0.75f;
-        }
-        if (Input.GetKey(KeyCode.A))
-        {
+    void Controls () {
+        if(Input.GetKey(KeyCode.A)) {
             //if(transform.rotation.z <= 0.5f || transform.rotation.z >= -0.5f) //trying to restrict the movement of the paddle
-                moveValueZ = 0.5f;
-            
+            moveValueZ = 0.5f;
+
         }
-        if (Input.GetKey(KeyCode.D))
-        {
+        if(Input.GetKey(KeyCode.D)) {
             moveValueZ = -0.5f;
         }
-        if (Input.GetKey(KeyCode.E))
-        {
+        if(Input.GetKey(KeyCode.E)) {
             FindObjectOfType<GaugeBar>().UpdatePlayerSpAtk(.5f);
         }
-        if (Input.GetKey(KeyCode.Q))
-        {
+        if(Input.GetKey(KeyCode.Q)) {
             rb.rotation = NinetyAngle;
         }
+    }
+    
+    bool CheckPosition() {
+        if (transform.position.x > noMansLand.transform.position.x) {   //into no mans land center area, move left to go back
+            rb.velocity = new Vector3(-1 * speed, 0, 0);
+            return false;
+        } else if (transform.position.y > topBorder.transform.position.y) {  //into upper border, move down to go back
+            rb.velocity = new Vector3(0, -1 * speed, 0);
+            return false;
+        } else if (transform.position.y < bottomBorder.transform.position.y) { //into bottom border, move up to go back
+            rb.velocity = new Vector3(0, 1 * speed, 0);
+            return false;
+        } else if (transform.position.x < leftBorder.transform.position.x) { //into left border, move right to go back
+            return false;
+        }
+        return true; //position is good, keep doing what your doing :)
     }
 }

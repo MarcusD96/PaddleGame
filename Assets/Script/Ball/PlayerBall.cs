@@ -22,6 +22,7 @@ public class PlayerBall : Ball
         BallStart();
         tag = "Ball";
         COMBO = 0;
+        ComboNum = FindObjectOfType<Text>();
         ComboNum.text = "COMBO: " + COMBO;
     }
 
