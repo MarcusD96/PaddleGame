@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Paddle : MonoBehaviour {
@@ -11,7 +12,6 @@ public class Paddle : MonoBehaviour {
 
     public float speed;
     private float moveValueZ;
-    private float ZeroAngle, NinetyAngle;
 
     Vector3 mousePosition_, direction;
 
@@ -25,9 +25,6 @@ public class Paddle : MonoBehaviour {
         if(speed == 0) {
             speed = 20;
         }
-
-        ZeroAngle = rb.rotation;
-        NinetyAngle = ZeroAngle + 90;
     }
 
     // Update is called once per frame
@@ -35,8 +32,9 @@ public class Paddle : MonoBehaviour {
         moveValueZ = 0;
         Controls();
 
+        //follow mouse stuff
         if(CheckPosition()) {
-            mousePosition_ = Camera.main.ScreenToWorldPoint(Input.mousePosition); //follow mouse stuff
+            mousePosition_ = Camera.main.ScreenToWorldPoint(Input.mousePosition); 
             direction = (mousePosition_ - transform.position).normalized;
             rb.velocity = new Vector3(direction.x * speed, direction.y * speed, direction.z * speed);
         }
@@ -53,11 +51,17 @@ public class Paddle : MonoBehaviour {
         if(Input.GetKey(KeyCode.D)) {
             moveValueZ = -0.5f;
         }
-        if(Input.GetKey(KeyCode.LeftShift)) {
+        if(Input.GetKeyDown(KeyCode.LeftShift)) {
             //FindObjectOfType<GaugeBar>().UpdatePlayerSpAtk(.5f);
+            if(gameObject.GetComponent<GaugeBar>().spAtkBar.fillAmount > 0.5) {
+                gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.5f); 
+            Debug.Log("pew pew");
+            } else {
+                Debug.Log("not enough PP for this");
+            }
         }
-        if(Input.GetKey(KeyCode.E)) {
-            rb.rotation = NinetyAngle;
+        if(Input.GetKeyDown(KeyCode.E)) {
+            rb.rotation = 0;
         }
     }
     

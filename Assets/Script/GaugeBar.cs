@@ -22,7 +22,7 @@ public class GaugeBar : MonoBehaviour {
 
     private void Update () {
         mana.Update();
-
+        Debug.Log(mana.manaAmount);
         spAtkBar.fillAmount = mana.NormalizeMana();
     }
 
@@ -34,7 +34,8 @@ public class GaugeBar : MonoBehaviour {
     }
     public void UpdatePlayerSpAtk (float x) {
         spAtkBar.fillAmount -= x;
-        if(spAtkBar.fillAmount < 0) {
+        if(spAtkBar.fillAmount > 0) {
+            mana.UseMana(50);
             spAtkBar.fillAmount = 0;
         }
     }
@@ -44,7 +45,7 @@ public class GaugeBar : MonoBehaviour {
 public class Mana {
     public const int MAX_MANA = 100;
 
-    private float manaAmount, ManaRegenAmount;
+    public float manaAmount, ManaRegenAmount;
 
     public Mana () {
         manaAmount = 0;
@@ -52,7 +53,10 @@ public class Mana {
     }
 
     public void Update () {
-        manaAmount += ManaRegenAmount * Time.deltaTime;
+        if(manaAmount < MAX_MANA)
+            manaAmount += ManaRegenAmount * Time.deltaTime;
+        if(manaAmount > MAX_MANA)
+            manaAmount = MAX_MANA;
     }
 
     public void UseMana (int amount) {

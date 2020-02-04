@@ -1163,6 +1163,11 @@ PrefabInstance:
       propertyPath: leftBorder
       value: 
       objectReference: {fileID: 1490139865}
+    - target: {fileID: 304464428067805711, guid: cb22a416d5e404f4497852a2607c911f,
+        type: 3}
+      propertyPath: specAtk
+      value: 
+      objectReference: {fileID: 1114581019}
     - target: {fileID: 304464428067805747, guid: cb22a416d5e404f4497852a2607c911f,
         type: 3}
       propertyPath: m_IsTrigger
