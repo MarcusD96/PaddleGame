@@ -8,7 +8,6 @@ public class Paddle : MonoBehaviour {
     public GameObject noMansLand, topBorder, bottomBorder, leftBorder;
 
     Rigidbody2D rb;
-    //public Transform t;
 
     public float speed;
     private float moveValueZ;
@@ -54,25 +53,30 @@ public class Paddle : MonoBehaviour {
         if(Input.GetKey(KeyCode.D)) {
             moveValueZ = -0.5f;
         }
-        if(Input.GetKey(KeyCode.E)) {
-            FindObjectOfType<GaugeBar>().UpdatePlayerSpAtk(.5f);
+        if(Input.GetKey(KeyCode.LeftShift)) {
+            //FindObjectOfType<GaugeBar>().UpdatePlayerSpAtk(.5f);
         }
-        if(Input.GetKey(KeyCode.Q)) {
+        if(Input.GetKey(KeyCode.E)) {
             rb.rotation = NinetyAngle;
         }
     }
     
     bool CheckPosition() {
         if (transform.position.x > noMansLand.transform.position.x) {   //into no mans land center area, move left to go back
-            rb.velocity = new Vector3(-1 * speed, 0, 0);
+            rb.velocity = new Vector3(-speed, 0, 0);
+            //Debug.Log("hit NML");
             return false;
         } else if (transform.position.y > topBorder.transform.position.y) {  //into upper border, move down to go back
-            rb.velocity = new Vector3(0, -1 * speed, 0);
+            rb.velocity = new Vector3(0, -speed, 0);
+            //Debug.Log("hit upper");
             return false;
         } else if (transform.position.y < bottomBorder.transform.position.y) { //into bottom border, move up to go back
-            rb.velocity = new Vector3(0, 1 * speed, 0);
+            rb.velocity = new Vector3(0, speed, 0);
+           //Debug.Log("hit bottom");
             return false;
         } else if (transform.position.x < leftBorder.transform.position.x) { //into left border, move right to go back
+            rb.velocity = new Vector3(speed, 0, 0);
+            //Debug.Log("hit left");
             return false;
         }
         return true; //position is good, keep doing what your doing :)
