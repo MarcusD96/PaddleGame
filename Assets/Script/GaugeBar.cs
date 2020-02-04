@@ -7,7 +7,6 @@ public class GaugeBar : MonoBehaviour {
     private Mana mana;
     public Image playerBar, enemyBar, spAtkBar;
 
-
     private void Awake () {
         //playerBar = transform.Find("PlayerBar").GetComponent<Image>();
         playerBar.fillAmount = 1;
@@ -22,7 +21,6 @@ public class GaugeBar : MonoBehaviour {
 
     private void Update () {
         mana.Update();
-        Debug.Log(mana.manaAmount);
         spAtkBar.fillAmount = mana.NormalizeMana();
     }
 
@@ -45,16 +43,16 @@ public class GaugeBar : MonoBehaviour {
 public class Mana {
     public const int MAX_MANA = 100;
 
-    public float manaAmount, ManaRegenAmount;
+    private float manaAmount, manaRegenAmount;
 
     public Mana () {
         manaAmount = 0;
-        ManaRegenAmount = 30f;
+        manaRegenAmount = 10f;
     }
 
     public void Update () {
         if(manaAmount < MAX_MANA)
-            manaAmount += ManaRegenAmount * Time.deltaTime;
+            manaAmount += manaRegenAmount * Time.deltaTime;
         if(manaAmount > MAX_MANA)
             manaAmount = MAX_MANA;
     }
