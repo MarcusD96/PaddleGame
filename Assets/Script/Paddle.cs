@@ -10,7 +10,7 @@ public class Paddle : MonoBehaviour {
 
     Rigidbody2D rb;
 
-    public float speed;
+    public float speed, hp = 1;
     private float moveValueZ;
 
     Vector3 mousePosition_, direction;
@@ -53,7 +53,7 @@ public class Paddle : MonoBehaviour {
         }
         if(Input.GetKeyDown(KeyCode.LeftShift)) {
             //FindObjectOfType<GaugeBar>().UpdatePlayerSpAtk(.5f);
-            if(gameObject.GetComponent<GaugeBar>().spAtkBar.fillAmount > 0.5) {
+            if(gameObject.GetComponent<GaugeBar>().spAtkBarImage.fillAmount > 0.5) {
                 gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.5f); 
             Debug.Log("pew pew");
             } else {
@@ -84,5 +84,9 @@ public class Paddle : MonoBehaviour {
             return false;
         }
         return true; //position is good, keep doing what your doing :)
+    }
+
+    void UpdateHealth(float n) {
+        hp -= n;
     }
 }

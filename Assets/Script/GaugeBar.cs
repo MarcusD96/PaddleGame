@@ -5,39 +5,39 @@ using UnityEngine.UI;
 
 public class GaugeBar : MonoBehaviour {
     private Mana mana;
-    public Image playerBar, enemyBar, spAtkBar;
+    public Image playerBarImage, enemyBarImage, spAtkBarImage;
+    public Text playerBarText, enemyBarText;
 
-    private void Awake () {
-        //playerBar = transform.Find("PlayerBar").GetComponent<Image>();
-        playerBar.fillAmount = 1;
-
-        //enemyBar = transform.Find("EnemyBar").GetComponent<Image>();
-        enemyBar.fillAmount = 1;
-
-        //spAtkBar = transform.Find("SpAtkBar").GetComponent<Image>();
-
+    void Awake () {
+        playerBarImage.fillAmount = 1;
+        playerBarText.text = "10";
+        enemyBarImage.fillAmount = 1;
+        enemyBarText.text = "10";
         mana = new Mana();
     }
 
-    private void Update () {
+    void Update () {
         mana.Update();
-        spAtkBar.fillAmount = mana.NormalizeMana();
+        spAtkBarImage.fillAmount = mana.NormalizeMana();
     }
 
     public void UpdatePlayerHealth (float x) {
-        playerBar.fillAmount -= x;
-    }
-    public void UpdateEnemyHealth (float x) {
-        enemyBar.fillAmount -= x;
-    }
-    public void UpdatePlayerSpAtk (float x) {
-        spAtkBar.fillAmount -= x;
-        if(spAtkBar.fillAmount > 0) {
-            mana.UseMana(50);
-            spAtkBar.fillAmount = 0;
-        }
+        playerBarImage.fillAmount -= x;
+        playerBarText.text = ((int)(playerBarImage.fillAmount * 10)).ToString();
     }
 
+    public void UpdateEnemyHealth (float x) {
+        enemyBarImage.fillAmount -= x;
+        enemyBarText.text = ((int)(enemyBarImage.fillAmount * 10)).ToString();
+    }
+
+    public void UpdatePlayerSpAtk (float x) {
+        spAtkBarImage.fillAmount -= x;
+        if(spAtkBarImage.fillAmount > 0) {
+            mana.UseMana(50);
+            spAtkBarImage.fillAmount = 0;
+        }
+    }
 }
 
 public class Mana {

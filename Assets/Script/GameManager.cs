@@ -9,9 +9,14 @@ public class GameManager : MonoBehaviour {
     public Transform playerSpawn, enemySpawn, ballSpawn;
 
     private void Start () {
-        //Instantiate(player, playerSpawn.transform.position, Quaternion.identity);
+        player = FindObjectOfType<Paddle>().gameObject;
         Instantiate(enemy, enemySpawn.transform.position, Quaternion.identity);
         Instantiate(ball, ballSpawn.transform.position, Quaternion.identity);
+    }
+
+    void Update () {
+        CheckEnemyHP();
+        CheckPlayerHP();
     }
 
     public static int Level;
@@ -35,5 +40,19 @@ public class GameManager : MonoBehaviour {
 
     public void Winner () {
         SceneManager.LoadScene("Winner");
+    }
+
+    void CheckEnemyHP() {
+        if (enemy.GetComponent<Enemy>().hp <= 0) {
+            Destroy(enemy);
+            MainMenu();
+        }
+    }
+
+    void CheckPlayerHP () {
+        if(player.GetComponent<Paddle>().hp <= 0) {
+            Destroy(player);
+            MainMenu();
+        }
     }
 }

@@ -38,8 +38,6 @@ public class PlayerBall : Ball
         {
             case "Paddle":  //ball hits paddle
                 SoundManager.PlaySound("BallPaddle");
-                COMBO += 1;
-                ComboNum.text = "COMBO: " + COMBO;
                 constantSpeed = new Vector2(x + COMBO, y + COMBO);
                 Debug.Log(COMBO);
                 break;
@@ -56,6 +54,10 @@ public class PlayerBall : Ball
                 break;
             case "Enemy":
                 SoundManager.PlaySound("BallWall");
+                COMBO += 1;
+                ComboNum.text = "COMBO: " + COMBO;
+                constantSpeed = new Vector2(x + COMBO, y + COMBO);
+                collision.gameObject.GetComponent<Enemy>().ReduceHealth(0.1f);
                 FindObjectOfType<GaugeBar>().UpdateEnemyHealth(.1f);
 
                 break;
