@@ -6,7 +6,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Paddle : MonoBehaviour {
 
-    public GameObject noMansLand, topBorder, bottomBorder, leftBorder;
+    public GameObject specAtk, noMansLand, topBorder, bottomBorder, leftBorder;
+    Transform shootPos;
 
     Rigidbody2D rb;
 
@@ -21,6 +22,8 @@ public class Paddle : MonoBehaviour {
         name = "Paddle";
 
         rb = GetComponent<Rigidbody2D>();
+
+        shootPos = GetComponentInChildren<Transform>();
 
         if(speed == 0) {
             speed = 20;
@@ -52,10 +55,9 @@ public class Paddle : MonoBehaviour {
             moveValueZ = -0.5f;
         }
         if(Input.GetKeyDown(KeyCode.LeftShift)) {
-            //FindObjectOfType<GaugeBar>().UpdatePlayerSpAtk(.5f);
             if(gameObject.GetComponent<GaugeBar>().spAtkBarImage.fillAmount > 0.5) {
-                gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.5f); 
-            Debug.Log("pew pew");
+                gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.5f);
+                ShootSpecial();
             } else {
                 Debug.Log("not enough PP for this");
             }
@@ -88,5 +90,9 @@ public class Paddle : MonoBehaviour {
 
     void UpdateHealth(float n) {
         hp -= n;
+    }
+
+    void ShootSpecial() {
+        Instantiate(specAtk, shootPos.position, Quaternion.identity);
     }
 }
