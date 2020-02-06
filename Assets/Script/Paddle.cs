@@ -93,6 +93,6 @@ public class Paddle : MonoBehaviour {
     }
 
     void ShootSpecial() {
-        Instantiate(specAtk, shootPos.position, Quaternion.identity);
+        Instantiate(specAtk, shootPos.position, specAtk.transform.rotation);
     }
 }

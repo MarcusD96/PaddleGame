@@ -63,15 +63,16 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\Script\Ball\Ball.cs" />
     <Compile Include="Assets\Script\Ball\EnemyBall.cs" />
     <Compile Include="Assets\Script\Ball\PlayerBall.cs" />
+    <Compile Include="Assets\Script\Ball\Projectile.cs" />
     <Compile Include="Assets\Script\ClassSel.cs" />
     <Compile Include="Assets\Script\Enemy.cs" />
     <Compile Include="Assets\Script\FPSCounter.cs" />
     <Compile Include="Assets\Script\GameManager.cs" />
     <Compile Include="Assets\Script\GaugeBar.cs" />
     <Compile Include="Assets\Script\HealthBar.cs" />
+    <Compile Include="Assets\Script\Laser.cs" />
     <Compile Include="Assets\Script\Paddle.cs" />
     <Compile Include="Assets\Script\SoundManager.cs" />
     <Reference Include="Unity.Timeline.Editor">
