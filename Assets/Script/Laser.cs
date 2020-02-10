@@ -21,8 +21,7 @@ public class Laser : Projectile {
 
     // Update is called once per frame
     void Update () {
-        //BallUpdate();
-
+        BallUpdate();
     }
 
     void OnCollisionEnter2D (Collision2D collision) {

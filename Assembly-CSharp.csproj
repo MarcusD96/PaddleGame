@@ -66,6 +66,7 @@
     <Compile Include="Assets\Script\Ball\EnemyBall.cs" />
     <Compile Include="Assets\Script\Ball\PlayerBall.cs" />
     <Compile Include="Assets\Script\Ball\Projectile.cs" />
+    <Compile Include="Assets\Script\Boundaries.cs" />
     <Compile Include="Assets\Script\ClassSel.cs" />
     <Compile Include="Assets\Script\Enemy.cs" />
     <Compile Include="Assets\Script\FPSCounter.cs" />

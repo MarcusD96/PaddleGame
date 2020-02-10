@@ -6,7 +6,7 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Paddle : MonoBehaviour {
 
-    public GameObject specAtk, noMansLand, topBorder, bottomBorder, leftBorder;
+    public GameObject specAtk;//, noMansLand, topBorder, bottomBorder, leftBorder;
     Transform shootPos;
 
     Rigidbody2D rb;
@@ -27,6 +27,8 @@ public class Paddle : MonoBehaviour {
 
         if(speed == 0) {
             speed = 20;
+        } if (hp < 0) {
+            hp = 10;
         }
     }
 
@@ -36,25 +38,25 @@ public class Paddle : MonoBehaviour {
         Controls();
 
         //follow mouse stuff
-        if(CheckPosition()) {
+        //if(CheckPosition()) {
             mousePosition_ = Camera.main.ScreenToWorldPoint(Input.mousePosition); 
             direction = (mousePosition_ - transform.position).normalized;
             rb.velocity = new Vector3(direction.x * speed, direction.y * speed, direction.z * speed);
-        }
+        //}
 
         rb.transform.Rotate(0, 0, moveValueZ * speed);
     }
 
     void Controls () {
-        if(Input.GetKey(KeyCode.A)) {
+        if(Input.GetKey(KeyCode.A)) { //rotate cw
             //if(transform.rotation.z <= 0.5f || transform.rotation.z >= -0.5f) //trying to restrict the movement of the paddle
             moveValueZ = 0.5f;
 
         }
-        if(Input.GetKey(KeyCode.D)) {
+        if(Input.GetKey(KeyCode.D)) { //rotate ccw
             moveValueZ = -0.5f;
         }
-        if(Input.GetKeyDown(KeyCode.LeftShift)) {
+        if(Input.GetKeyDown(KeyCode.LeftShift)) { //shoot special
             if(gameObject.GetComponent<GaugeBar>().spAtkBarImage.fillAmount > 0.5) {
                 gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.5f);
                 ShootSpecial();
@@ -67,7 +69,7 @@ public class Paddle : MonoBehaviour {
         }
     }
     
-    bool CheckPosition() {
+    /*bool CheckPosition() {
         if (transform.position.x > noMansLand.transform.position.x) {   //into no mans land center area, move left to go back
             rb.velocity = new Vector3(-speed, 0, 0);
             //Debug.Log("hit NML");
@@ -86,7 +88,7 @@ public class Paddle : MonoBehaviour {
             return false;
         }
         return true; //position is good, keep doing what your doing :)
-    }
+    }*/
 
     void UpdateHealth(float n) {
         hp -= n;

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 304464428067805711}
   - component: {fileID: 304464428067805747}
   - component: {fileID: -237615133771516809}
+  - component: {fileID: 6577726751505894935}
   m_Layer: 0
   m_Name: Paddle
   m_TagString: Paddle
@@ -118,14 +119,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e824a2b14dde45f43b4ca8e2942c6e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  noMansLand: {fileID: 8980054110175960020, guid: 13fa0f3e5228677488eb223e9b0a811f,
-    type: 3}
-  topBorder: {fileID: 2360379958958647047, guid: 5f4bd14a15772954c9a4a6daab9ae57f,
-    type: 3}
-  bottomBorder: {fileID: 4297585694394309333, guid: 50270bdf8681538488279c85126449e4,
-    type: 3}
-  leftBorder: {fileID: 7660599698363025822, guid: 7064ff5f280273d42828e2e4c00d06ef,
-    type: 3}
+  specAtk: {fileID: 0}
+  noMansLand: {fileID: 0}
+  topBorder: {fileID: 0}
+  bottomBorder: {fileID: 0}
+  leftBorder: {fileID: 0}
   speed: 10
   hp: 1
 --- !u!61 &304464428067805747
@@ -171,6 +169,18 @@ MonoBehaviour:
   spAtkBarImage: {fileID: 0}
   playerBarText: {fileID: 0}
   enemyBarText: {fileID: 0}
+--- !u!114 &6577726751505894935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304464428067805704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47ec41d718054e04788d615b56c3f7ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5172564915419451633
 GameObject:
   m_ObjectHideFlags: 0
