@@ -1431,6 +1431,36 @@ PrefabInstance:
       propertyPath: boundsCamera
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 6577726751505894935, guid: cb22a416d5e404f4497852a2607c911f,
+        type: 3}
+      propertyPath: playerBounds
+      value: 
+      objectReference: {fileID: 1010997286}
+    - target: {fileID: 6577726751505894935, guid: cb22a416d5e404f4497852a2607c911f,
+        type: 3}
+      propertyPath: xOffsetR
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577726751505894935, guid: cb22a416d5e404f4497852a2607c911f,
+        type: 3}
+      propertyPath: xOffsetA
+      value: 5.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577726751505894935, guid: cb22a416d5e404f4497852a2607c911f,
+        type: 3}
+      propertyPath: xOffsetB
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577726751505894935, guid: cb22a416d5e404f4497852a2607c911f,
+        type: 3}
+      propertyPath: yOffset
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 6577726751505894935, guid: cb22a416d5e404f4497852a2607c911f,
+        type: 3}
+      propertyPath: xOffsetL
+      value: 5.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb22a416d5e404f4497852a2607c911f, type: 3}
 --- !u!1 &814790576
@@ -1519,7 +1549,7 @@ GameObject:
   - component: {fileID: 1010997287}
   - component: {fileID: 1010997286}
   m_Layer: 0
-  m_Name: New Sprite
+  m_Name: Player Area
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1563,12 +1593,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 10917, guid: 0000000000000000f000000000000000, type: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 5, y: 5}
+  m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -1582,8 +1612,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1010997285}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.8260717, y: 0.010478637, z: -1048.3926}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -5.2, y: 0, z: 0}
+  m_LocalScale: {x: 41.55, y: 60.31, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
