@@ -62,6 +62,7 @@ public class Mana {
             manaAmount -= amount;
         }
     }
+
     public float NormalizeMana () {
         return manaAmount / MAX_MANA;
     }

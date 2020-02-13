@@ -6,14 +6,13 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Paddle : MonoBehaviour {
 
-    public GameObject specAtk, noMansLand, topBorder, bottomBorder, leftBorder;
+    public GameObject specAtk;
     Transform shootPos;
 
     Rigidbody2D rb;
 
-    public float speed = 1;
-    public int hp = 5;
-    private float moveValueZ;
+    public float speed, rotSpeed, hp;
+    float rotation = 0f, dt;
 
     Vector3 mousePosition_, direction;
 
@@ -28,58 +27,53 @@ public class Paddle : MonoBehaviour {
 
         shootPos = GetComponentInChildren<Transform>();
 
-        if (speed == 0) {
-            speed = 20;
+        dt = Time.deltaTime;
+
+        if(speed == 0) {
+            speed = 250;
+        }
+        if(rotSpeed == 0) {
+            rotSpeed = 1;
+        }
+        if(hp < 0) {
+            hp = 10;
         }
 
         IfNML = false;
     }
 
     // Update is called once per frame
-    void Update() {
+    void FixedUpdate() {
 
-        moveValueZ = 0;
         Controls();
 
         //follow mouse stuff
-        if (IfNML == false) {
-            mousePosition_ = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            direction = (mousePosition_ - transform.position).normalized;
-            rb.velocity = new Vector3(direction.x * speed, direction.y * speed, direction.z * speed);
-        }
-
-        if (IfNML) {
-            Debug.Log(noMansLand.transform.position.x);
-        }
-
-        if (IfNML == true && Input.mousePosition.x < noMansLand.transform.position.x) {
-            IfNML = false;
-        }
-        rb.transform.Rotate(0, 0, moveValueZ * speed);
-
+        mousePosition_ = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        direction = (mousePosition_ - transform.position).normalized;
+        rb.velocity = new Vector3(direction.x * speed * dt,
+                                  direction.y * speed * dt,
+                                  direction.z * speed * dt);
+        //print((int) transform.eulerAngles.z);
     }
 
     void Controls() {
-        if (Input.GetKey(KeyCode.A)) {
-            //if(transform.rotation.z <= 0.5f || transform.rotation.z >= -0.5f) //trying to restrict the movement of the paddle
-            moveValueZ = 0.5f;
+        if(Input.GetKey(KeyCode.A)) { //rotate ccw
+            
+        }
+        if(Input.GetKey(KeyCode.D)) { //rotate cw
+        }
+        if(Input.GetKeyDown(KeyCode.LeftShift)) { //shoot special
+            if(gameObject.GetComponent<GaugeBar>().spAtkBarImage.fillAmount > 0.5) {
+                gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.5f);
+                ShootSpecial();
+            } else {
+                Debug.Log("not enough PP for this");
+            }
+        }
+        if(Input.GetKeyDown(KeyCode.E)) {
+            transform.rotation = Quaternion.identity;
+        }
 
-        }
-        if (Input.GetKey(KeyCode.D)) {
-            moveValueZ = -0.5f;
-        }
-        //if (Input.GetKeyDown(KeyCode.LeftShift)) {
-        //    if (gameObject.GetComponent<GaugeBar>().spAtkBarImage.fillAmount > 0.5) {
-        //        gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.5f);
-        //        ShootSpecial();
-        //    }
-        //    else {
-        //        Debug.Log("not enough PP for this");
-        //    }
-        //}
-        if (Input.GetKeyDown(KeyCode.E)) {
-            rb.rotation = 0;
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
@@ -90,7 +84,7 @@ public class Paddle : MonoBehaviour {
     }
 
     void ShootSpecial() {
-        Instantiate(specAtk, shootPos.position, Quaternion.identity);
+        Instantiate(specAtk, shootPos.position, specAtk.transform.rotation);
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

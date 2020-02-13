@@ -14,9 +14,9 @@ public class GameManager : MonoBehaviour {
         Instantiate(ball, ballSpawn.transform.position, Quaternion.identity);
     }
 
-    void Update () {
-        //CheckEnemyHP();
-        //CheckPlayerHP();
+    void LateUpdate () {
+        CheckEnemyHP();
+        CheckPlayerHP();
     }
 
     public void CharSel () {

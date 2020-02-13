@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 304464428067805711}
   - component: {fileID: 304464428067805747}
   - component: {fileID: -237615133771516809}
+  - component: {fileID: 6577726751505894935}
   m_Layer: 0
   m_Name: Paddle
   m_TagString: Paddle
@@ -172,6 +173,18 @@ MonoBehaviour:
   spAtkBarImage: {fileID: 0}
   playerBarText: {fileID: 0}
   enemyBarText: {fileID: 0}
+--- !u!114 &6577726751505894935
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 304464428067805704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47ec41d718054e04788d615b56c3f7ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5172564915419451633
 GameObject:
   m_ObjectHideFlags: 0
