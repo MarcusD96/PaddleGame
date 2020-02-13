@@ -118,6 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e824a2b14dde45f43b4ca8e2942c6e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  specAtk: {fileID: 0}
   noMansLand: {fileID: 8980054110175960020, guid: 13fa0f3e5228677488eb223e9b0a811f,
     type: 3}
   topBorder: {fileID: 2360379958958647047, guid: 5f4bd14a15772954c9a4a6daab9ae57f,
@@ -127,7 +128,7 @@ MonoBehaviour:
   leftBorder: {fileID: 7660599698363025822, guid: 7064ff5f280273d42828e2e4c00d06ef,
     type: 3}
   speed: 10
-  hp: 1
+  hp: 5
 --- !u!61 &304464428067805747
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -161,7 +162,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 304464428067805704}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb298a794faa3cc45ae36645eec9fc74, type: 3}
   m_Name: 

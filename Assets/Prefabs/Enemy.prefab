@@ -147,6 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a3a68162bae30741ab300c958ef99ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hp: 5
   turret: {fileID: 374548083181561933}
   Ball: {fileID: 5820027054850355200, guid: 995ae78821d7205498a862b3618b99f7, type: 3}
   rb: {fileID: 6609784853075379950}

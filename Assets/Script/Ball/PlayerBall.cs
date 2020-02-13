@@ -3,20 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerBall : Ball
-{
+public class PlayerBall : Ball {
 
     public Text ComboNum;
     private int COMBO;
 
-    void Start()
-    {
-        if (x == 0)
-        {
+    void Start() {
+        if (x == 0) {
             x = 5;
         }
-        if (y == 0)
-        {
+        if (y == 0) {
             y = 5;
         }
         BallStart();
@@ -27,15 +23,12 @@ public class PlayerBall : Ball
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update() {
         BallUpdate();
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        switch (collision.gameObject.tag)
-        {
+    void OnCollisionEnter2D(Collision2D collision) {
+        switch (collision.gameObject.tag) {
             case "Paddle":  //ball hits paddle
                 SoundManager.PlaySound("BallPaddle");
                 constantSpeed = new Vector2(x + COMBO, y + COMBO);
@@ -57,9 +50,6 @@ public class PlayerBall : Ball
                 COMBO += 1;
                 ComboNum.text = "COMBO: " + COMBO;
                 constantSpeed = new Vector2(x + COMBO, y + COMBO);
-                collision.gameObject.GetComponent<Enemy>().ReduceHealth(0.1f);
-                FindObjectOfType<GaugeBar>().UpdateEnemyHealth(.1f);
-
                 break;
 
             default:

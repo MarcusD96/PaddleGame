@@ -5,7 +5,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour {
 
     private float x, y, rand2, fireRate = 3.0f, nextFire = 0.0f;
-    public float hp = 1;
+    public int hp = 5;
     private Vector2 constantSpeed;
     private System.Random rand = new System.Random();
     public Transform turret;
@@ -54,7 +54,10 @@ public class Enemy : MonoBehaviour {
         }
     }
 
-    public void ReduceHealth(float n) {
-        hp -= n;
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if (collision.gameObject.tag == "Ball") {
+            hp -= 1;
+            //FindObjectOfType<GaugeBar>().UpdateEnemyHealth(0.1f);
+        }
     }
 }

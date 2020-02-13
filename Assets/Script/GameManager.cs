@@ -15,12 +15,9 @@ public class GameManager : MonoBehaviour {
     }
 
     void Update () {
-        CheckEnemyHP();
-        CheckPlayerHP();
+        //CheckEnemyHP();
+        //CheckPlayerHP();
     }
-
-    public static int Level;
-    public static string KorP;
 
     public void CharSel () {
         SceneManager.LoadScene("CharSel");
@@ -42,17 +39,17 @@ public class GameManager : MonoBehaviour {
         SceneManager.LoadScene("Winner");
     }
 
-    void CheckEnemyHP() {
-        if (enemy.GetComponent<Enemy>().hp <= 0) {
-            Destroy(enemy);
-            MainMenu();
-        }
-    }
+    //void CheckEnemyHP() {
+    //    if (enemy.GetComponent<Enemy>().hp <= 0) {
+    //        Destroy(enemy);
+    //        MainMenu();
+    //    }
+    //}
 
-    void CheckPlayerHP () {
-        if(player.GetComponent<Paddle>().hp <= 0) {
-            Destroy(player);
-            MainMenu();
-        }
-    }
+    //void CheckPlayerHP () {
+    //    if(player.GetComponent<Paddle>().hp <= 0) {
+    //        Destroy(player);
+    //        MainMenu();
+    //    }
+    //}
 }

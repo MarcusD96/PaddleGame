@@ -33,8 +33,6 @@ public class EnemyBall : Ball {
             case "Paddle":  //ball hits paddle
                 SoundManager.PlaySound("BallBad");
                 Destroy(gameObject);
-                FindObjectOfType<GaugeBar>().UpdatePlayerHealth(.1f);
-
                 break;
 
             case "BallSideBad": //ball hits enemy side wall

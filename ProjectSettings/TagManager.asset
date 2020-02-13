@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - BallSideBad
   - Projectile
+  - NML
   layers:
   - Default
   - TransparentFX
