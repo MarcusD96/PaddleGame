@@ -11,8 +11,14 @@ public class Paddle : MonoBehaviour {
 
     Rigidbody2D rb;
 
+<<<<<<< Updated upstream
     public float speed, hp = 1;
     private float moveValueZ;
+=======
+    public float speed, rotSpeed;
+    public int hp = 5;
+    float rotation = 0f, dt;
+>>>>>>> Stashed changes
 
     Vector3 mousePosition_, direction;
 
@@ -51,8 +57,13 @@ public class Paddle : MonoBehaviour {
             moveValueZ = 0.5f;
 
         }
+<<<<<<< Updated upstream
         if(Input.GetKey(KeyCode.D)) {
             moveValueZ = -0.5f;
+=======
+        if(Input.GetKey(KeyCode.D)) { //rotate cw
+
+>>>>>>> Stashed changes
         }
         if(Input.GetKeyDown(KeyCode.LeftShift)) {
             if(gameObject.GetComponent<GaugeBar>().spAtkBarImage.fillAmount > 0.5) {
@@ -88,7 +99,7 @@ public class Paddle : MonoBehaviour {
         return true; //position is good, keep doing what your doing :)
     }
 
-    void UpdateHealth(float n) {
+    void UpdateHealth(int n) {
         hp -= n;
     }
 
