@@ -5,13 +5,14 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-    public GameObject player, enemy, ball;
+    public GameObject player, enemy, ball, shield;
     public Transform playerSpawn, enemySpawn, ballSpawn;
 
     private void Start () {
         player = FindObjectOfType<Paddle>().gameObject;
         Instantiate(enemy, enemySpawn.transform.position, Quaternion.identity);
         Instantiate(ball, ballSpawn.transform.position, Quaternion.identity);
+        Instantiate(shield, ballSpawn.transform.position, Quaternion.identity);
     }
 
     void LateUpdate () {
