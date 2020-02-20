@@ -8,6 +8,12 @@ public class Boundaries : MonoBehaviour {
     private float objectWidth, objectHeight; 
     public float xOffsetL, xOffsetR, yOffset;
 
+    void Start() {
+        foreach(var r in FindObjectsOfType<SpriteRenderer>()) {
+            if(r.tag == "PlayerArea")
+                playerBounds = r;
+        }
+    }
 
     // Update is called once per frame
     void LateUpdate () {

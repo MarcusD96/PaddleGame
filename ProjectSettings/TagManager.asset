@@ -12,6 +12,7 @@ TagManager:
   - Enemy
   - BallSideBad
   - Projectile
+  - PlayerArea
   layers:
   - Default
   - TransparentFX
