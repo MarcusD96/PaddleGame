@@ -282,7 +282,3 @@ C:\Users\Mackenzie Hibberd\Desktop\Programming\Unity\PaddleGame\obj\Debug\Assemb
 C:\Users\Mackenzie Hibberd\Desktop\Programming\Unity\PaddleGame\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\Mackenzie Hibberd\Desktop\Programming\Unity\PaddleGame\obj\Debug\Assembly-CSharp.dll
 C:\Users\Mackenzie Hibberd\Desktop\Programming\Unity\PaddleGame\obj\Debug\Assembly-CSharp.pdb
-C:\Users\Mackenzie Hibberd\Documents\GitHub\PaddleGame\obj\Debug\Assembly-CSharp.csprojAssemblyReference.cache
-C:\Users\Mackenzie Hibberd\Documents\GitHub\PaddleGame\obj\Debug\Assembly-CSharp.csproj.CoreCompileInputs.cache
-C:\Users\Mackenzie Hibberd\Documents\GitHub\PaddleGame\obj\Debug\Assembly-CSharp.dll
-C:\Users\Mackenzie Hibberd\Documents\GitHub\PaddleGame\obj\Debug\Assembly-CSharp.pdb
