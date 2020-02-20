@@ -34,7 +34,6 @@ public class EnemyBall : Projectile {
                 SoundManager.PlaySound("BallBad");
                 Destroy(gameObject);
                 FindObjectOfType<GaugeBar>().UpdatePlayerHealth(.1f);
-
                 break;
 
             case "BallSideBad": //ball hits enemy side wall

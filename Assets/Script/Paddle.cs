@@ -54,7 +54,6 @@ public class Paddle : MonoBehaviour {
         rb.velocity = new Vector3(direction.x * speed * dt,
                                   direction.y * speed * dt,
                                   direction.z * speed * dt);
-        Debug.Log((int)transform.eulerAngles.z);
     }
 
     void Controls() {

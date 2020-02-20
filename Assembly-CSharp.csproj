@@ -77,6 +77,7 @@
     <Compile Include="Assets\Script\Laser.cs" />
     <Compile Include="Assets\Script\Paddle.cs" />
     <Compile Include="Assets\Script\SoundManager.cs" />
+    <Compile Include="Assets\Script\SpriteFade.cs" />
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Marcus Di Domizio/Documents/GitHub/PaddleGame/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
