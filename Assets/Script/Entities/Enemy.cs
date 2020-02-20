@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Enemy : MonoBehaviour {
+public class Enemy : BaseEntity {
 
-    private float x, y, rand2, fireRate = 3.0f, nextFire = 0.0f;
-    public int hp = 10;
+    private float x, y, fireRate = 3.0f, nextFire = 0.0f;
+    
     private Vector2 constantSpeed;
     private System.Random rand = new System.Random();
     public Transform turret;
@@ -18,9 +18,8 @@ public class Enemy : MonoBehaviour {
     void Start () {
         name = "Enemy";
         tag = "Enemy";
-
+        SetHP(10);
         rb = GetComponent<Rigidbody2D>();
-
 
         x = 5;
         y = 5;

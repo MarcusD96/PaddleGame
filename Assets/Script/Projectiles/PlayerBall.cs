@@ -32,7 +32,6 @@ public class PlayerBall : Projectile {
             case "Paddle":  //ball hits paddle
                 SoundManager.PlaySound("BallPaddle");
                 constantSpeed = new Vector2(x + COMBO, y + COMBO);
-                Debug.Log(COMBO);
                 break;
 
             case "BallSideBad": //ball hits enemy side wall

@@ -2,18 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class HealtSystem : MonoBehaviour {
+public class HealthSystem : MonoBehaviour {
 
     public Canvas canvas;
     public Transform Heart;
 
     public Transform HeartSpawner;
-    public Transform[] Hearts = new Transform[FindObjectOfType<Paddle>().hp];
+    public Transform[] Hearts = new Transform[FindObjectOfType<Paddle>().GetHP()];
     private int PlayerHealth;
     private int PlayerHeartNum;
 
     public Transform EnemyHeartSpawner;
-    public Transform[] EnemyHearts = new Transform[FindObjectOfType<Enemy>().hp];
+    public Transform[] EnemyHearts = new Transform[FindObjectOfType<Enemy>().GetHP()];
     private int EnemyHealth;
     private int EnemyHeartNum;
 
@@ -31,8 +31,8 @@ public class HealtSystem : MonoBehaviour {
         Debug.Log("Make Hearts");
         Vector2 Temp;
 
-        PlayerHealth = FindObjectOfType<Paddle>().hp;
-        PlayerHeartNum = FindObjectOfType<Paddle>().hp - 1;
+        PlayerHealth = FindObjectOfType<Paddle>().GetHP();
+        PlayerHeartNum = FindObjectOfType<Paddle>().GetHP() - 1;
 
         for (int i = 0; i < PlayerHealth; ++i) {
             Temp.x = HeartSpawner.position.x + (40 * i);
@@ -41,8 +41,8 @@ public class HealtSystem : MonoBehaviour {
         }
 
 
-        EnemyHealth = FindObjectOfType<Enemy>().hp;
-        EnemyHeartNum = FindObjectOfType<Enemy>().hp - 1;
+        EnemyHealth = FindObjectOfType<Enemy>().GetHP();
+        EnemyHeartNum = FindObjectOfType<Enemy>().GetHP() - 1;
 
         for (int i = 0; i < EnemyHealth; ++i) {
             Temp.x = EnemyHeartSpawner.position.x + (-40 * i);
@@ -52,11 +52,11 @@ public class HealtSystem : MonoBehaviour {
     }
 
     void UpdateHearts() {
-        PlayerHealth = FindObjectOfType<Paddle>().hp;
+        PlayerHealth = FindObjectOfType<Paddle>().GetHP();
 
         if (PlayerHealth == 0) {
-            FindObjectOfType<Paddle>().hp = 5;
-            FindObjectOfType<Enemy>().hp = 5;
+            FindObjectOfType<Paddle>().SetHP(5);
+            FindObjectOfType<Enemy>().SetHP(5);
             MakeHearts();
         }
         else if (PlayerHealth - 1 < PlayerHeartNum) {
@@ -64,14 +64,14 @@ public class HealtSystem : MonoBehaviour {
             PlayerHeartNum--;
         }
 
-        EnemyHealth = FindObjectOfType<Enemy>().hp;
+        EnemyHealth = FindObjectOfType<Enemy>().GetHP();
 
         Debug.Log(EnemyHealth);
         Debug.Log(EnemyHeartNum);
 
         if (EnemyHealth == 0) {
-            FindObjectOfType<Paddle>().hp = 5;
-            FindObjectOfType<Enemy>().hp = 5;
+            FindObjectOfType<Paddle>().SetHP(5);
+            FindObjectOfType<Enemy>().SetHP(5);
             MakeHearts();
         }
         else if (EnemyHealth - 1 < EnemyHeartNum) {

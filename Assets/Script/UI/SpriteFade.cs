@@ -17,7 +17,6 @@ public class SpriteFade : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.gameObject.CompareTag("NML")) {
             StartCoroutine(FadeTo(0.3f, 2.0f));
-            print((int)NML.color.a);
         }
     }
 

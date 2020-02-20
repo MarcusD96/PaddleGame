@@ -4,16 +4,14 @@ using UnityEngine;
 using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class Paddle : MonoBehaviour {
+public class Paddle : BaseEntity {
 
     public GameObject specAtk;
     Transform shootPos;
 
     Rigidbody2D rb;
 
-    public float speed, rotSpeed;
     private float minRot, maxRot, dt;
-    public int hp;
 
     Vector3 mousePosition_, direction;
 
@@ -28,13 +26,13 @@ public class Paddle : MonoBehaviour {
 
         transform.eulerAngles = new Vector3(0, 0, 180);
 
+        dt = Time.fixedDeltaTime;
+
         minRot = 135;
         maxRot = minRot + 90;
 
-        dt = Time.deltaTime;
-
-        if(speed == 0) {
-            speed = 250;
+        if(moveSpeed == 0) {
+            moveSpeed = 250;
         }
         if(rotSpeed == 0) {
             rotSpeed = 70;
@@ -51,9 +49,9 @@ public class Paddle : MonoBehaviour {
         //follow mouse stuff
         mousePosition_ = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = (mousePosition_ - transform.position).normalized;
-        rb.velocity = new Vector3(direction.x * speed * dt,
-                                  direction.y * speed * dt,
-                                  direction.z * speed * dt);
+        rb.velocity = new Vector3(direction.x * moveSpeed * dt,
+                                  direction.y * moveSpeed * dt,
+                                  direction.z * moveSpeed * dt);
     }
 
     void Controls() {
@@ -72,7 +70,12 @@ public class Paddle : MonoBehaviour {
             }
         }
         if(Input.GetKeyDown(KeyCode.E)) {
-            transform.rotation = Quaternion.identity;
+            //set min rot
+
+        }
+        if(Input.GetKeyDown(KeyCode.Q)) {
+            //set max rot
+            
         }
         Vector3 currentRotation = transform.localRotation.eulerAngles;
         currentRotation.z = Mathf.Clamp(currentRotation.z, minRot, maxRot);
