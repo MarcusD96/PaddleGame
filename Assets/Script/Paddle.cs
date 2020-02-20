@@ -12,9 +12,8 @@ public class Paddle : MonoBehaviour {
     Rigidbody2D rb;
 
     public float speed, rotSpeed;
-    float minRot, maxRot;
+    private float minRot, maxRot, dt;
     public int hp;
-    float dt;
 
     Vector3 mousePosition_, direction;
 
@@ -27,8 +26,10 @@ public class Paddle : MonoBehaviour {
 
         shootPos = GetComponentInChildren<Transform>();
 
-        minRot = 45;
-        maxRot = 135;
+        transform.eulerAngles = new Vector3(0, 0, 180);
+
+        minRot = 135;
+        maxRot = minRot + 90;
 
         dt = Time.deltaTime;
 
@@ -45,7 +46,6 @@ public class Paddle : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-
         Controls();
 
         //follow mouse stuff
@@ -54,17 +54,15 @@ public class Paddle : MonoBehaviour {
         rb.velocity = new Vector3(direction.x * speed * dt,
                                   direction.y * speed * dt,
                                   direction.z * speed * dt);
-        
+        Debug.Log((int)transform.eulerAngles.z);
     }
 
     void Controls() {
         if(Input.GetKey(KeyCode.A)) { //rotate ccw
             transform.Rotate(Vector3.forward, rotSpeed * dt);
-            Debug.Log("A--> " + transform.eulerAngles.z);
         }
         if(Input.GetKey(KeyCode.D)) { //rotate cw
             transform.Rotate(Vector3.back, rotSpeed * dt);
-            Debug.Log("D--> " + transform.eulerAngles.z);
         }
         if(Input.GetKeyDown(KeyCode.LeftShift)) { //shoot special
             if(gameObject.GetComponent<GaugeBar>().spAtkBarImage.fillAmount > 0.5) {
@@ -77,11 +75,9 @@ public class Paddle : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.E)) {
             transform.rotation = Quaternion.identity;
         }
-        //float minRotation = 65;
-        //float maxRotation = 115;
-        //Vector3 currentRotation = transform.localRotation.eulerAngles;
-        //currentRotation.z = Mathf.Clamp(currentRotation.z, minRotation, maxRotation);
-        //transform.localRotation = Quaternion.Euler(currentRotation);
+        Vector3 currentRotation = transform.localRotation.eulerAngles;
+        currentRotation.z = Mathf.Clamp(currentRotation.z, minRot, maxRot);
+        transform.localRotation = Quaternion.Euler(currentRotation);
 
     }
 
