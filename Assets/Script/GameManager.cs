@@ -14,9 +14,9 @@ public class GameManager : MonoBehaviour {
         Instantiate(ball, ballSpawn.transform.position, Quaternion.identity);
     }
 
-    void LateUpdate () {
-        //CheckEnemyHP();
-        //CheckPlayerHP();
+    void Update () {
+        CheckEnemyHP();
+        CheckPlayerHP();
     }
 
     public static int Level;
@@ -43,14 +43,14 @@ public class GameManager : MonoBehaviour {
     }
 
     void CheckEnemyHP() {
-        if (enemy.GetComponent<Enemy>().GetHP() <= 0) {
+        if (enemy.GetComponent<Enemy>().hp <= 0) {
             Destroy(enemy);
             MainMenu();
         }
     }
 
     void CheckPlayerHP () {
-        if(player.GetComponent<Paddle>().GetHP() <= 0) {
+        if(player.GetComponent<Paddle>().hp <= 0) {
             Destroy(player);
             MainMenu();
         }
