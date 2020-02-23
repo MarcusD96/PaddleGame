@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Enemy : BaseEntity {
 
-    private float x, y, fireRate = 3.0f, nextFire = 0.0f;
+    private float x, y, fireRate = 1f, nextFire = 0.0f;
     
     private Vector2 constantSpeed;
     private System.Random rand = new System.Random();

@@ -43,12 +43,12 @@ public class EnemyBall : Projectile {
 
             case "BallSide":    //ball hits player side wall
                 SoundManager.PlaySound("BallWall");
-                Destroy(this); ///dont need GameObject.Destroy, just Destroy
+                Destroy(gameObject); ///dont need GameObject.Destroy, just Destroy
                 break;
 
             case "Ball":    //ball hits ball
                 SoundManager.PlaySound("BallWall");
-                Destroy(this); ///here too
+                Destroy(gameObject); ///here too
                 break;
 
             default:

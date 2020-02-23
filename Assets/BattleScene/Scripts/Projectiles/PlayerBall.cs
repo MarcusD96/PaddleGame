@@ -1,11 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlayerBall : Projectile {
 
-    public Text comboNum;
+    public TextMeshProUGUI comboNum;
     private int COMBO;
 
     void Start () {
@@ -18,7 +18,11 @@ public class PlayerBall : Projectile {
         BallStart();
         tag = "Ball";
         COMBO = 0;
-        comboNum = FindObjectOfType<Text>();
+        foreach(var c in FindObjectsOfType<TextMeshProUGUI>()) {
+            if(c.CompareTag("Combo")) {
+                comboNum = c;
+            }
+        }
         comboNum.text = "COMBO: " + COMBO;
     }
 

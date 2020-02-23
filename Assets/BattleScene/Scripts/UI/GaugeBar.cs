@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GaugeBar : MonoBehaviour {
     private Mana mana;
     public Image playerBarImage, enemyBarImage, spAtkBarImage;
-    public Text playerBarText, enemyBarText;
+    public TextMeshProUGUI playerBarText, enemyBarText;
 
     void Awake () {
         playerBarImage.fillAmount = 1;
