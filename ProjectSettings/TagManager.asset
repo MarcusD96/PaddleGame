@@ -15,6 +15,9 @@ TagManager:
   - PlayerArea
   - EnemyArea
   - NML
+  - Combo
+  - Settings
+  - Buttons
   layers:
   - Default
   - TransparentFX
