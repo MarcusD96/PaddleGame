@@ -66,6 +66,7 @@
     <Compile Include="Assets\BattleScene\Scripts\ClassSel.cs" />
     <Compile Include="Assets\BattleScene\Scripts\Entities\BaseEntity.cs" />
     <Compile Include="Assets\BattleScene\Scripts\Entities\Enemy.cs" />
+    <Compile Include="Assets\BattleScene\Scripts\Entities\Lobster.cs" />
     <Compile Include="Assets\BattleScene\Scripts\Entities\Paddle.cs" />
     <Compile Include="Assets\BattleScene\Scripts\GameManager.cs" />
     <Compile Include="Assets\BattleScene\Scripts\Projectiles\EnemyBall.cs" />

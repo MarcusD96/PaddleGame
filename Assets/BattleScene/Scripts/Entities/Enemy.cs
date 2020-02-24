@@ -4,41 +4,33 @@ using UnityEngine;
 
 public class Enemy : BaseEntity {
 
-    private float x, y, fireRate = 1f, nextFire = 0.0f;
-    
+    public float x, y, rand2, fireRate = 3.0f, nextFire = 0.0f;
+    public bool isShootingAndMoving, hasShot;
+
     private Vector2 constantSpeed;
     private System.Random rand = new System.Random();
     public Transform turret;
     public GameObject Ball;
-
     public Rigidbody2D rb;
 
-
     // Start is called before the first frame update
-    void Start () {
+    public void Init() {
         name = "Enemy";
         tag = "Enemy";
-        SetHP(10);
-        rb = GetComponent<Rigidbody2D>();
 
+        rb = GetComponent<Rigidbody2D>();
         x = 5;
         y = 5;
-        // by making the velocities const initially, it took away the 'shaking'
         constantSpeed = new Vector2(x, y);
-        rb.velocity = constantSpeed;
 
+        Movement();
+        //by making the velocities const initially, it took away the 'shaking'
     }
 
-    // Update is called once per frame
-    void Update () {
-        rb.velocity = constantSpeed * (rb.velocity.normalized);
-        Fire();
-    }
-
-    private void OnTriggerEnter2D (Collider2D collision) //collide with seprating wall between player and enemy side
+    public void OnTriggerEnter2D(Collider2D collision) //collide with seprating wall between player and enemy side
     {
-        switch(collision.gameObject.tag) {
-            case "NML":
+        switch (collision.gameObject.tag) {
+            case "EnemySide":
                 rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
                 break;
             default:
@@ -46,14 +38,22 @@ public class Enemy : BaseEntity {
         }
     }
 
-    public void Fire () {
-        if(Time.time > nextFire) {
-            nextFire = Time.time + fireRate;
+    public void Fire() {
+        if (Time.time > nextFire) {
             Instantiate(Ball, turret.position, Quaternion.identity);
+            nextFire = Time.time + fireRate;
         }
     }
 
     public void ReduceHealth(int n) {
         hp -= n;
+    }
+
+    public void Movement() {
+        if (hasShot == true && isShootingAndMoving == true) {
+
+            rb.velocity = constantSpeed;
+            rb.velocity = constantSpeed * (rb.velocity.normalized);
+        }
     }
 }
