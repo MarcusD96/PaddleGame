@@ -10,7 +10,8 @@ public class GameManager : MonoBehaviour {
 
     private void Start () {
         player = FindObjectOfType<Paddle>().gameObject;
-        Instantiate(enemy, enemySpawn.transform.position, Quaternion.identity);
+        enemy = FindObjectOfType<Enemy>().gameObject;
+        //Instantiate(enemy, enemySpawn.transform.position, Quaternion.identity);
         Instantiate(ball, ballSpawn.transform.position, Quaternion.identity);
     }
 

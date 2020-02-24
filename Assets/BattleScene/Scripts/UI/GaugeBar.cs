@@ -6,30 +6,15 @@ using TMPro;
 
 public class GaugeBar : MonoBehaviour {
     private Mana mana;
-    public Image playerBarImage, enemyBarImage, spAtkBarImage;
-    public TextMeshProUGUI playerBarText, enemyBarText;
+    public Image spAtkBarImage;
 
     void Awake () {
-        playerBarImage.fillAmount = 1;
-        playerBarText.text = "10";
-        enemyBarImage.fillAmount = 1;
-        enemyBarText.text = "10";
         mana = new Mana();
     }
 
     void Update () {
         mana.Update();
         spAtkBarImage.fillAmount = mana.NormalizeMana();
-    }
-
-    public void UpdatePlayerHealth (float x) {
-        playerBarImage.fillAmount -= x;
-        playerBarText.text = ((int)(playerBarImage.fillAmount * 10)).ToString();
-    }
-
-    public void UpdateEnemyHealth (float x) {
-        enemyBarImage.fillAmount -= x;
-        enemyBarText.text = ((int)(enemyBarImage.fillAmount * 10)).ToString();
     }
 
     public void UpdatePlayerSpAtk (float x) {

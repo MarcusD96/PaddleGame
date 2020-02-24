@@ -54,8 +54,6 @@ public class PlayerBall : Projectile {
                 comboNum.text = "COMBO: " + COMBO;
                 constantSpeed = new Vector2(x + COMBO, y + COMBO);
                 collision.gameObject.GetComponent<Enemy>().ReduceHealth(1);
-                FindObjectOfType<GaugeBar>().UpdateEnemyHealth(.1f);
-
                 break;
 
             default:

@@ -32,14 +32,12 @@ public class Paddle : BaseEntity {
         maxRot = minRot + 90;
 
         if(moveSpeed == 0) {
-            moveSpeed = 250;
+            moveSpeed = 500;
         }
         if(rotSpeed == 0) {
             rotSpeed = 70;
         }
-        if(hp < 0) {
-            hp = 10;
-        }
+        SetHP(5);
     }
 
     // Update is called once per frame

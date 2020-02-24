@@ -28,7 +28,6 @@ public class Laser : Projectile {
         if(collision.gameObject.tag == "Enemy") {
             SoundManager.PlaySound("BallBad");
             Destroy(gameObject);
-            FindObjectOfType<GaugeBar>().UpdateEnemyHealth(0.2f);
         }
     }
 }
