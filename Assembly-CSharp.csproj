@@ -80,6 +80,7 @@
     <Compile Include="Assets\BattleScene\Scripts\UI\SoundManager.cs" />
     <Compile Include="Assets\BattleScene\Scripts\UI\SpriteFade.cs" />
     <Compile Include="Assets\Main Menu\Scripts\Buttons.cs" />
+    <Compile Include="Assets\Overworld\Scripts\PlayerMovement.cs" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\LineBreaking Leading Characters.txt" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro_Properties.cginc" />
