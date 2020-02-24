@@ -19,8 +19,9 @@ public class GaugeBar : MonoBehaviour {
 
     public void UpdatePlayerSpAtk (float x) {
         spAtkBarImage.fillAmount -= x;
+        int manaUse = (int)(x * 100);
         if(spAtkBarImage.fillAmount > 0) {
-            mana.UseMana(50);
+            mana.UseMana(manaUse);
             spAtkBarImage.fillAmount = 0;
         }
     }

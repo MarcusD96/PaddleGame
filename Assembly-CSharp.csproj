@@ -67,6 +67,7 @@
     <Compile Include="Assets\BattleScene\Scripts\Entities\Enemy.cs" />
     <Compile Include="Assets\BattleScene\Scripts\Entities\Paddle.cs" />
     <Compile Include="Assets\BattleScene\Scripts\GameManager.cs" />
+    <Compile Include="Assets\BattleScene\Scripts\PauseMenu.cs" />
     <Compile Include="Assets\BattleScene\Scripts\Projectiles\EnemyBall.cs" />
     <Compile Include="Assets\BattleScene\Scripts\Projectiles\Laser.cs" />
     <Compile Include="Assets\BattleScene\Scripts\Projectiles\PlayerBall.cs" />
