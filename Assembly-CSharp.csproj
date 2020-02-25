@@ -62,6 +62,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+<<<<<<< Updated upstream
     <Compile Include="Assets\BattleScene\Scripts\ClassSel.cs" />
     <Compile Include="Assets\BattleScene\Scripts\Entities\BaseEntity.cs" />
     <Compile Include="Assets\BattleScene\Scripts\Entities\Enemy.cs" />
@@ -98,6 +99,24 @@
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Mobile.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_Sprite.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMP_SDF-Surface.shader" />
+=======
+    <Compile Include="Assets\Script\ClassSel.cs" />
+    <Compile Include="Assets\Script\Entities\BaseEntity.cs" />
+    <Compile Include="Assets\Script\Entities\Enemy.cs" />
+    <Compile Include="Assets\Script\Entities\Paddle.cs" />
+    <Compile Include="Assets\Script\GameManager.cs" />
+    <Compile Include="Assets\Script\Projectiles\EnemyBall.cs" />
+    <Compile Include="Assets\Script\Projectiles\Laser.cs" />
+    <Compile Include="Assets\Script\Projectiles\PlayerBall.cs" />
+    <Compile Include="Assets\Script\Projectiles\Projectile.cs" />
+    <Compile Include="Assets\Script\UI\Boundaries.cs" />
+    <Compile Include="Assets\Script\UI\FPSCounter.cs" />
+    <Compile Include="Assets\Script\UI\GaugeBar.cs" />
+    <Compile Include="Assets\Script\UI\HealthBar.cs" />
+    <Compile Include="Assets\Script\UI\HealtSystem.cs" />
+    <Compile Include="Assets\Script\UI\SoundManager.cs" />
+    <Compile Include="Assets\Script\UI\SpriteFade.cs" />
+>>>>>>> Stashed changes
     <Reference Include="Unity.Timeline.Editor">
       <HintPath>C:/Users/Mackenzie Hibberd/Documents/GitHub/PaddleGame/Library/ScriptAssemblies/Unity.Timeline.Editor.dll</HintPath>
     </Reference>
