@@ -18,6 +18,8 @@ TagManager:
   - Combo
   - Settings
   - Buttons
+  - Arm
+  - Wall
   layers:
   - Default
   - TransparentFX
