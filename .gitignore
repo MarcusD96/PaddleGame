@@ -70,3 +70,5 @@ crashlytics-build.properties
 *.csproj
 *.meta
 *.dwlt
+*.dwlt
+Library/CurrentLayout-default.dwlt
