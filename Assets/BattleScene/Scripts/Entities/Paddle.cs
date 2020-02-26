@@ -59,7 +59,6 @@ public class Paddle : BaseEntity {
         if (Input.GetKey(KeyCode.D)) { //rotate cw
             transform.Rotate(Vector3.back, rotSpeed * dt);
         }
-<<<<<<< Updated upstream:Assets/BattleScene/Scripts/Entities/Paddle.cs
         if (Input.GetKeyDown(KeyCode.Space)) { //shoot secondary
             if (gameObject.GetComponent<GaugeBar>().spAtkBarImage.fillAmount > 0.2f) {
                 gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.2f);
@@ -71,10 +70,6 @@ public class Paddle : BaseEntity {
         }
         if (Input.GetKeyDown(KeyCode.LeftShift)) { //shoot special
             if (gameObject.GetComponent<GaugeBar>().spAtkBarImage.fillAmount > 0.5f) {
-=======
-        if (Input.GetKeyDown(KeyCode.LeftShift)) { //shoot special
-            if (gameObject.GetComponent<GaugeBar>().spAtkBarImage.fillAmount > 0.5) {
->>>>>>> Stashed changes:Assets/Script/Entities/Paddle.cs
                 gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.5f);
                 ShootSpecial();
             }

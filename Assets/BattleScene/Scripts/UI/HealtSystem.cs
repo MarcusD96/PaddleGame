@@ -38,12 +38,7 @@ public class HealtSystem : MonoBehaviour {
         PlayerHeartNum = FindObjectOfType<Paddle>().GetHP() - 1;
 
         for (int i = 0; i < PlayerHealth; ++i) {
-<<<<<<< Updated upstream:Assets/BattleScene/Scripts/UI/HealtSystem.cs
             Temp.x = HeartSpawner.position.x + (90 * i);
-=======
-            Debug.Log("Gay");
-            Temp.x = HeartSpawner.position.x + (40 * i);
->>>>>>> Stashed changes:Assets/Script/UI/HealthSystem.cs
             Temp.y = HeartSpawner.position.y;
             Hearts[i] = Instantiate(Heart, Temp, Quaternion.identity, canvas.transform);
         }
