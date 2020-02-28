@@ -2,23 +2,26 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class HealthSystem : MonoBehaviour {
+public class HealtSystem : MonoBehaviour {
 
     public Canvas canvas;
     public Transform Heart;
 
     public Transform HeartSpawner;
-    public Transform[] Hearts = new Transform[FindObjectOfType<Paddle>().GetHP()];
+    public Transform[] Hearts;
     private int PlayerHealth;
     private int PlayerHeartNum;
 
     public Transform EnemyHeartSpawner;
-    public Transform[] EnemyHearts = new Transform[FindObjectOfType<Enemy>().GetHP()];
+    public Transform[] EnemyHearts;
     private int EnemyHealth;
     private int EnemyHeartNum;
 
     /* Start is called before the first frame update*/
     void Start() {
+        Hearts = new Transform[FindObjectOfType<Paddle>().GetHP()];
+        EnemyHearts = new Transform[FindObjectOfType<Enemy>().GetHP()];
+
         MakeHearts();
     }
 
@@ -35,7 +38,7 @@ public class HealthSystem : MonoBehaviour {
         PlayerHeartNum = FindObjectOfType<Paddle>().GetHP() - 1;
 
         for (int i = 0; i < PlayerHealth; ++i) {
-            Temp.x = HeartSpawner.position.x + (40 * i);
+            Temp.x = HeartSpawner.position.x + (90 * i);
             Temp.y = HeartSpawner.position.y;
             Hearts[i] = Instantiate(Heart, Temp, Quaternion.identity, canvas.transform);
         }
@@ -45,7 +48,7 @@ public class HealthSystem : MonoBehaviour {
         EnemyHeartNum = FindObjectOfType<Enemy>().GetHP() - 1;
 
         for (int i = 0; i < EnemyHealth; ++i) {
-            Temp.x = EnemyHeartSpawner.position.x + (-40 * i);
+            Temp.x = EnemyHeartSpawner.position.x + (-90 * i);
             Temp.y = EnemyHeartSpawner.position.y;
             EnemyHearts[i] = Instantiate(Heart, Temp, Quaternion.identity, canvas.transform);
         }

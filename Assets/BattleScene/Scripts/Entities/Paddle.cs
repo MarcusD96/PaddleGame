@@ -31,15 +31,13 @@ public class Paddle : BaseEntity {
         minRot = 135;
         maxRot = minRot + 90;
 
-        if(moveSpeed == 0) {
-            moveSpeed = 250;
+        if (moveSpeed == 0) {
+            moveSpeed = 500;
         }
-        if(rotSpeed == 0) {
+        if (rotSpeed == 0) {
             rotSpeed = 70;
         }
-        if(hp < 0) {
-            hp = 10;
-        }
+        SetHP(5);
     }
 
     // Update is called once per frame
@@ -55,27 +53,37 @@ public class Paddle : BaseEntity {
     }
 
     void Controls() {
-        if(Input.GetKey(KeyCode.A)) { //rotate ccw
+        if (Input.GetKey(KeyCode.A)) { //rotate ccw
             transform.Rotate(Vector3.forward, rotSpeed * dt);
         }
-        if(Input.GetKey(KeyCode.D)) { //rotate cw
+        if (Input.GetKey(KeyCode.D)) { //rotate cw
             transform.Rotate(Vector3.back, rotSpeed * dt);
         }
-        if(Input.GetKeyDown(KeyCode.LeftShift)) { //shoot special
-            if(gameObject.GetComponent<GaugeBar>().spAtkBarImage.fillAmount > 0.5) {
-                gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.5f);
-                ShootSpecial();
-            } else {
+        if (Input.GetKeyDown(KeyCode.Space)) { //shoot secondary
+            if (gameObject.GetComponent<GaugeBar>().spAtkBarImage.fillAmount > 0.2f) {
+                gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.2f);
+                ShootSecondary();
+            }
+            else {
                 Debug.Log("not enough PP for this");
             }
         }
-        if(Input.GetKeyDown(KeyCode.E)) {
+        if (Input.GetKeyDown(KeyCode.LeftShift)) { //shoot special
+            if (gameObject.GetComponent<GaugeBar>().spAtkBarImage.fillAmount > 0.5f) {
+                gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.5f);
+                ShootSpecial();
+            }
+            else {
+                Debug.Log("not enough PP for this");
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.E)) {
             //set min rot
 
         }
-        if(Input.GetKeyDown(KeyCode.Q)) {
+        if (Input.GetKeyDown(KeyCode.Q)) {
             //set max rot
-            
+
         }
         Vector3 currentRotation = transform.localRotation.eulerAngles;
         currentRotation.z = Mathf.Clamp(currentRotation.z, minRot, maxRot);
@@ -87,6 +95,9 @@ public class Paddle : BaseEntity {
         hp -= n;
     }
 
+    void ShootSecondary() {
+        Instantiate(specAtk, shootPos.position, specAtk.transform.rotation);
+    }
     void ShootSpecial() {
         Instantiate(specAtk, shootPos.position, specAtk.transform.rotation);
     }

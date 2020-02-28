@@ -17,6 +17,8 @@ public class Enemy : BaseEntity {
     public void Init() {
         name = "Enemy";
         tag = "Enemy";
+        SetHP(5);
+        rb = GetComponent<Rigidbody2D>();
 
         rb = GetComponent<Rigidbody2D>();
         x = 5;

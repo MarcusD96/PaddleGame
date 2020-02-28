@@ -6,11 +6,11 @@ using UnityEngine.SceneManagement;
 public class Laser : Projectile {
 
     // Start is called before the first frame update
-    void Start () {
-        if(x == 0) {
-            x = 3;
+    void Start() {
+        if (x == 0) {
+            x = 10;
         }
-        if(y == 0) {
+        if (y == 0) {
             y = 0;
         }
 
@@ -20,15 +20,22 @@ public class Laser : Projectile {
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update() {
         BallUpdate();
     }
 
-    void OnCollisionEnter2D (Collision2D collision) {
-        if(collision.gameObject.tag == "Enemy") {
-            SoundManager.PlaySound("BallBad");
-            Destroy(gameObject);
-            FindObjectOfType<GaugeBar>().UpdateEnemyHealth(0.2f);
+    private void OnTriggerEnter2D(Collider2D collision) {
+        switch (collision.gameObject.tag) {
+            case "BallSide":    //ball hits player side wall
+                Destroy(gameObject);
+                break;
+            case "Enemy":
+                SoundManager.PlaySound("BallWall");
+                Destroy(gameObject);
+                collision.gameObject.GetComponent<Enemy>().ReduceHealth(1);
+                break;
+            default:
+                break;
         }
     }
 }
