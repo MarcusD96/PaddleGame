@@ -13,6 +13,8 @@ public class Paddle : BaseEntity {
 
     private float minRot, maxRot, dt;
 
+    private Quaternion baseQuat;
+
     Vector3 mousePosition_, direction;
 
     // Start is called before the first frame update
@@ -31,10 +33,12 @@ public class Paddle : BaseEntity {
         minRot = 135;
         maxRot = minRot + 90;
 
-        if (moveSpeed == 0) {
+        baseQuat = transform.rotation;
+
+        if(moveSpeed == 0) {
             moveSpeed = 500;
         }
-        if (rotSpeed == 0) {
+        if(rotSpeed == 0) {
             rotSpeed = 70;
         }
         SetHP(5);
@@ -53,37 +57,36 @@ public class Paddle : BaseEntity {
     }
 
     void Controls() {
-        if (Input.GetKey(KeyCode.A)) { //rotate ccw
+        if(Input.GetKey(KeyCode.A)) { //rotate ccw
             transform.Rotate(Vector3.forward, rotSpeed * dt);
         }
-        if (Input.GetKey(KeyCode.D)) { //rotate cw
+        if(Input.GetKey(KeyCode.D)) { //rotate cw
             transform.Rotate(Vector3.back, rotSpeed * dt);
         }
-        if (Input.GetKeyDown(KeyCode.Space)) { //shoot secondary
-            if (gameObject.GetComponent<GaugeBar>().spAtkBarImage.fillAmount > 0.2f) {
+        if(Input.GetKeyDown(KeyCode.Space)) { //shoot secondary
+            if(gameObject.GetComponent<GaugeBar>().spAtkBarImage.fillAmount > 0.2f) {
                 gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.2f);
                 ShootSecondary();
-            }
-            else {
+            } else {
                 Debug.Log("not enough PP for this");
             }
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift)) { //shoot special
-            if (gameObject.GetComponent<GaugeBar>().spAtkBarImage.fillAmount > 0.5f) {
+        if(Input.GetKeyDown(KeyCode.LeftShift)) { //shoot special
+            if(gameObject.GetComponent<GaugeBar>().spAtkBarImage.fillAmount > 0.5f) {
                 gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.5f);
                 ShootSpecial();
-            }
-            else {
+            } else {
                 Debug.Log("not enough PP for this");
             }
         }
-        if (Input.GetKeyDown(KeyCode.E)) {
-            //set min rot
-
+        if(Input.GetKeyDown(KeyCode.E)) {
+            transform.rotation = Quaternion.Euler(0, 0, minRot);
         }
-        if (Input.GetKeyDown(KeyCode.Q)) {
-            //set max rot
-
+        if(Input.GetKeyDown(KeyCode.Q)) {
+            transform.rotation = Quaternion.Euler(0, 0, maxRot);
+        }
+        if(Input.GetKeyDown(KeyCode.Space)) {
+            transform.rotation = baseQuat;
         }
         Vector3 currentRotation = transform.localRotation.eulerAngles;
         currentRotation.z = Mathf.Clamp(currentRotation.z, minRot, maxRot);
