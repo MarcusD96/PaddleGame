@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3005221491932351285}
   - component: {fileID: 3005221491932351284}
   - component: {fileID: 3005221491932351288}
-  - component: {fileID: -7092884874582465945}
+  - component: {fileID: 7958357910932618780}
   m_Layer: 0
   m_Name: EnemyL
   m_TagString: Enemy
@@ -132,7 +132,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5, y: 5}
   m_EdgeRadius: 0
---- !u!114 &-7092884874582465945
+--- !u!114 &7958357910932618780
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -141,7 +141,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3005221491932351283}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e50965f136a052645afdcbf7b66da481, type: 3}
+  m_Script: {fileID: 11500000, guid: 4b17cb558af4fb4419d13f1f2f0e7d94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   x: 0
@@ -155,7 +155,7 @@ MonoBehaviour:
   Ball: {fileID: 5820027054850355200, guid: 995ae78821d7205498a862b3618b99f7, type: 3}
   rb: {fileID: 3005221491932351284}
   armNextFire: 0
-  Arm: {fileID: 6609784853075379945, guid: 0a752360ed1941545a56740b7e277ee4, type: 3}
+  Arm: {fileID: 6609784853075379945, guid: b058a4ecb2517f549a5f049f14c82e05, type: 3}
   Shoulder: {fileID: 4486621878072024519}
   target: {fileID: 0}
   speed: 0
