@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class Enemy : BaseEntity {
@@ -13,6 +14,8 @@ public class Enemy : BaseEntity {
     public GameObject Ball;
     public Rigidbody2D rb;
 
+    
+
     // Start is called before the first frame update
     public void Init() {
         name = "Enemy";
@@ -25,7 +28,7 @@ public class Enemy : BaseEntity {
         y = 5;
         constantSpeed = new Vector2(x, y);
 
-        Movement();
+        //Movement();
         //by making the velocities const initially, it took away the 'shaking'
     }
 
