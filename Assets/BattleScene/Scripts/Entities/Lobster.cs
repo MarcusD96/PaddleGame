@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class Lobster : Enemy {
@@ -10,11 +11,14 @@ public class Lobster : Enemy {
     public GameObject Arm;
     public Transform Shoulder;
 
-    public GameObject target;
+    public GameObject target, ball;
     public float speed;
     public float maxAngularVelocity;
 
     Vector3 orientation;
+
+    [DllImport("AIEnemy", CallingConvention = CallingConvention.Cdecl, EntryPoint = "AlignEnemyY")]
+    private static extern float AlignEnemyY(float projY, float enemyY);
 
     // Start is called before the first frame update
     void Start() {
@@ -26,25 +30,27 @@ public class Lobster : Enemy {
 
     //Update is called once per frame
     void Update() {
-        if (hasShot == true) {
-            Init();
-            Movement();
-            hasShot = false;
-        }
-        if (isShootingAndMoving == true) {
-            Fire();
-        }
-
-        else {
-            rb.velocity = Vector2.zero;
-        }
-        currentTime = Time.time;
-        ArmExtendAttack();
+        /* if(hasShot == true) {
+             Init();
+             Movement();
+             hasShot = false;
+         }
+         if(isShootingAndMoving == true) {
+             Fire();
+         } else {
+             rb.velocity = Vector2.zero;
+         }
+         currentTime = Time.time;
+         //ArmExtendAttack();
+         */
+        ball = FindObjectOfType<PlayerBall>().gameObject;
+        float newPosx = AlignEnemyY(ball.transform.position.y, target.transform.position.y);
+        transform.SetPositionAndRotation(new Vector3(newPosx, transform.position.y, transform.position.z), transform.rotation);
     }
 
     public void ArmExtendAttack() {
 
-        if (Time.time > armNextFire) {
+        if(Time.time > armNextFire) {
             isShootingAndMoving = false;
 
             armNextFire = Time.time + 10;
@@ -62,14 +68,13 @@ public class Lobster : Enemy {
 
                 float angularDisplacement = maxAngularVelocity * dt;
 
-                if (angleBetween <= angularDisplacement) {
+                if(angleBetween <= angularDisplacement) {
                     orientation = targetDir.normalized;
-                }
-                else {
+                } else {
                     Vector2 normal = new Vector2(-orientation.y, orientation.x);
                     float normalDot = Vector2.Dot(normal, targetDir);
 
-                    if (normalDot < 0) {
+                    if(normalDot < 0) {
                         angularDisplacement *= -1;
                     }
                     angularDisplacement *= Mathf.Deg2Rad;
@@ -87,9 +92,9 @@ public class Lobster : Enemy {
                 pos = pos + (velocity * dt);
                 transform.position = pos;
             } //Beginning stuff that'll lead to the enemy's arm
-                //instantiating in the direction of the Paddle
+              //instantiating in the direction of the Paddle
 
-            for (int i = 0; i < arms.Capacity; i++) {
+            for(int i = 0; i < arms.Capacity; i++) {
                 Vector3 armSegment = new Vector3(Shoulder.position.x + (-1 * i), Shoulder.position.y, Shoulder.position.z);
 
                 Arm.transform.Translate(FindObjectOfType<Paddle>().transform.rotation.eulerAngles);
@@ -102,7 +107,7 @@ public class Lobster : Enemy {
             Arm.transform.Rotate(FindObjectOfType<Paddle>().transform.rotation.eulerAngles);
         }
 
-        if (Time.time >= armNextFire - 5) { //time surpasses the time which the enemy is able to fire again...if enemy can attack
+        if(Time.time >= armNextFire - 5) { //time surpasses the time which the enemy is able to fire again...if enemy can attack
             hasShot = false; //set its ability to shoot to false
 
             if(isShootingAndMoving == false) {
@@ -110,7 +115,7 @@ public class Lobster : Enemy {
             }
             isShootingAndMoving = true;
 
-            for (int i = 0; i < arms.Capacity; i++) {
+            for(int i = 0; i < arms.Capacity; i++) {
                 Destroy(arms[i]);
             }
             arms.Clear();
