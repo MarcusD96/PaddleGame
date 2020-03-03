@@ -12,18 +12,26 @@ public class Enemy : BaseEntity {
     private System.Random rand = new System.Random();
     public Transform turret;
     public GameObject Ball;
-    public Rigidbody2D rb;
+    private Rigidbody2D rb;
 
-    
 
-    // Start is called before the first frame update
+
+    private void Start() {
+        Init();
+        rb.velocity = constantSpeed;
+    }
+
+    private void Update() {
+        Movement();
+        Fire();
+    }
+
     public void Init() {
         name = "Enemy";
         tag = "Enemy";
         SetHP(5);
         rb = GetComponent<Rigidbody2D>();
 
-        rb = GetComponent<Rigidbody2D>();
         x = 5;
         y = 5;
         constantSpeed = new Vector2(x, y);
@@ -36,6 +44,9 @@ public class Enemy : BaseEntity {
     {
         switch (collision.gameObject.tag) {
             case "EnemySide":
+                rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
+                break;
+            case "NML":
                 rb.velocity = new Vector2(-rb.velocity.x, rb.velocity.y);
                 break;
             default:
@@ -55,10 +66,10 @@ public class Enemy : BaseEntity {
     }
 
     public void Movement() {
-        if (hasShot == true && isShootingAndMoving == true) {
+        //if (hasShot == true && isShootingAndMoving == true) {
 
-            rb.velocity = constantSpeed;
+            //rb.velocity = constantSpeed;
             rb.velocity = constantSpeed * (rb.velocity.normalized);
-        }
+        //}
     }
 }

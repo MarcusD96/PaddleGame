@@ -11,7 +11,7 @@ public class Paddle : BaseEntity {
 
     Rigidbody2D rb;
 
-    private float minRot, maxRot, dt;
+    private float minRot, maxRot, dt, nextF, FRate;
 
     private Quaternion baseQuat;
 
@@ -35,13 +35,15 @@ public class Paddle : BaseEntity {
 
         baseQuat = transform.rotation;
 
-        if(moveSpeed == 0) {
+        if (moveSpeed == 0) {
             moveSpeed = 500;
         }
-        if(rotSpeed == 0) {
-            rotSpeed = 70;
+        if (rotSpeed == 0) {
+            rotSpeed = 150;
         }
         SetHP(5);
+
+        FRate = 0.5f;
     }
 
     // Update is called once per frame
@@ -57,35 +59,49 @@ public class Paddle : BaseEntity {
     }
 
     void Controls() {
-        if(Input.GetKey(KeyCode.A)) { //rotate ccw
+        if (Input.GetKey(KeyCode.A)) { //rotate ccw
             transform.Rotate(Vector3.forward, rotSpeed * dt);
         }
-        if(Input.GetKey(KeyCode.D)) { //rotate cw
+        if (Input.GetKey(KeyCode.D)) { //rotate cw
             transform.Rotate(Vector3.back, rotSpeed * dt);
         }
-        if(Input.GetKeyDown(KeyCode.Space)) { //shoot secondary
-            if(gameObject.GetComponent<GaugeBar>().spAtkBarImage.fillAmount > 0.2f) {
-                gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.2f);
-                ShootSecondary();
-            } else {
-                Debug.Log("not enough PP for this");
+        if (Input.GetKey(KeyCode.Space)) { //shoot secondary
+            if (Time.time >= nextF) {
+                nextF = Time.time + FRate;
+                if (gameObject.GetComponent<GaugeBar>().spAtkBarImage.fillAmount > 0.2f) {
+                    gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.2f);
+                    ShootSecondary();
+                }
+                else {
+                    Debug.Log("not enough PP for this");
+                }
+            }
+            else {
+                Debug.Log("On cooldown");
             }
         }
-        if(Input.GetKeyDown(KeyCode.LeftShift)) { //shoot special
-            if(gameObject.GetComponent<GaugeBar>().spAtkBarImage.fillAmount > 0.5f) {
-                gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.5f);
-                ShootSpecial();
-            } else {
-                Debug.Log("not enough PP for this");
+        if (Input.GetKeyDown(KeyCode.LeftShift)) { //shoot special
+            if (Time.time >= nextF) {
+                nextF = Time.time + FRate;
+                if (gameObject.GetComponent<GaugeBar>().spAtkBarImage.fillAmount > 0.5f) {
+                    gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.5f);
+                    ShootSpecial();
+                }
+                else {
+                    Debug.Log("not enough PP for this");
+                }
+            }
+            else {
+                Debug.Log("On cooldown");
             }
         }
-        if(Input.GetKeyDown(KeyCode.E)) {
+        if (Input.GetKeyDown(KeyCode.E)) {
             transform.rotation = Quaternion.Euler(0, 0, minRot);
         }
-        if(Input.GetKeyDown(KeyCode.Q)) {
+        if (Input.GetKeyDown(KeyCode.Q)) {
             transform.rotation = Quaternion.Euler(0, 0, maxRot);
         }
-        if(Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.F)) {
             transform.rotation = baseQuat;
         }
         Vector3 currentRotation = transform.localRotation.eulerAngles;

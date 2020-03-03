@@ -136,4 +136,4 @@ MonoBehaviour:
   x: 0
   y: 0
   constantSpeed: {x: 0, y: 0}
-  ComboNum: {fileID: 0}
+  comboNum: {fileID: 0}
