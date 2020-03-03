@@ -28,6 +28,7 @@ public class HealtSystem : MonoBehaviour {
     /* Update is called once per frame*/
     void Update() {
         UpdateHearts();
+        Debug.Log("P HP" + FindObjectOfType<Paddle>().GetHP());
     }
 
     void MakeHearts() {
@@ -38,7 +39,7 @@ public class HealtSystem : MonoBehaviour {
         PlayerHeartNum = FindObjectOfType<Paddle>().GetHP() - 1;
 
         for (int i = 0; i < PlayerHealth; ++i) {
-            Temp.x = HeartSpawner.position.x + (90 * i);
+            Temp.x = HeartSpawner.position.x + (1 * i);
             Temp.y = HeartSpawner.position.y;
             Hearts[i] = Instantiate(Heart, Temp, Quaternion.identity, canvas.transform);
         }
@@ -48,7 +49,7 @@ public class HealtSystem : MonoBehaviour {
         EnemyHeartNum = FindObjectOfType<Enemy>().GetHP() - 1;
 
         for (int i = 0; i < EnemyHealth; ++i) {
-            Temp.x = EnemyHeartSpawner.position.x + (-90 * i);
+            Temp.x = EnemyHeartSpawner.position.x + (-1 * i);
             Temp.y = EnemyHeartSpawner.position.y;
             EnemyHearts[i] = Instantiate(Heart, Temp, Quaternion.identity, canvas.transform);
         }
@@ -68,9 +69,6 @@ public class HealtSystem : MonoBehaviour {
         }
 
         EnemyHealth = FindObjectOfType<Enemy>().GetHP();
-
-        Debug.Log(EnemyHealth);
-        Debug.Log(EnemyHeartNum);
 
         if (EnemyHealth == 0) {
             FindObjectOfType<Paddle>().SetHP(5);

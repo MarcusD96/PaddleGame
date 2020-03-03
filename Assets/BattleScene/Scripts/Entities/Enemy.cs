@@ -61,10 +61,6 @@ public class Enemy : BaseEntity {
         }
     }
 
-    public void ReduceHealth(int n) {
-        hp -= n;
-    }
-
     public void Movement() {
         //if (hasShot == true && isShootingAndMoving == true) {
 

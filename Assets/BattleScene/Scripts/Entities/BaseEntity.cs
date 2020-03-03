@@ -8,6 +8,7 @@ public class BaseEntity : MonoBehaviour {
 
     public int GetHP() { return hp; }
     public void SetHP(int _hp) { hp = _hp; }
+    public void ReduceHP(int _reduction) { hp -= _reduction; }
     public float GetMoveSpeed() { return moveSpeed; }
     public void GetMoveSpeed(float _moveSpeed) { moveSpeed =  _moveSpeed; }
     public float GetRotSpeed() { return rotSpeed; }
