@@ -61,14 +61,3 @@ sysinfo.txt
 
 # Crashlytics generated file
 crashlytics-build.properties
-*.csproj
-*.ide
-*.meta
-*.unity
-*.meta
-*.ide
-*.csproj
-*.meta
-*.dwlt
-*.dwlt
-Library/CurrentLayout-default.dwlt
