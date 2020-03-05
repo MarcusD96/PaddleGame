@@ -14,8 +14,6 @@ public class Enemy : BaseEntity {
     public GameObject Ball;
     private Rigidbody2D rb;
 
-
-
     private void Start() {
         Init();
         rb.velocity = constantSpeed;
