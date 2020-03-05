@@ -7,6 +7,8 @@ public class FireArm : MonoBehaviour {
     public GameObject arm, shoulder;
     public List<GameObject> arms;
 
+    public Sprite claw, body;
+
     private Vector3 paddlePos;
 
     private float extendRetractSpeed = 0.05f;
@@ -36,14 +38,17 @@ public class FireArm : MonoBehaviour {
         float paddleX = paddle.transform.position.x;
 
         do {
-            //paddlePos = paddle.transform.position; uncomment this to follow the paddle slightly
-            Vector3 pos = transform.position; //to keep things still when the enemy is in movement
+            //paddlePos = paddle.transform.position; //uncomment this to follow the paddle slightly
+            Vector3 pos = shoulder.transform.position; //to keep things still when the enemy is in movement
             if(i < 0) {
                 arms.Add(Instantiate(arm, shoulder.transform.position, AngleToPaddle(paddlePos, pos)));
                 i++;
+                arms[i].GetComponent<GetChildInfo>().SetBodySprite(claw);
             } else {
                 arms.Add(Instantiate(arm, arms[i].GetComponent<GetChildInfo>().GetEndPos(), AngleToPaddle(paddlePos, pos)));
                 i++;
+                arms[i - 1].GetComponent<GetChildInfo>().SetBodySprite(body);
+                arms[i].GetComponent<GetChildInfo>().SetBodySprite(claw);
             }
 
             if(i > 30) { //fail-safe
@@ -57,14 +62,17 @@ public class FireArm : MonoBehaviour {
         int count = arms.Count - 1;
         for(int n = 0; n < arms.Count; n++) {
             Destroy(arms[n]);
+            if(!(n == count)) {
+                arms[n + 1].GetComponent<GetChildInfo>().SetBodySprite(claw);
+            }
             yield return new WaitForSeconds(extendRetractSpeed);
         }
         arms.Clear();
         shooting = false;
     }
 
-    private Quaternion AngleToPaddle(Vector3 paddlePos_, Vector3 pos) {
-        Vector3 delta = pos - paddlePos_;
+    private Quaternion AngleToPaddle(Vector3 firePos, Vector3 pos) {
+        Vector3 delta = pos - firePos;
         float angle = Mathf.Atan2(delta.y, delta.x) * Mathf.Rad2Deg;
         Quaternion rotation = Quaternion.Euler(0, 0, angle);
         return rotation;

@@ -153,14 +153,7 @@ MonoBehaviour:
   isShootingAndMoving: 0
   hasShot: 0
   turret: {fileID: 8591940327801660823}
-  Ball: {fileID: 5820027054850355200, guid: 995ae78821d7205498a862b3618b99f7, type: 3}
-  armNextFire: 0
-  Arm: {fileID: 0}
-  Shoulder: {fileID: 0}
-  target: {fileID: 0}
-  ball: {fileID: 0}
-  speed: 0
-  maxAngularVelocity: 0
+  ball: {fileID: 5820027054850355200, guid: 995ae78821d7205498a862b3618b99f7, type: 3}
 --- !u!114 &4977427127969654477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,10 +168,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arm: {fileID: 8422897600474033710, guid: c447b9fdd90749146840e6865efd20d1, type: 3}
   shoulder: {fileID: 4486621878072024514}
-  paddle: {fileID: 0}
   arms: []
-  paddlePos: {x: 0, y: 0, z: 0}
-  extendRetractSpeed: 0.05
+  claw: {fileID: 21300000, guid: 058dbc16e4b836941b28a89ed896c71c, type: 3}
+  body: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  canShoot: 0
 --- !u!1 &4486621878072024514
 GameObject:
   m_ObjectHideFlags: 0
