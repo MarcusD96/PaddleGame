@@ -60,7 +60,7 @@ public class Paddle : BaseEntity {
 
     void Controls() {
         if (Input.GetKey(KeyCode.A)) { //rotate ccw
-            transform.Rotate(Vector3.forward, rotSpeed * dt);
+            transform.Rotate( Vector3.forward, rotSpeed * dt);  
         }
         if (Input.GetKey(KeyCode.D)) { //rotate cw
             transform.Rotate(Vector3.back, rotSpeed * dt);
