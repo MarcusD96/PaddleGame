@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3005221491932351284}
   - component: {fileID: 3005221491932351288}
   - component: {fileID: 7958357910932618780}
+  - component: {fileID: 4977427127969654477}
   m_Layer: 0
   m_Name: EnemyL
   m_TagString: Enemy
@@ -141,7 +142,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 3005221491932351283}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b17cb558af4fb4419d13f1f2f0e7d94, type: 3}
+  m_Script: {fileID: 11500000, guid: 3d9ebc319b0ea11488b08c73d55c113e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   x: 0
@@ -153,13 +154,31 @@ MonoBehaviour:
   hasShot: 0
   turret: {fileID: 8591940327801660823}
   Ball: {fileID: 5820027054850355200, guid: 995ae78821d7205498a862b3618b99f7, type: 3}
-  rb: {fileID: 3005221491932351284}
   armNextFire: 0
-  Arm: {fileID: 6609784853075379945, guid: b058a4ecb2517f549a5f049f14c82e05, type: 3}
-  Shoulder: {fileID: 4486621878072024519}
+  Arm: {fileID: 0}
+  Shoulder: {fileID: 0}
   target: {fileID: 0}
+  ball: {fileID: 0}
   speed: 0
   maxAngularVelocity: 0
+--- !u!114 &4977427127969654477
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3005221491932351283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb32f3e2ab9f6014ba2079cf657ce26a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  arm: {fileID: 8422897600474033710, guid: c447b9fdd90749146840e6865efd20d1, type: 3}
+  shoulder: {fileID: 4486621878072024514}
+  paddle: {fileID: 0}
+  arms: []
+  paddlePos: {x: 0, y: 0, z: 0}
+  extendRetractSpeed: 0.05
 --- !u!1 &4486621878072024514
 GameObject:
   m_ObjectHideFlags: 0
