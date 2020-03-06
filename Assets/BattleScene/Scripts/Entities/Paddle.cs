@@ -27,10 +27,10 @@ public class Paddle : BaseEntity {
 
         baseQuat = transform.rotation;
 
-        if (moveSpeed == 0) {
-            moveSpeed = 500;
+        if(moveSpeed == 0) {
+            moveSpeed = 400;
         }
-        if (rotSpeed == 0) {
+        if(rotSpeed == 0) {
             rotSpeed = 150;
         }
         SetHP(5);
@@ -49,49 +49,45 @@ public class Paddle : BaseEntity {
     }
 
     private void Controls() {
-        if (Input.GetKey(KeyCode.A)) { //rotate ccw
-            transform.Rotate( Vector3.forward, rotSpeed * dt);  
+        if(Input.GetKey(KeyCode.A)) { //rotate ccw
+            transform.Rotate(Vector3.forward, rotSpeed * dt);
         }
-        if (Input.GetKey(KeyCode.D)) { //rotate cw
+        if(Input.GetKey(KeyCode.D)) { //rotate cw
             transform.Rotate(Vector3.back, rotSpeed * dt);
         }
-        if (Input.GetKey(KeyCode.Space)) { //shoot secondary
-            if (Time.time >= nextFire) {
+        if(Input.GetKey(KeyCode.Space)) { //shoot secondary
+            if(Time.time >= nextFire) {
                 nextFire = Time.time + fireRate;
-                if (gameObject.GetComponent<GaugeBar>().GetSpecialAttack().fillAmount > 0.2f) {
+                if(gameObject.GetComponent<GaugeBar>().GetSpecialAttack().fillAmount > 0.2f) {
                     gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.2f);
                     ShootSecondary();
-                }
-                else {
+                } else {
                     Debug.Log("not enough PP for this");
                 }
-            }
-            else {
+            } else {
                 Debug.Log("On cooldown");
             }
         }
-        if (Input.GetKeyDown(KeyCode.LeftShift)) { //shoot special
-            if (Time.time >= nextFire) {
+        if(Input.GetKeyDown(KeyCode.LeftShift)) { //shoot special
+            if(Time.time >= nextFire) {
                 nextFire = Time.time + fireRate;
-                if (gameObject.GetComponent<GaugeBar>().GetSpecialAttack().fillAmount > 0.5f) {
+                if(gameObject.GetComponent<GaugeBar>().GetSpecialAttack().fillAmount > 0.5f) {
                     gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.5f);
                     ShootSpecial();
-                }
-                else {
+                } else {
                     Debug.Log("not enough PP for this");
                 }
-            }
-            else {
+            } else {
                 Debug.Log("On cooldown");
             }
         }
-        if (Input.GetKeyDown(KeyCode.E)) {
+        if(Input.GetKeyDown(KeyCode.E)) {
             transform.rotation = Quaternion.Euler(0, 0, minRot);
         }
-        if (Input.GetKeyDown(KeyCode.Q)) {
+        if(Input.GetKeyDown(KeyCode.Q)) {
             transform.rotation = Quaternion.Euler(0, 0, maxRot);
         }
-        if (Input.GetKeyDown(KeyCode.F)) {
+        if(Input.GetKeyDown(KeyCode.F)) {
             transform.rotation = baseQuat;
         }
         Vector3 currentRotation = transform.localRotation.eulerAngles;
@@ -112,17 +108,21 @@ public class Paddle : BaseEntity {
         if(Time.time > nextHit) {
             if(collision.gameObject.CompareTag("Claw")) {
                 nextHit = Time.time + hitRate;
-                hp -= 1; 
+                TakeHit();
             }
         }
     }
-
-    public void Hit() {
-        hp -= 1;
-        StartCoroutine(Flash());
+    //////////////////////////////////////////////////
+    public void TakeHit() {
+        if(Time.time > nextHit) {
+            nextHit = Time.time + hitRate;
+            hp -= 1;
+            StartCoroutine(Flash());
+        }
     }
 
     IEnumerator Flash() {
         yield return new WaitForSeconds(1);
-    } 
+    }
+    /////////////////////////////////////////////////
 }

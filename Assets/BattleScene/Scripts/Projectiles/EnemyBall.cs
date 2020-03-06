@@ -23,17 +23,11 @@ public class EnemyBall : Projectile {
         rb.velocity = new Vector2(x, y);
     }
 
-    // Update is called once per frame
-    private void Update() {
-        //BallUpdate();
-
-    }
-
     private void OnCollisionEnter2D(Collision2D collision) {
         switch (collision.gameObject.tag) {
             case "Paddle":  //ball hits paddle
                 SoundManager.PlaySound("BallBad");
-                collision.gameObject.GetComponent<Paddle>().ReduceHP(1);
+                collision.gameObject.GetComponent<Paddle>().TakeHit();
                 Destroy(gameObject);
                 break;
 
@@ -44,12 +38,12 @@ public class EnemyBall : Projectile {
 
             case "BallSide":    //ball hits player side wall
                 SoundManager.PlaySound("BallWall");
-                Destroy(gameObject); ///dont need GameObject.Destroy, just Destroy
+                Destroy(gameObject);
                 break;
 
             case "Ball":    //ball hits ball
                 SoundManager.PlaySound("BallWall");
-                Destroy(gameObject); ///here too
+                Destroy(gameObject);
                 break;
 
             default:

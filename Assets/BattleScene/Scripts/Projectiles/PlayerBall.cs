@@ -25,6 +25,10 @@ public class PlayerBall : Projectile {
                 comboNum = c;
             }
         }
+
+        PlayerHolder = FindObjectOfType<Paddle>();
+        EnemyHolder = FindObjectOfType<Enemy>();
+
         comboNum.text = "COMBO: " + COMBO;
     }
 
@@ -43,7 +47,6 @@ public class PlayerBall : Projectile {
             case "BallSideBad": //ball hits enemy side wall
                 SoundManager.PlaySound("BallBad");
                 COMBO = 0;
-                PlayerHolder = FindObjectOfType<Paddle>();
                 PlayerHolder.ReduceHP(1);
                 break;
 
@@ -55,7 +58,6 @@ public class PlayerBall : Projectile {
                 break;
             case "EnemySide":
                 SoundManager.PlaySound("BallWall");
-                EnemyHolder = FindObjectOfType<Enemy>();
                 EnemyHolder.ReduceHP(1);
                 break;
             default:
