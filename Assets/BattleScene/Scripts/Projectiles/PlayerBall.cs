@@ -47,7 +47,7 @@ public class PlayerBall : Projectile {
             case "BallSideBad": //ball hits enemy side wall
                 SoundManager.PlaySound("BallBad");
                 COMBO = 0;
-                PlayerHolder.ReduceHP(1);
+                PlayerHolder.TakeHit(1);
                 break;
 
             case "BallSide":    //ball hits player side wall

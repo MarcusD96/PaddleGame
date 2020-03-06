@@ -7,7 +7,7 @@ public class Paddle : BaseEntity {
     public GameObject specAtk;
     private Transform shootPos;
     private Rigidbody2D rb;
-    private float minRot, maxRot, dt, nextFire = 0.0f, fireRate = 0.5f, hitRate = 2.0f, nextHit = 0.0f;
+    private float minRot, maxRot, dt, nextFire = 0.0f, fireRate = 0.5f, hitRate = 3.0f, nextHit = 0.0f;
     private Quaternion baseQuat;
     private Vector3 mousePosition_, direction;
 
@@ -108,21 +108,31 @@ public class Paddle : BaseEntity {
         if(Time.time > nextHit) {
             if(collision.gameObject.CompareTag("Claw")) {
                 nextHit = Time.time + hitRate;
-                TakeHit();
+                TakeHit(1);
             }
         }
     }
-    //////////////////////////////////////////////////
-    public void TakeHit() {
+    
+    public void TakeHit(int hit) {
         if(Time.time > nextHit) {
             nextHit = Time.time + hitRate;
-            hp -= 1;
-            StartCoroutine(Flash());
+            hp -= hit;
+            StartCoroutine(Flash(hitRate));
         }
     }
-
-    IEnumerator Flash() {
-        yield return new WaitForSeconds(1);
+    //////////////////////////////////////////////////
+    IEnumerator Flash(float aTime) {
+        float alpha = transform.GetComponent<SpriteRenderer>().material.color.a;
+        for(float t = 0.0f; t < 1.0f; t += Time.deltaTime / (aTime / 4)) {
+            Color newColor = new Color(1, 1, 1, Mathf.Lerp(alpha, 0, t));
+            transform.GetComponent<SpriteRenderer>().material.color = newColor;
+            yield return new WaitForSeconds(0);
+        }
+        for(float t = 0.0f; t < 1.0f; t += Time.deltaTime / (aTime / 4)) {
+            Color newColor = new Color(1, 1, 1, Mathf.Lerp(alpha, 1, t));
+            transform.GetComponent<SpriteRenderer>().material.color = newColor;
+            yield return new WaitForSeconds(0);
+        }
     }
     /////////////////////////////////////////////////
 }

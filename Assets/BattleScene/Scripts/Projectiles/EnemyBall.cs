@@ -27,7 +27,7 @@ public class EnemyBall : Projectile {
         switch (collision.gameObject.tag) {
             case "Paddle":  //ball hits paddle
                 SoundManager.PlaySound("BallBad");
-                collision.gameObject.GetComponent<Paddle>().TakeHit();
+                collision.gameObject.GetComponent<Paddle>().TakeHit(1);
                 Destroy(gameObject);
                 break;
 
