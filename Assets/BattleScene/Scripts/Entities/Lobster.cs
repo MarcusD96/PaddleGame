@@ -6,30 +6,38 @@ using UnityEngine;
 public class Lobster : Enemy {
     private FireArm fireArm;
     private float armFireRate = 6.0f, armNextFire = 3.0f;
-    private bool noMove = true;
-    
+    public bool noMove; //if it can shoot, it cant move
+    Vector2 speed;
+
     // Start is called before the first frame update
     void Start() {
         fireArm = GetComponent<FireArm>();
+        noMove = fireArm.canShoot;
+        speed = new Vector2(5, 5);
+        rb = GetComponent<Rigidbody2D>();
+        rb.velocity = speed;
     }
 
     //Update is called once per frame
-    void FixedUpdate() {
-        noMove = fireArm.canShoot;
+    void LateUpdate() {
         CheckMove();
-        Movement();
+        Movement(speed);
         Fire();
-        if (Time.time > armNextFire) {
+        if(Time.time > armNextFire) {
             armNextFire = Time.time + armFireRate;
-            fireArm.canShoot = true;
+            fireArm.canShoot = true; //allowed to shoot
         }
+        noMove = fireArm.canShoot;
     }
 
     void CheckMove() {
-        if (!noMove) {
-            constantSpeed = Vector2.zero;
+        if(noMove) {
+            Movement(Vector2.zero);
         } else {
-            constantSpeed = new Vector2(5, 5);
+            if (rb.velocity.magnitude <= 0) {
+                rb.velocity = speed;
+            }
+            Movement(speed);
         }
     }
 }

@@ -38,15 +38,11 @@ public class PlayerBall : Projectile {
             case "Paddle":  //ball hits paddle
                 SoundManager.PlaySound("BallPaddle");
                 COMBO += 1;
-                comboNum.text = "COMBO: " + COMBO;
-                constantSpeed = new Vector2(x + COMBO, y + COMBO);
                 break;
 
             case "BallSideBad": //ball hits enemy side wall
                 SoundManager.PlaySound("BallBad");
                 COMBO = 0;
-                comboNum.text = "COMBO: " + COMBO;
-                constantSpeed = new Vector2(x + COMBO, y + COMBO);
                 PlayerHolder = FindObjectOfType<Paddle>();
                 PlayerHolder.ReduceHP(1);
                 break;
@@ -65,5 +61,7 @@ public class PlayerBall : Projectile {
             default:
                 break;
         }
+        comboNum.text = "COMBO: " + Mathf.Clamp(COMBO, 0, 10);
+        constantSpeed = new Vector2(x + COMBO, y + COMBO);
     }
 }

@@ -5,22 +5,18 @@ using UnityEngine;
 
 public class Enemy : BaseEntity {
 
-    public float x, y, rand2, fireRate = 3.0f, nextFire = 0.0f;
-    public bool isShootingAndMoving, hasShot;
+    public float fireRate = 3.0f, nextFire = 3.0f;
 
-    protected Vector2 constantSpeed;
     public Transform turret;
     public GameObject ball;
     protected Rigidbody2D rb;
 
     private void Awake() {
         Init();
-        rb.velocity = constantSpeed;
     }
 
-    private void FixedUpdate() {
-        Movement();
-        Fire();
+    private void Update() {
+        Movement(new Vector2(5, 5));
     }
 
     public void Init() {
@@ -28,12 +24,6 @@ public class Enemy : BaseEntity {
         tag = "Enemy";
 
         SetHP(5);
-
-        rb = GetComponent<Rigidbody2D>();
-
-        x = 5;
-        y = 5;
-        constantSpeed = new Vector2(x, y);
     }
 
     public void OnTriggerEnter2D(Collider2D collision) {
@@ -60,7 +50,7 @@ public class Enemy : BaseEntity {
         hp -= n;
     }
 
-    public void Movement() {
-        rb.velocity = constantSpeed * (rb.velocity.normalized);
+    public void Movement(Vector2 speed) {
+        rb.velocity = speed * rb.velocity.normalized; 
     }
 }

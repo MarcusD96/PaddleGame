@@ -23,8 +23,8 @@ public class FireArm : MonoBehaviour {
 
     // Update is called once per frame
     void FixedUpdate() {
-        if(canShoot) {
-            if(!shooting) {
+        if(!shooting) {
+            if(canShoot) {
                 paddlePos = paddle.transform.position;
                 StartCoroutine(SpawnArms());
             }
@@ -32,7 +32,6 @@ public class FireArm : MonoBehaviour {
     }
 
     public IEnumerator SpawnArms() {
-        canShoot = false;
         shooting = true;
         int i = -1;
         float paddleX = paddle.transform.position.x;
@@ -56,6 +55,7 @@ public class FireArm : MonoBehaviour {
             }
             yield return new WaitForSeconds(extendRetractSpeed);
         } while(arms[i].transform.position.x > paddleX);
+        
 
         yield return new WaitForSeconds(1.5f);
         arms.Reverse();
@@ -69,6 +69,7 @@ public class FireArm : MonoBehaviour {
         }
         arms.Clear();
         shooting = false;
+        canShoot = false;
     }
 
     private Quaternion AngleToPaddle(Vector3 firePos, Vector3 pos) {
