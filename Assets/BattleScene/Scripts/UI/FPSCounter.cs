@@ -5,11 +5,11 @@ using UnityEngine;
 public class FPSCounter : MonoBehaviour {
     float deltaTime = 0.0f;
 
-    void Update() {
+    private void Update() {
         deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
     }
 
-    void OnGUI() {
+    private void OnGUI() {
         int w = Screen.width, h = Screen.height;
 
         GUIStyle style = new GUIStyle();

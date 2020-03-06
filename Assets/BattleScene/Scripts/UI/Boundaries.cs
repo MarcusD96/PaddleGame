@@ -18,7 +18,7 @@ public class Boundaries : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void LateUpdate () {
+    private void LateUpdate () {
         screenBounds = new Vector2(playerBounds.bounds.extents.x, playerBounds.bounds.extents.y - yOffset);
         objectWidth = transform.GetComponent<SpriteRenderer>().bounds.extents.x; //extents = size of width / 2
         objectHeight = transform.GetComponent<SpriteRenderer>().bounds.extents.y; //extents = size of height / 2

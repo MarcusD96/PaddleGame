@@ -1,27 +1,19 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 [RequireComponent(typeof(Rigidbody2D))]
 public class Paddle : BaseEntity {
 
     public GameObject specAtk;
-    Transform shootPos;
-
-    Rigidbody2D rb;
-
-    private float minRot, maxRot, dt, nextF, FRate;
-
+    private Transform shootPos;
+    private Rigidbody2D rb;
+    private float minRot, maxRot, dt, nextFire = 0.0f, fireRate = 0.5f, hitRate = 2.0f, nextHit = 0.0f;
     private Quaternion baseQuat;
-
-    Vector3 mousePosition_, direction;
+    private Vector3 mousePosition_, direction;
 
     // Start is called before the first frame update
-    void Awake() {
-        tag = "Paddle";
-        name = "Paddle";
-
+    private void Awake() {
+        name = "Paddle"; //not 'clone'
         rb = GetComponent<Rigidbody2D>();
 
         shootPos = GetComponentInChildren<Transform>();
@@ -42,12 +34,10 @@ public class Paddle : BaseEntity {
             rotSpeed = 150;
         }
         SetHP(5);
-
-        FRate = 0.5f;
     }
 
     // Update is called once per frame
-    void FixedUpdate() {
+    private void FixedUpdate() {
         Controls();
 
         //follow mouse stuff
@@ -58,7 +48,7 @@ public class Paddle : BaseEntity {
                                   direction.z * moveSpeed * dt);
     }
 
-    void Controls() {
+    private void Controls() {
         if (Input.GetKey(KeyCode.A)) { //rotate ccw
             transform.Rotate( Vector3.forward, rotSpeed * dt);  
         }
@@ -66,8 +56,8 @@ public class Paddle : BaseEntity {
             transform.Rotate(Vector3.back, rotSpeed * dt);
         }
         if (Input.GetKey(KeyCode.Space)) { //shoot secondary
-            if (Time.time >= nextF) {
-                nextF = Time.time + FRate;
+            if (Time.time >= nextFire) {
+                nextFire = Time.time + fireRate;
                 if (gameObject.GetComponent<GaugeBar>().GetSpecialAttack().fillAmount > 0.2f) {
                     gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.2f);
                     ShootSecondary();
@@ -81,8 +71,8 @@ public class Paddle : BaseEntity {
             }
         }
         if (Input.GetKeyDown(KeyCode.LeftShift)) { //shoot special
-            if (Time.time >= nextF) {
-                nextF = Time.time + FRate;
+            if (Time.time >= nextFire) {
+                nextFire = Time.time + fireRate;
                 if (gameObject.GetComponent<GaugeBar>().GetSpecialAttack().fillAmount > 0.5f) {
                     gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.5f);
                     ShootSpecial();
@@ -110,14 +100,29 @@ public class Paddle : BaseEntity {
 
     }
 
-    void UpdateHealth(int n) {
-        hp -= n;
+    private void ShootSecondary() {
+        Instantiate(specAtk, shootPos.position, specAtk.transform.rotation);
     }
 
-    void ShootSecondary() {
+    private void ShootSpecial() {
         Instantiate(specAtk, shootPos.position, specAtk.transform.rotation);
     }
-    void ShootSpecial() {
-        Instantiate(specAtk, shootPos.position, specAtk.transform.rotation);
+
+    private void OnTriggerEnter2D(Collider2D collision) {
+        if(Time.time > nextHit) {
+            if(collision.gameObject.CompareTag("Claw")) {
+                nextHit = Time.time + hitRate;
+                hp -= 1; 
+            }
+        }
     }
+
+    public void Hit() {
+        hp -= 1;
+        StartCoroutine(Flash());
+    }
+
+    IEnumerator Flash() {
+        yield return new WaitForSeconds(1);
+    } 
 }

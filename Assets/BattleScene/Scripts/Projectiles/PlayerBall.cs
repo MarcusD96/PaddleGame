@@ -10,7 +10,7 @@ public class PlayerBall : Projectile {
     private Enemy EnemyHolder;
     private Paddle PlayerHolder;
 
-    void Start() {
+    private void Start() {
         if (x == 0) {
             x = 5;
         }
@@ -29,11 +29,11 @@ public class PlayerBall : Projectile {
     }
 
     // Update is called once per frame
-    void Update() {
+    private void Update() {
         BallUpdate();
     }
 
-    void OnCollisionEnter2D(Collision2D collision) {
+    private void OnCollisionEnter2D(Collision2D collision) {
         switch (collision.gameObject.tag) {
             case "Paddle":  //ball hits paddle
                 SoundManager.PlaySound("BallPaddle");

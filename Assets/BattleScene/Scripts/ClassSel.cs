@@ -25,7 +25,7 @@ public class CharSel : MonoBehaviour {
     public string[,] ClassDesc = new string[8, 8];
 
     // Start is called before the first frame update
-    void Start () {
+    private void Start () {
         SelScreen = 0;
         SelMenu[0].SetActive(true);
         //Vetran
@@ -128,9 +128,6 @@ public class CharSel : MonoBehaviour {
         SelMenu[SelScreen].SetActive(true);
 
         MemNum = Member;
-
-
-
     }
 
     public void Class (int Race) {
@@ -155,7 +152,6 @@ public class CharSel : MonoBehaviour {
         SubText[0].text = ClassDesc[PlayerSel[1], 5];
         SubText[1].text = ClassDesc[PlayerSel[1], 6];
         SubText[2].text = ClassDesc[PlayerSel[1], 7];
-
     }
 
     public void Desc (int Sub) {
@@ -171,6 +167,5 @@ public class CharSel : MonoBehaviour {
         DescStuff[3].text = ClassDesc[PlayerSel[1], 3];
         DescStuff[4].text = ClassDesc[PlayerSel[1], 4];
         DescPort.sprite = SelPort[PlayerSel[1]].sprite;
-
     }
 }

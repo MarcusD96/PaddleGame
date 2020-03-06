@@ -21,6 +21,7 @@ TagManager:
   - Arm
   - Wall
   - SpecialAttack
+  - Claw
   layers:
   - Default
   - TransparentFX

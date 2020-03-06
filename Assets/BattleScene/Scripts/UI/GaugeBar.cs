@@ -8,7 +8,7 @@ public class GaugeBar : MonoBehaviour {
     private Mana mana;
     public Image spAtkBarImage;
 
-    void Start () {
+    private void Start () {
         mana = new Mana();
         foreach(var i in FindObjectsOfType<Image>()) {
             if(i.CompareTag("SpecialAttack")) {
@@ -18,7 +18,7 @@ public class GaugeBar : MonoBehaviour {
         }
     }
 
-    void Update () {
+    private void Update () {
         mana.Update();
         spAtkBarImage.fillAmount = mana.NormalizeMana();
     }

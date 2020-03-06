@@ -8,32 +8,29 @@ public class HealtSystem : MonoBehaviour {
     public Transform Heart;
 
     public Transform HeartSpawner;
-    public Transform[] Hearts;
+    private Transform[] Hearts;
     private int PlayerHealth;
     private int PlayerHeartNum;
 
     public Transform EnemyHeartSpawner;
-    public Transform[] EnemyHearts;
+    private Transform[] EnemyHearts;
     private int EnemyHealth;
     private int EnemyHeartNum;
 
     /* Start is called before the first frame update*/
-    void Start() {
+    private void Start() {
         Hearts = new Transform[FindObjectOfType<Paddle>().GetHP()];
-        if(Hearts.Length == 0) {
-            print("ERROR");
-        }
         EnemyHearts = new Transform[FindObjectOfType<Enemy>().GetHP()];
 
         MakeHearts();
     }
 
     /* Update is called once per frame*/
-    void Update() {
+    private void Update() {
         UpdateHearts();
     }
 
-    void MakeHearts() {
+    private void MakeHearts() {
         Vector2 Temp;
 
         PlayerHealth = FindObjectOfType<Paddle>().GetHP();
@@ -56,7 +53,7 @@ public class HealtSystem : MonoBehaviour {
         }
     }
 
-    void UpdateHearts() {
+    private void UpdateHearts() {
         PlayerHealth = FindObjectOfType<Paddle>().GetHP();
 
         if (PlayerHealth == 0) {

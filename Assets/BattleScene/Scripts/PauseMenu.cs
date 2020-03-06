@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class PauseMenu : MonoBehaviour
-{
+public class PauseMenu : MonoBehaviour {
 
     public static bool IsPaused = false;
     public GameObject PauseUI;
@@ -18,8 +17,7 @@ public class PauseMenu : MonoBehaviour
     public AudioMixer audioMixer;
     public AudioMixer audioMixerMusic;
 
-    void Start()
-    {
+    private void Start() {
         SetVolume(PlayerPrefs.GetFloat("Effects"));
         SetVolumeMusic(PlayerPrefs.GetFloat("Music"));
 
@@ -37,30 +35,24 @@ public class PauseMenu : MonoBehaviour
         IsPaused = false;
 
     }
-    void Update()
-    {
+    private void Update() {
         //if (PlayerPrefs.GetInt("Kills") <= 0)
         //{
         //    Win();
         //    PlayerPrefs.SetInt("Kills", -1);
         //}
 
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            if (IsPaused)
-            {
+        if(Input.GetKeyDown(KeyCode.Escape)) {
+            if(IsPaused) {
                 Pause();
                 Resume();
-            }
-            else if (!IsPaused)
-            {
+            } else if(!IsPaused) {
                 Pause();
             }
         }
     }
 
-    public void Resume()
-    {
+    public void Resume() {
         PauseUI.SetActive(false);
         SettingsUI.SetActive(false);
         //WinUI.SetActive(false);
@@ -68,8 +60,7 @@ public class PauseMenu : MonoBehaviour
         IsPaused = false;
     }
 
-    public void Pause()
-    {
+    public void Pause() {
         PauseUI.SetActive(true);
         SettingsUI.SetActive(false);
         Time.timeScale = 0f;
@@ -83,26 +74,22 @@ public class PauseMenu : MonoBehaviour
     //    IsPaused = true;
     //}
 
-    public void Settings()
-    {
+    public void Settings() {
         PauseUI.SetActive(false);
         SettingsUI.SetActive(true);
     }
 
-    public void SetVolume(float volume)
-    {
+    public void SetVolume(float volume) {
         audioMixer.SetFloat("volume", volume);
         PlayerPrefs.SetFloat("Effects", volume);
     }
 
-    public void SetVolumeMusic(float volumeMusic)
-    {
+    public void SetVolumeMusic(float volumeMusic) {
         audioMixerMusic.SetFloat("volumeMusic", volumeMusic);
         PlayerPrefs.SetFloat("Music", volumeMusic);
     }
 
-    public void SetQuality(int quality)
-    {
+    public void SetQuality(int quality) {
         QualitySettings.SetQualityLevel(quality);
     }
 }

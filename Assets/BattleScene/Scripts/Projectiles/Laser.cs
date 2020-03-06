@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class Laser : Projectile {
 
     // Start is called before the first frame update
-    void Start() {
+    private void Start() {
         if (x == 0) {
             x = 10;
         }
@@ -20,7 +20,7 @@ public class Laser : Projectile {
     }
 
     // Update is called once per frame
-    void Update() {
+    private void Update() {
         BallUpdate();
     }
 

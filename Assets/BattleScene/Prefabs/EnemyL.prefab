@@ -145,15 +145,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7af4f3c743036c4ca58abb4e7e2509f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 0
-  y: 0
-  rand2: 0
   fireRate: 3
   nextFire: 0
-  isShootingAndMoving: 0
-  hasShot: 0
   turret: {fileID: 8591940327801660823}
   ball: {fileID: 5820027054850355200, guid: 995ae78821d7205498a862b3618b99f7, type: 3}
+  noMove: 0
 --- !u!114 &4977427127969654477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,8 +222,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9067809472188631632}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.09, y: 0, z: 0}
-  m_LocalScale: {x: 0.09676264, y: 0.09676264, z: 0.96762633}
+  m_LocalPosition: {x: -2.67, y: 0, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3005221491932351286}
   m_RootOrder: 0

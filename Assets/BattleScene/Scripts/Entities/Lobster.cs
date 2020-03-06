@@ -10,7 +10,8 @@ public class Lobster : Enemy {
     Vector2 speed;
 
     // Start is called before the first frame update
-    void Start() {
+    private void Start() {
+        name = "Lobster Enemy";
         fireArm = GetComponent<FireArm>();
         noMove = fireArm.canShoot;
         speed = new Vector2(5, 5);
@@ -19,7 +20,7 @@ public class Lobster : Enemy {
     }
 
     //Update is called once per frame
-    void LateUpdate() {
+    private void LateUpdate() {
         CheckMove();
         Movement(speed);
         Fire();
@@ -30,7 +31,7 @@ public class Lobster : Enemy {
         noMove = fireArm.canShoot;
     }
 
-    void CheckMove() {
+    private void CheckMove() {
         if(noMove) {
             Movement(Vector2.zero);
         } else {

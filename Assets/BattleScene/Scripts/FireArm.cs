@@ -11,18 +11,18 @@ public class FireArm : MonoBehaviour {
 
     private Vector3 paddlePos;
 
-    private float extendRetractSpeed = 0.05f;
+    private float extendRetractSpeed = 0.03f;
     private bool shooting = false;
     public bool canShoot = false;
 
     // Start is called before the first frame update
-    void Start() {
+    private void Start() {
         paddle = FindObjectOfType<Paddle>().gameObject;
         paddlePos = paddle.transform.position;
     }
 
     // Update is called once per frame
-    void FixedUpdate() {
+    private void FixedUpdate() {
         if(!shooting) {
             if(canShoot) {
                 paddlePos = paddle.transform.position;
@@ -53,11 +53,12 @@ public class FireArm : MonoBehaviour {
             if(i > 30) { //fail-safe
                 break;
             }
+            arms[i].name = "Arm Segment"; //not 'clone'
             yield return new WaitForSeconds(extendRetractSpeed);
         } while(arms[i].transform.position.x > paddleX);
         
 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
         arms.Reverse();
         int count = arms.Count - 1;
         for(int n = 0; n < arms.Count; n++) {

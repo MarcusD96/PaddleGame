@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour {
         Instantiate(ball, ballSpawn.position, Quaternion.identity);
     }
 
-    void LateUpdate () {
+    private void LateUpdate () {
         //CheckEnemyHP();
         //CheckPlayerHP();
     }
@@ -42,13 +42,13 @@ public class GameManager : MonoBehaviour {
         SceneManager.LoadScene("Winner");
     }
 
-    void CheckEnemyHP() {
+    private void CheckEnemyHP() {
         if (enemy.GetComponent<Lobster>().GetHP() <= 0) {
             MainMenu();
         }
     }
 
-    void CheckPlayerHP () {
+    private void CheckPlayerHP () {
         if(player.GetComponent<Paddle>().GetHP() <= 0) {
             MainMenu();
         }

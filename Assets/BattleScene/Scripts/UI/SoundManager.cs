@@ -4,19 +4,15 @@ using UnityEngine;
 
 public class SoundManager : MonoBehaviour {
     public static AudioClip BallPaddle, BallBad, BallWall;
-    static AudioSource audioSRC;
+    private static AudioSource audioSRC;
 
-    void Start () {
+    private void Start () {
         BallPaddle = Resources.Load<AudioClip>("BallPaddle");
         BallBad = Resources.Load<AudioClip>("BallBad");
         BallWall = Resources.Load<AudioClip>("BallWall");
 
 
         audioSRC = GetComponent<AudioSource>();
-    }
-
-    void Update () {
-
     }
 
     public static void PlaySound (string clip) {

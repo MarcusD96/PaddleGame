@@ -20,9 +20,6 @@ public class Enemy : BaseEntity {
     }
 
     public void Init() {
-        name = "Enemy";
-        tag = "Enemy";
-
         SetHP(5);
     }
 
