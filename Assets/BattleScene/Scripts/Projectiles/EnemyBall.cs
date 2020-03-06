@@ -18,6 +18,7 @@ public class EnemyBall : Projectile {
 
         BallStart();
         tag = "Projectile";
+        name = "Rock";
 
         rb.velocity = new Vector2(x, y);
     }

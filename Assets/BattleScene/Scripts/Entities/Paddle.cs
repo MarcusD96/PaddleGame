@@ -47,7 +47,7 @@ public class Paddle : BaseEntity {
     }
 
     // Update is called once per frame
-    void Update() {
+    void FixedUpdate() {
         Controls();
 
         //follow mouse stuff
