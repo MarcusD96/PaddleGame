@@ -8,11 +8,10 @@ public class GameManager : MonoBehaviour {
     public GameObject player, enemy, ball;
     public Transform playerSpawn, enemySpawn, ballSpawn;
 
-    private void Start () {
-        player = FindObjectOfType<Paddle>().gameObject;
-        enemy = FindObjectOfType<Enemy>().gameObject;
-        //Instantiate(enemy, enemySpawn.transform.position, Quaternion.identity);
-        Instantiate(ball, ballSpawn.transform.position, Quaternion.identity);
+    private void Awake () {
+        Instantiate(player, playerSpawn.position, Quaternion.identity);
+        Instantiate(enemy, enemySpawn.position, Quaternion.identity);
+        Instantiate(ball, ballSpawn.position, Quaternion.identity);
     }
 
     void LateUpdate () {
@@ -44,15 +43,13 @@ public class GameManager : MonoBehaviour {
     }
 
     void CheckEnemyHP() {
-        if (enemy.GetComponent<Enemy>().GetHP() <= 0) {
-            Destroy(enemy);
+        if (enemy.GetComponent<Lobster>().GetHP() <= 0) {
             MainMenu();
         }
     }
 
     void CheckPlayerHP () {
         if(player.GetComponent<Paddle>().GetHP() <= 0) {
-            Destroy(player);
             MainMenu();
         }
     }

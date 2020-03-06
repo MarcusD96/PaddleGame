@@ -18,7 +18,7 @@ public class Paddle : BaseEntity {
     Vector3 mousePosition_, direction;
 
     // Start is called before the first frame update
-    void Start() {
+    void Awake() {
         tag = "Paddle";
         name = "Paddle";
 
@@ -68,7 +68,7 @@ public class Paddle : BaseEntity {
         if (Input.GetKey(KeyCode.Space)) { //shoot secondary
             if (Time.time >= nextF) {
                 nextF = Time.time + FRate;
-                if (gameObject.GetComponent<GaugeBar>().spAtkBarImage.fillAmount > 0.2f) {
+                if (gameObject.GetComponent<GaugeBar>().GetSpecialAttack().fillAmount > 0.2f) {
                     gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.2f);
                     ShootSecondary();
                 }
@@ -83,7 +83,7 @@ public class Paddle : BaseEntity {
         if (Input.GetKeyDown(KeyCode.LeftShift)) { //shoot special
             if (Time.time >= nextF) {
                 nextF = Time.time + FRate;
-                if (gameObject.GetComponent<GaugeBar>().spAtkBarImage.fillAmount > 0.5f) {
+                if (gameObject.GetComponent<GaugeBar>().GetSpecialAttack().fillAmount > 0.5f) {
                     gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.5f);
                     ShootSpecial();
                 }

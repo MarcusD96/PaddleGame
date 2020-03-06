@@ -20,6 +20,9 @@ public class HealtSystem : MonoBehaviour {
     /* Start is called before the first frame update*/
     void Start() {
         Hearts = new Transform[FindObjectOfType<Paddle>().GetHP()];
+        if(Hearts.Length == 0) {
+            print("ERROR");
+        }
         EnemyHearts = new Transform[FindObjectOfType<Enemy>().GetHP()];
 
         MakeHearts();
@@ -31,7 +34,6 @@ public class HealtSystem : MonoBehaviour {
     }
 
     void MakeHearts() {
-        Debug.Log("Make Hearts");
         Vector2 Temp;
 
         PlayerHealth = FindObjectOfType<Paddle>().GetHP();

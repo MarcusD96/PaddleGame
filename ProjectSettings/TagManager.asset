@@ -20,6 +20,7 @@ TagManager:
   - Buttons
   - Arm
   - Wall
+  - SpecialAttack
   layers:
   - Default
   - TransparentFX

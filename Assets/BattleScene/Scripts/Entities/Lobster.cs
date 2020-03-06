@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Lobster : Enemy {
     private FireArm fireArm;
-    private new float fireRate = 6.0f, nextFire = 3.0f;
+    private float armFireRate = 6.0f, armNextFire = 3.0f;
     private bool noMove = true;
     
     // Start is called before the first frame update
@@ -19,8 +19,8 @@ public class Lobster : Enemy {
         CheckMove();
         Movement();
         Fire();
-        if (Time.time > nextFire) {
-            nextFire = Time.time + fireRate;
+        if (Time.time > armNextFire) {
+            armNextFire = Time.time + armFireRate;
             fireArm.canShoot = true;
         }
     }

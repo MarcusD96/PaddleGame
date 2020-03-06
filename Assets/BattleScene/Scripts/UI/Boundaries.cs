@@ -8,6 +8,15 @@ public class Boundaries : MonoBehaviour {
     private float objectWidth, objectHeight; 
     public float xOffsetL, xOffsetR, yOffset;
 
+    private void Start() {
+        foreach(var s in FindObjectsOfType<SpriteRenderer>()) {
+            if(s.CompareTag("PlayerArea")) {
+                playerBounds = s;
+                break;
+            }
+        }
+    }
+
     // Update is called once per frame
     void LateUpdate () {
         screenBounds = new Vector2(playerBounds.bounds.extents.x, playerBounds.bounds.extents.y - yOffset);

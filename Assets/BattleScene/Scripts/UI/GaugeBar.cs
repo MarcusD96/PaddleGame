@@ -8,8 +8,14 @@ public class GaugeBar : MonoBehaviour {
     private Mana mana;
     public Image spAtkBarImage;
 
-    void Awake () {
+    void Start () {
         mana = new Mana();
+        foreach(var i in FindObjectsOfType<Image>()) {
+            if(i.CompareTag("SpecialAttack")) {
+                spAtkBarImage = i;
+                break;
+            }
+        }
     }
 
     void Update () {
@@ -24,6 +30,10 @@ public class GaugeBar : MonoBehaviour {
             mana.UseMana(manaUse);
             spAtkBarImage.fillAmount = 0;
         }
+    }
+
+    public Image GetSpecialAttack() {
+        return spAtkBarImage;
     }
 }
 
