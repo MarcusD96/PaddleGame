@@ -28,7 +28,6 @@ public class HealtSystem : MonoBehaviour {
     /* Update is called once per frame*/
     void Update() {
         UpdateHearts();
-        Debug.Log("P HP" + FindObjectOfType<Paddle>().GetHP());
     }
 
     void MakeHearts() {
