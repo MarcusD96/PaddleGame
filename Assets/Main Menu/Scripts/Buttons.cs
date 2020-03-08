@@ -28,7 +28,7 @@ public class Buttons : MonoBehaviour {
     }
 
     public void OnStart() {
-        SceneManager.LoadScene("Battle"); //load the main battle scene
+        SceneManager.LoadScene("Overworld"); //load the main battle scene
     }
 
     public void OnSettingsStart() {
