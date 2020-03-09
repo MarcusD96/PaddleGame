@@ -153,15 +153,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 8422897600474033710}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ab0c7ddae2def34a85f83ff9ab77746, type: 3}
+  m_Script: {fileID: 11500000, guid: 058facd2def0e49499a3d9cc3dc7bca7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arm: {fileID: 0}
-  shoulder: {fileID: 0}
-  arms: []
-  claw: {fileID: 0}
-  body: {fileID: 0}
-  canShoot: 0
+  end: {fileID: 4905638162191765568}
+  body: {fileID: 5183699988454867336}
 --- !u!61 &7876408626134777848
 BoxCollider2D:
   m_ObjectHideFlags: 0

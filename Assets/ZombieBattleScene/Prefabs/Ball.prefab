@@ -72,12 +72,13 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2479b0152de8a4f48834c7a1a0886d57, type: 3}
+  m_Sprite: {fileID: -1483665779731714255, guid: 8dcb30be442b6534c8aa830056a6dce0,
+    type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.92, y: 1.98}
+  m_Size: {x: 0.16, y: 0.16}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -99,7 +100,7 @@ Rigidbody2D:
   m_LinearDrag: 0
   m_AngularDrag: 0
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f8cb1fb7eea44a841a2d33b2c7235b05, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
@@ -129,7 +130,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7348315522796329918}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 033b128f7a8870a4aa4ccc568a4f111b, type: 3}
+  m_Script: {fileID: 11500000, guid: ccf964b5be2635243accce089c2522e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}

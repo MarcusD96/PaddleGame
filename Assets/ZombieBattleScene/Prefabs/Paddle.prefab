@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 0b857e4e904b2e4499d3055fff912f0a, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -122,9 +122,9 @@ BoxCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 5, y: 5}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -142,10 +142,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3730849964881171419}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a93df54a5f4ab7d469dfbc77fe1e8fed, type: 3}
+  m_Script: {fileID: 11500000, guid: e824a2b14dde45f43b4ca8e2942c6e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  specAtk: {fileID: 0}
+  specAtk: {fileID: 3824648457451206170, guid: 22ef765fda5e4734e8873a6171788813, type: 3}
 --- !u!114 &5425952190801296804
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -155,13 +155,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3730849964881171419}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: de836d41d6343804b99fd8f367f1e9ad, type: 3}
+  m_Script: {fileID: 11500000, guid: fb298a794faa3cc45ae36645eec9fc74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerBounds: {fileID: 0}
-  xOffsetL: 0
-  xOffsetR: 0
-  yOffset: 0
+  spAtkBarImage: {fileID: 0}
 --- !u!114 &7833957878270248900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,10 +168,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3730849964881171419}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e07383362085c746a999a4373cb9db6, type: 3}
+  m_Script: {fileID: 11500000, guid: 47ec41d718054e04788d615b56c3f7ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spAtkBarImage: {fileID: 0}
+  playerBounds: {fileID: 0}
+  xOffsetL: 5.25
+  xOffsetR: 5
+  yOffset: 0.15
 --- !u!1 &8086121789530675490
 GameObject:
   m_ObjectHideFlags: 0
