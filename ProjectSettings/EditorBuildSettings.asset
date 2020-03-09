@@ -9,12 +9,12 @@ EditorBuildSettings:
     path: Assets/_Scenes/Main.unity
     guid: 0fcde1be0b0360a4bab7005fa0a41632
   - enabled: 1
-    path: Assets/_Scenes/Battle.unity
+    path: Assets/_Scenes/Overworld.unity
+    guid: 9c8332cf392e22941815ff8d8f060717
+  - enabled: 1
+    path: Assets/_Scenes/ZombieBattle.unity
     guid: 0f219ac37a16c294eb52adbf9d7c1cbb
   - enabled: 1
     path: Assets/_Scenes/Test Battle.unity
     guid: 647ff5add5dac0c42a7cefd785b98f6b
-  - enabled: 1
-    path: Assets/_Scenes/Overworld.unity
-    guid: 9c8332cf392e22941815ff8d8f060717
   m_configObjects: {}
