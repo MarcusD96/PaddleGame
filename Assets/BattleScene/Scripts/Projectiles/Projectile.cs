@@ -9,12 +9,12 @@ public class Projectile : MonoBehaviour {
     public float x, y;
     public Vector2 constantSpeed;
     public void BallStart () {
-        name = "Ball";
-        rb = GetComponent<Rigidbody2D>();
-        constantSpeed = new Vector2(x, y);
-        rb.velocity = constantSpeed;
+        //name = "Ball";
+        //rb = GetComponent<Rigidbody2D>();
+        //constantSpeed = new Vector2(x, y);
+        //rb.velocity = constantSpeed;
     }
-    public void BallUpdate () {
-        rb.velocity = constantSpeed * (rb.velocity.normalized);
+    public void BallUpdate (Vector2 speed) {
+        rb.velocity = speed * (rb.velocity.normalized);
     }
 }

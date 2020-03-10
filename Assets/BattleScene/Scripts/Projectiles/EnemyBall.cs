@@ -5,8 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class EnemyBall : Projectile {
 
-
-
     // Start is called before the first frame update
     private void Start() {
         if (x == 0) {
@@ -15,12 +13,13 @@ public class EnemyBall : Projectile {
         if (y == 0) {
             y = 0;
         }
-
-        BallStart();
+        constantSpeed = new Vector2(x, y);
+        rb = GetComponent<Rigidbody2D>();
         tag = "Projectile";
         name = "Rock";
 
         rb.velocity = new Vector2(x, y);
+        rb.AddTorque(3.0f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
