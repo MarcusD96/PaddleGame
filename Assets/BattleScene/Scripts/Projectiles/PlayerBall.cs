@@ -11,17 +11,22 @@ public class PlayerBall : Projectile {
     private Paddle PlayerHolder;
 
     private void Start() {
-        if (x == 0) {
+        tag = "Ball";
+        name = "Player Ball";
+
+        rb = GetComponent<Rigidbody2D>();
+        if(x == 0) {
             x = 5;
         }
-        if (y == 0) {
+        if(y == 0) {
             y = 5;
         }
-        BallStart();
-        tag = "Ball";
+        speed = new Vector2(x, y);
+        
         COMBO = 0;
-        foreach (var c in FindObjectsOfType<TextMeshProUGUI>()) {
-            if (c.CompareTag("Combo")) {
+
+        foreach(var c in FindObjectsOfType<TextMeshProUGUI>()) {
+            if(c.CompareTag("Combo")) {
                 comboNum = c;
             }
         }
@@ -34,11 +39,11 @@ public class PlayerBall : Projectile {
 
     // Update is called once per frame
     private void Update() {
-        BallUpdate();
+        ProjectileUpdate();
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        switch (collision.gameObject.tag) {
+        switch(collision.gameObject.tag) {
             case "Paddle":  //ball hits paddle
                 SoundManager.PlaySound("BallPaddle");
                 COMBO += 1;
@@ -64,6 +69,6 @@ public class PlayerBall : Projectile {
                 break;
         }
         comboNum.text = "COMBO: " + Mathf.Clamp(COMBO, 0, 10);
-        constantSpeed = new Vector2(x + COMBO, y + COMBO);
+        speed = new Vector2(x + COMBO, y + COMBO);
     }
 }

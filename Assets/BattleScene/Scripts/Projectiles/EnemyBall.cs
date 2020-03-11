@@ -7,18 +7,19 @@ public class EnemyBall : Projectile {
 
     // Start is called before the first frame update
     private void Start() {
+        rb = GetComponent<Rigidbody2D>();
         if (x == 0) {
             x = -3;
         }
         if (y == 0) {
             y = 0;
         }
-        constantSpeed = new Vector2(x, y);
-        rb = GetComponent<Rigidbody2D>();
+        speed = new Vector2(x, y);
+
         tag = "Projectile";
         name = "Rock";
 
-        rb.velocity = new Vector2(x, y);
+        rb.velocity = speed;
         rb.AddTorque(3.0f);
     }
 

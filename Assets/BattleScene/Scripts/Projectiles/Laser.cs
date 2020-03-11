@@ -1,27 +1,22 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 
 public class Laser : Projectile {
-
     // Start is called before the first frame update
     private void Start() {
+        rb = GetComponent<Rigidbody2D>();
         if (x == 0) {
             x = 10;
         }
-        if (y == 0) {
+        if (y != 0) {
             y = 0;
         }
-
-        BallStart();
-
-        rb.velocity = new Vector2(x, y);
+        speed = new Vector2(x, y);
+        rb.velocity = speed;
     }
 
     // Update is called once per frame
     private void Update() {
-        BallUpdate(constantSpeed);
+        ProjectileUpdate();
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

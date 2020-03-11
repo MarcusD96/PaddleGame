@@ -1,20 +1,11 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 
 public class Projectile : MonoBehaviour {
-    public Rigidbody2D rb;
+    protected Rigidbody2D rb;
+    protected float x, y;
+    protected Vector2 speed;
 
-    public float x, y;
-    public Vector2 constantSpeed;
-    public void BallStart () {
-        //name = "Ball";
-        //rb = GetComponent<Rigidbody2D>();
-        //constantSpeed = new Vector2(x, y);
-        //rb.velocity = constantSpeed;
-    }
-    public void BallUpdate (Vector2 speed) {
+    protected void ProjectileUpdate () {
         rb.velocity = speed * (rb.velocity.normalized);
     }
 }
