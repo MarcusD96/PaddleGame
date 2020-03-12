@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour {
     private void Awake () {
         Instantiate(player, playerSpawn.position, Quaternion.identity);
         Instantiate(enemy, enemySpawn.position, Quaternion.identity);
-        Instantiate(ball, ballSpawn.position, Quaternion.identity);
+        //Instantiate(ball, ballSpawn.position, Quaternion.identity);
     }
 
     private void LateUpdate () {

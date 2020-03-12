@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 
 public class PlayerBall : Projectile {
@@ -10,19 +8,13 @@ public class PlayerBall : Projectile {
     private Enemy EnemyHolder;
     private Paddle PlayerHolder;
 
-    private void Start() {
+    private void Start () {
         tag = "Ball";
         name = "Player Ball";
 
         rb = GetComponent<Rigidbody2D>();
-        if(x == 0) {
-            x = 5;
-        }
-        if(y == 0) {
-            y = 5;
-        }
-        speed = new Vector2(x, y);
-        
+        rb.velocity = speed;
+        rb.AddTorque(3);
         COMBO = 0;
 
         foreach(var c in FindObjectsOfType<TextMeshProUGUI>()) {
@@ -39,7 +31,7 @@ public class PlayerBall : Projectile {
 
     // Update is called once per frame
     private void Update() {
-        ProjectileUpdate();
+        ProjectileUpdate(speed);
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
