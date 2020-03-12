@@ -8,7 +8,7 @@ public class ShootBall : MonoBehaviour {
     private void Update() {
         if(Input.GetKeyDown(KeyCode.Space)) {
             if(!shoot) {
-                Instantiate(ball, pos.position, pos.rotation).GetComponent<PlayerBall>().SetSpeed(Vector2.right * 5);
+                Instantiate(ball, pos.position, pos.rotation).GetComponent<PlayerBall>().SetSpeed(new Vector2(5, 5));
                 shoot = true;
             }            
         }
