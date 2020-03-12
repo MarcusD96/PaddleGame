@@ -7,7 +7,7 @@ public class Paddle : BaseEntity {
     public GameObject specAtk;
     private Transform shootPos;
     private Rigidbody2D rb;
-    private float minRot, maxRot, dt, nextFire = 0.0f, fireRate = 0.5f, hitRate = 3.0f, nextHit = 0.0f;
+    private float minRot, maxRot, dt, nextFire = 0.0f, fireRate = 0.5f, hitRate = 1.0f, nextHit = 0.0f;
     private Quaternion baseQuat;
     private Vector3 mousePosition_, direction;
 
