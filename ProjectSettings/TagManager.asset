@@ -22,6 +22,8 @@ TagManager:
   - Wall
   - SpecialAttack
   - Claw
+  - Shockwave
+  - ShockwaveAttack
   layers:
   - Default
   - TransparentFX

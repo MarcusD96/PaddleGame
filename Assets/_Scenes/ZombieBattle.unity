@@ -1302,9 +1302,7 @@ MonoBehaviour:
   canvas: {fileID: 488450066}
   Heart: {fileID: 1514579255575295412, guid: 167f810dde9f78c4c8ebfae332c4f5f0, type: 3}
   HeartSpawner: {fileID: 8194608543114036430}
-  Hearts: []
   EnemyHeartSpawner: {fileID: 1654460191}
-  EnemyHearts: []
 --- !u!114 &488450069
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -69,8 +69,7 @@ public class FireArm : MonoBehaviour {
             yield return new WaitForSeconds(extendRetractSpeed);
         }
         arms.Clear();
-        shooting = false;
-        canShoot = false;
+        shooting = canShoot = false;
     }
 
     private Quaternion AngleToPaddle(Vector3 firePos, Vector3 pos) {
