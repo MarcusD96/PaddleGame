@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class OverworldManager : GameManager {
+public class MainMenuManager : MonoBehaviour {
 
     public GameObject player, enemy;
     public Transform playerSpawn, enemySpawn;

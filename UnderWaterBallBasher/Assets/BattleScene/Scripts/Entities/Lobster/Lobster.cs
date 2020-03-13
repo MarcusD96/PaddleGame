@@ -23,7 +23,7 @@ public class Lobster : Enemy {
     }
 
     //Update is called once per frame
-    private void LateUpdate() {
+    private void Update() {
         CheckMove();
         Movement(speed);
         Fire();

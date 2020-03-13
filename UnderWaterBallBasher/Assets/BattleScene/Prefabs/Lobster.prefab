@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4977427127969654477}
   - component: {fileID: -3917443900832362200}
   m_Layer: 0
-  m_Name: EnemyL
+  m_Name: LobsterEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,8 +76,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0b857e4e904b2e4499d3055fff912f0a, type: 3}
-  m_Color: {r: 0, g: 1, b: 0, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 415cae5a18e35f244b216ec4170db5fe, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -125,7 +125,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 5, y: 5}
+    oldSize: {x: 11.79, y: 14.29}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -150,10 +150,8 @@ MonoBehaviour:
   nextFire: 0
   turret: {fileID: 8591940327801660823}
   ball: {fileID: 5820027054850355200, guid: 995ae78821d7205498a862b3618b99f7, type: 3}
+  BallHolder: {fileID: 0}
   noMove: 0
-  noMove2: 0
-  fireArmBool: 0
-  shockwaveAttackBool: 0
 --- !u!114 &4977427127969654477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,8 +188,9 @@ MonoBehaviour:
     type: 3}
   thirdShockwave: {fileID: 6693559413690886775, guid: 4fc63e5653c65b34bafa9f0938003a0e,
     type: 3}
+  pos: {fileID: 0}
   shockwaves: []
-  canShockwave: 0
+  canShoot: 0
 --- !u!1 &4486621878072024514
 GameObject:
   m_ObjectHideFlags: 0
