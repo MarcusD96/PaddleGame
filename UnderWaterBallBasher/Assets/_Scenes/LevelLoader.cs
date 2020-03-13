@@ -1,23 +1,26 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using System.Linq;
 
 public class LevelLoader : MonoBehaviour {
 
     public Animator transition;
     public float transtionTime = 1.0f;
+    bool nextLevel = false;
 
     // Update is called once per frame
     void Update() {
-        if(Input.GetMouseButtonDown(0)) {
+        if(nextLevel) {
             LoadNextLevel();
         }
     }
 
     void LoadNextLevel() {
         StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+    }
+
+    public void SetNextLevel() {
+        nextLevel = true;
     }
 
     IEnumerator LoadLevel(int levelIndex) {

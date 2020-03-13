@@ -5,13 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
-    public GameObject player, enemy, ball;
-    public Transform playerSpawn, enemySpawn, ballSpawn;
+    public GameObject player, enemy;
+    public Transform playerSpawn, enemySpawn;
 
     private void Awake () {
         Instantiate(player, playerSpawn.position, Quaternion.identity);
-        Instantiate(enemy, enemySpawn.position, Quaternion.identity);
-        //Instantiate(ball, ballSpawn.position, Quaternion.identity);
+
+        if(enemy) {
+            Instantiate(enemy, enemySpawn.position, Quaternion.identity); 
+        }
     }
 
     private void LateUpdate () {
