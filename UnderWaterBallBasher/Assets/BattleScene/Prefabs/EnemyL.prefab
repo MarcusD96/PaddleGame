@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3005221491932351288}
   - component: {fileID: 7958357910932618780}
   - component: {fileID: 4977427127969654477}
+  - component: {fileID: -3917443900832362200}
   m_Layer: 0
   m_Name: EnemyL
   m_TagString: Enemy
@@ -150,6 +151,9 @@ MonoBehaviour:
   turret: {fileID: 8591940327801660823}
   ball: {fileID: 5820027054850355200, guid: 995ae78821d7205498a862b3618b99f7, type: 3}
   noMove: 0
+  noMove2: 0
+  fireArmBool: 0
+  shockwaveAttackBool: 0
 --- !u!114 &4977427127969654477
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -168,6 +172,26 @@ MonoBehaviour:
   claw: {fileID: 21300000, guid: 058dbc16e4b836941b28a89ed896c71c, type: 3}
   body: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
   canShoot: 0
+--- !u!114 &-3917443900832362200
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3005221491932351283}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b80d08328de16f545b1746954836556b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstShockwave: {fileID: 508420234031274505, guid: aeb1f3a5a0d365342a3ddaf8020d9a7c,
+    type: 3}
+  secondShockwave: {fileID: 6577378291145897910, guid: 05d4c2855f32fd34b9c036a224a97757,
+    type: 3}
+  thirdShockwave: {fileID: 6693559413690886775, guid: 4fc63e5653c65b34bafa9f0938003a0e,
+    type: 3}
+  shockwaves: []
+  canShockwave: 0
 --- !u!1 &4486621878072024514
 GameObject:
   m_ObjectHideFlags: 0

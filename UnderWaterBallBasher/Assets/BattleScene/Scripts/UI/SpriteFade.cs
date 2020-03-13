@@ -5,6 +5,14 @@ using UnityEngine;
 public class SpriteFade : MonoBehaviour {
     public SpriteRenderer NML;
 
+    private void Start() {
+        foreach (var i in FindObjectsOfType<SpriteRenderer>()) {
+            if (i.CompareTag("NML")) {
+                NML = i;
+            }
+        }
+    }
+
     private IEnumerator FadeTo(float aValue, float aTime) {
         float alpha = NML.color.a;
         for(float t = 0.0f; t < 1.0f; t += Time.deltaTime / aTime) {
