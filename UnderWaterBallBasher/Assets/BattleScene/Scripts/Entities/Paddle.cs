@@ -120,7 +120,7 @@ public class Paddle : BaseEntity {
             StartCoroutine(Flash(hitRate));
         }
     }
-    //////////////////////////////////////////////////
+
     IEnumerator Flash(float aTime) {
         float alpha = transform.GetComponent<SpriteRenderer>().material.color.a;
         for(float t = 0.0f; t < 1.0f; t += Time.deltaTime / (aTime / 4)) {
@@ -134,5 +134,6 @@ public class Paddle : BaseEntity {
             yield return new WaitForSeconds(0);
         }
     }
-    /////////////////////////////////////////////////
+
+    
 }
