@@ -6,7 +6,7 @@ public class ShootBall : MonoBehaviour {
     private bool shoot;
 
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.Space)) {
+        if(Input.GetMouseButtonDown(0)) {
             if(!shoot) {
                 Instantiate(ball, pos.position, pos.rotation).GetComponent<PlayerBall>().SetSpeed(new Vector2(5, 5));
                 shoot = true;

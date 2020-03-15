@@ -73,7 +73,7 @@ public class Paddle : BaseEntity {
                 nextFire = Time.time + fireRate;
                 if(gameObject.GetComponent<GaugeBar>().GetSpecialAttack().fillAmount > 0.5f) {
                     gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.5f);
-                    ShootSpecial();
+                    //ShootSpecial();
                 } else {
                     Debug.Log("not enough PP for this");
                 }

@@ -28,7 +28,7 @@ public class Buttons : MonoBehaviour {
     }
 
     public void OnStart() {
-        FindObjectOfType<LevelLoader>().SetNextLevel(); //load the main battle scene
+        FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.overworld); //load the main battle scene
     }
 
     public void OnSettingsStart() {

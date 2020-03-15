@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.CompareTag("Finish")) {
-            FindObjectOfType<LevelLoader>().SetNextLevel();
+            FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.zombie);
         }
     }
 }

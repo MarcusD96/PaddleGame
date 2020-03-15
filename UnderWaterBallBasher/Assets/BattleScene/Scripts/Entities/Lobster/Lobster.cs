@@ -14,6 +14,7 @@ public class Lobster : Enemy {
 
     // Start is called before the first frame update
     private void Start() {
+        base.Awake();  //this is how you call the damn parent stuff smh
         name = "Lobster Enemy";
         fireArm = GetComponent<FireArm>();
         shockwaveAttack = GetComponent<ShockwaveAttack>();
@@ -23,33 +24,34 @@ public class Lobster : Enemy {
     }
 
     //Update is called once per frame
-    private void Update() {
+    private void FixedUpdate() {
+        if(noMove) {
+            base.Update();
+        }
         CheckMove();
         Movement(speed);
         Fire();
 
-        switch (attackDecider) {
+        switch(attackDecider) {
             case 0:
                 noMove = fireArm.canShoot;
-                if (Time.time > armNextFire) {
+                if(Time.time > armNextFire) {
                     armNextFire = Time.time + armFireRate;
                     fireArm.canShoot = true; //allowed to shoot
                     attackDecider = Random.Range(0, 2);
                     //fireArm.shooting = true;
                 }
                 noMove = fireArm.canShoot;
-
                 break;
 
             case 1:
                 noMove = shockwaveAttack.canShoot;
-                if (Time.time > armNextFire) {
+                if(Time.time > armNextFire) {
                     armNextFire = Time.time + armFireRate;
                     shockwaveAttack.canShoot = true;
                     attackDecider = Random.Range(0, 2);
                 }
                 noMove = shockwaveAttack.canShoot;
-
                 break;
 
             default:
@@ -58,11 +60,10 @@ public class Lobster : Enemy {
     }
 
     private void CheckMove() {
-        if (noMove) {
+        if(noMove) {
             Movement(Vector2.zero);
-        }
-        else {
-            if (rb.velocity.magnitude <= 0) {
+        } else {
+            if(rb.velocity.magnitude <= 0) {
                 rb.velocity = speed;
             }
             Movement(speed);

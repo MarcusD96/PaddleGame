@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5425952190801296804}
   - component: {fileID: 7833957878270248900}
   - component: {fileID: 2874639940088351829}
+  - component: {fileID: 6483737759823027019}
   m_Layer: 0
   m_Name: Paddle
   m_TagString: Paddle
@@ -32,7 +33,7 @@ Transform:
   m_GameObject: {fileID: 3730849964881171419}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.3902481, y: 0.3902481, z: 0.3902481}
+  m_LocalScale: {x: 0.29, y: 0.29, z: 1}
   m_Children:
   - {fileID: 291811370424319891}
   m_Father: {fileID: 0}
@@ -190,6 +191,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NML: {fileID: 0}
+--- !u!114 &6483737759823027019
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3730849964881171419}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc86c0e246627084a82f5cfc93072f45, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ball: {fileID: 7348315522796329918, guid: da58e1f015c0e3045900e454a79ff99d, type: 3}
+  pos: {fileID: 291811370424319891}
 --- !u!1 &8086121789530675490
 GameObject:
   m_ObjectHideFlags: 0
@@ -214,7 +229,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8086121789530675490}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.26, y: 0, z: 0}
+  m_LocalPosition: {x: -1, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3730849964881171423}
