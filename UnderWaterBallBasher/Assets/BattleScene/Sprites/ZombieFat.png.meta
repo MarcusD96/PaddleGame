@@ -1,7 +1,70 @@
 fileFormatVersion: 2
 guid: bb0e002b36bf2a54cbef67f353dd23bb
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 4281610329393088906
+    second: ZombieFat_0
+  - first:
+      213: 2780624541725703639
+    second: ZombieFat_1
+  - first:
+      213: -5661825112213824767
+    second: ZombieFat_2
+  - first:
+      213: 3634752467221591831
+    second: ZombieFat_3
+  - first:
+      213: 3598253681720737318
+    second: ZombieFat_4
+  - first:
+      213: 7117655118310458877
+    second: ZombieFat_5
+  - first:
+      213: 8150629242984456015
+    second: ZombieFat_6
+  - first:
+      213: 6625519920915167343
+    second: ZombieFat_7
+  - first:
+      213: 3550386120379128702
+    second: ZombieFat_8
+  - first:
+      213: -992553250152436452
+    second: ZombieFat_9
+  - first:
+      213: -6107151950577207797
+    second: ZombieFat_10
+  - first:
+      213: -4831921661437364759
+    second: ZombieFat_11
+  - first:
+      213: 1218102313498287664
+    second: ZombieFat_12
+  - first:
+      213: 1398714156340539759
+    second: ZombieFat_13
+  - first:
+      213: 4059633252485655836
+    second: ZombieFat_14
+  - first:
+      213: -3954878690416600929
+    second: ZombieFat_15
+  - first:
+      213: -1614204112510277211
+    second: ZombieFat_16
+  - first:
+      213: 3024563550234005399
+    second: ZombieFat_17
+  - first:
+      213: -1772544648889898521
+    second: ZombieFat_18
+  - first:
+      213: -6424714191122233985
+    second: ZombieFat_19
+  - first:
+      213: 2168259034458313912
+    second: ZombieFat_20
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -40,12 +103,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 5
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -70,9 +133,462 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: ZombieFat_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 231
+        width: 68
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee217c0c70fc2c4478feb0df92e01a1c
+      internalID: 4281610329393088906
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZombieFat_1
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 231
+        width: 64
+        height: 61
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea8936904dbdf56488dc905696d910ce
+      internalID: 2780624541725703639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZombieFat_2
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 231
+        width: 76
+        height: 51
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b82713a45307f554888d288229a79d11
+      internalID: -5661825112213824767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZombieFat_3
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 231
+        width: 70
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0f39d61334ffb3418edc933cd930a40
+      internalID: 3634752467221591831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZombieFat_4
+      rect:
+        serializedVersion: 2
+        x: 225
+        y: 273
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d620ee5321f4d924da7d3454347830da
+      internalID: 3598253681720737318
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZombieFat_5
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 261
+        width: 5
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00b9b476d17455544948fe434e551ef1
+      internalID: 7117655118310458877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZombieFat_6
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 155
+        width: 52
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e213f9577c02894b94619409018e157
+      internalID: 8150629242984456015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZombieFat_7
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 201
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a62df58baf834834b93d89db2602b1f2
+      internalID: 6625519920915167343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZombieFat_8
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 155
+        width: 53
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7e91f1328ee4b04fb47dcc143a0b73f
+      internalID: 3550386120379128702
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZombieFat_9
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 155
+        width: 53
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b54f8d19593fd454b8c37763e1843f39
+      internalID: -992553250152436452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZombieFat_10
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 155
+        width: 62
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 403f855802ddf0c4babed55f96e2dc98
+      internalID: -6107151950577207797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZombieFat_11
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 79
+        width: 52
+        height: 62
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 138ca948c15f4364cbc76baaf0b8250b
+      internalID: -4831921661437364759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZombieFat_12
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 125
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1598bef8bd365c4fb98492be28dc248
+      internalID: 1218102313498287664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZombieFat_13
+      rect:
+        serializedVersion: 2
+        x: 77
+        y: 79
+        width: 53
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27b168c81f24268438c71f18b909f312
+      internalID: 1398714156340539759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZombieFat_14
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 79
+        width: 53
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7301e21e3dbe92b4c8dd577821f6d332
+      internalID: 4059633252485655836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZombieFat_15
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 81
+        width: 60
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b893bc5a43117f4599ea8028abbf056
+      internalID: -3954878690416600929
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZombieFat_16
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 81
+        width: 71
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ecd69bba20f17ca498d97e8a69527414
+      internalID: -1614204112510277211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZombieFat_17
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 79
+        width: 71
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1ad02ef968c68748bb59060c9666b6e
+      internalID: 3024563550234005399
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZombieFat_18
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 78
+        width: 72
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b9a392bdc2713241a8f5012c209ef27
+      internalID: -1772544648889898521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZombieFat_19
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 78
+        width: 72
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2eeb25333168a6141b878ac1eaa97632
+      internalID: -6424714191122233985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ZombieFat_20
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 2
+        width: 72
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6bf00bb42e83fb4b929fc67cfadeb07
+      internalID: 2168259034458313912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

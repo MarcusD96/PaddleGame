@@ -24,6 +24,7 @@ TagManager:
   - Claw
   - Shockwave
   - ShockwaveAttack
+  - Encounter
   layers:
   - Default
   - TransparentFX
