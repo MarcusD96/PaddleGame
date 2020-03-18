@@ -1,58 +1,52 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class BattleManager : GameManager {
 
-    public GameObject player, enemy;
+    public Paddle player;
+    public Zombie zombie;
+    public Lobster lobster;
+
     public Transform playerSpawn, enemySpawn;
 
-    private void Awake () {
-        Instantiate(player, playerSpawn.position, Quaternion.identity);
+    private void Awake() {
+        //2 = zombie, 3 = lobster
+        int cs = SceneManager.GetActiveScene().buildIndex;
 
-        if(enemy) {
-            Instantiate(enemy, enemySpawn.position, Quaternion.identity); 
+        player = Instantiate(player, playerSpawn.position, Quaternion.identity);
+
+        switch(cs) {
+            case 2:
+                zombie = Instantiate(zombie, enemySpawn.position, Quaternion.identity);
+                break;
+            case 3:
+                lobster = Instantiate(lobster, enemySpawn.position, Quaternion.identity);
+                break;
+            default:
+                break;
         }
     }
 
-    private void LateUpdate () {
-        //CheckEnemyHP();
-        //CheckPlayerHP();
-    }
-
-    public static int Level;
-    public static string KorP;
-
-    public void CharSel () {
-        SceneManager.LoadScene("CharSel");
-    }
-
-    public void QuitGame () {
-        Application.Quit();
-    }
-
-    public void GameOver () {
-        SceneManager.LoadScene("GameOver");
-    }
-
-    public void MainMenu () {
-        SceneManager.LoadScene("Main");
-    }
-
-    public void Winner () {
-        SceneManager.LoadScene("Winner");
+    private void LateUpdate() {
+        if(zombie || lobster) {
+            CheckEnemyHP();
+        }
+        if(player) {
+            CheckPlayerHP();
+        }
     }
 
     private void CheckEnemyHP() {
-        if (enemy.GetComponent<Lobster>().GetHP() <= 0) {
-            MainMenu();
-        }
+        if (zombie.GetHP() <= 0) {
+            FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.overworld);
+        } else if (lobster.GetHP() <= 0) {
+            FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.overworld);
+        }   
     }
 
-    private void CheckPlayerHP () {
+    private void CheckPlayerHP() {
         if(player.GetComponent<Paddle>().GetHP() <= 0) {
-            MainMenu();
+            FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.main);
         }
     }
 }

@@ -9,21 +9,13 @@ public class Enemy : BaseEntity {
 
     public Transform turret;
     public GameObject ball;
-    public PlayerBall BallHolder;
+    public PlayerBall ballHolder;
     protected Rigidbody2D rb;
 
-    protected virtual void Awake() {
-        Init();
-    }
-
     protected virtual void Update() {
-        if(BallHolder == null) {
-            BallHolder = FindObjectOfType<PlayerBall>();
+        if(ballHolder == null) {
+            ballHolder = FindObjectOfType<PlayerBall>();
         }
-    }
-
-    public void Init() {
-        SetHP(5);
     }
 
     public void OnTriggerEnter2D(Collider2D collision) {
@@ -54,8 +46,8 @@ public class Enemy : BaseEntity {
     public static extern float FollowB(float _BY, float _EY, float _Sped);
 
     public void Movement(Vector2 speed) {
-        if(BallHolder != null) {
-            rb.velocity = new Vector2(rb.velocity.x, FollowB(BallHolder.gameObject.transform.position.y, gameObject.transform.position.y, speed.y));
+        if(ballHolder != null) {
+            rb.velocity = new Vector2(rb.velocity.x, FollowB(ballHolder.gameObject.transform.position.y, gameObject.transform.position.y, speed.y));
         }
         rb.velocity = speed * rb.velocity.normalized;
     }

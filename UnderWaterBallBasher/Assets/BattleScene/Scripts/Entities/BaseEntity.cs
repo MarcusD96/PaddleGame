@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BaseEntity : MonoBehaviour {
     protected float moveSpeed, rotSpeed;
-    protected int hp;
+    protected int hp = 1;
 
     public int GetHP() { return hp; }
     public void SetHP(int _hp) { hp = _hp; }

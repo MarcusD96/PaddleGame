@@ -6,12 +6,12 @@ public class Zombie : Enemy {
 
     Vector2 speed;
 
-    private void Start() {
-        base.Awake(); //this is how you call the damn parent stuff smh
+    private void Awake() {
         name = "Zombie";
         rb = GetComponent<Rigidbody2D>();
         speed = new Vector2(5, 5);
         rb.velocity = speed;
+        SetHP(5);
     }
 
     private void FixedUpdate() {

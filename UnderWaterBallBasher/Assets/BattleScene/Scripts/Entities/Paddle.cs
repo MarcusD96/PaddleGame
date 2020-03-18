@@ -33,6 +33,7 @@ public class Paddle : BaseEntity {
         if(rotSpeed == 0) {
             rotSpeed = 150;
         }
+
         SetHP(5);
     }
 

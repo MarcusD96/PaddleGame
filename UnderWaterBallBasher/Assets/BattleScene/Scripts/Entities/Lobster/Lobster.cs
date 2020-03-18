@@ -14,13 +14,13 @@ public class Lobster : Enemy {
 
     // Start is called before the first frame update
     private void Start() {
-        base.Awake();  //this is how you call the damn parent stuff smh
         name = "Lobster Enemy";
         fireArm = GetComponent<FireArm>();
         shockwaveAttack = GetComponent<ShockwaveAttack>();
         speed = new Vector2(5, 5);
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = speed;
+        SetHP(5);
     }
 
     //Update is called once per frame

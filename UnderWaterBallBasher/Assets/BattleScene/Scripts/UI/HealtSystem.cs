@@ -5,22 +5,22 @@ using UnityEngine.UI;
 public class HealtSystem : MonoBehaviour {
 
     public Canvas canvas;
-    public Transform Heart;
+    public Transform heart;
 
-    public Transform HeartSpawner;
-    private Transform[] Hearts;
-    private int PlayerHealth;
-    private int PlayerHeartNum;
+    public Transform heartSpawner;
+    private Transform[] hearts;
+    private int playerHealth;
+    private int playerHeartNum;
 
-    public Transform EnemyHeartSpawner;
-    private Transform[] EnemyHearts;
-    private int EnemyHealth;
-    private int EnemyHeartNum;
+    public Transform enemyHeartSpawner;
+    private Transform[] enemyHearts;
+    private int enemyHealth;
+    private int enemyHeartNum;
 
     /* Start is called before the first frame update*/
     private void Start() {
-        Hearts = new Transform[FindObjectOfType<Paddle>().GetHP()];
-        EnemyHearts = new Transform[FindObjectOfType<Enemy>().GetHP()];
+        hearts = new Transform[FindObjectOfType<Paddle>().GetHP()];
+        enemyHearts = new Transform[FindObjectOfType<Enemy>().GetHP()];
 
         MakeHearts();
     }
@@ -31,51 +31,53 @@ public class HealtSystem : MonoBehaviour {
     }
 
     private void MakeHearts() {
-        Vector2 Temp;
+        Vector2 temp;
 
-        PlayerHealth = FindObjectOfType<Paddle>().GetHP();
-        PlayerHeartNum = FindObjectOfType<Paddle>().GetHP() - 1;
+        playerHealth = FindObjectOfType<Paddle>().GetHP();
+        playerHeartNum = FindObjectOfType<Paddle>().GetHP() - 1;
 
-        for (int i = 0; i < PlayerHealth; ++i) {
-            Temp.x = HeartSpawner.position.x + (1 * i);
-            Temp.y = HeartSpawner.position.y;
-            Hearts[i] = Instantiate(Heart, Temp, Quaternion.identity, canvas.transform);
+        for (int i = 0; i < playerHealth; ++i) {
+            temp.x = heartSpawner.position.x + (1 * i);
+            temp.y = heartSpawner.position.y;
+            hearts[i] = Instantiate(heart, temp, Quaternion.identity, canvas.transform);
         }
 
 
-        EnemyHealth = FindObjectOfType<Enemy>().GetHP();
-        EnemyHeartNum = FindObjectOfType<Enemy>().GetHP() - 1;
+        enemyHealth = FindObjectOfType<Enemy>().GetHP();
+        enemyHeartNum = FindObjectOfType<Enemy>().GetHP() - 1;
 
-        for (int i = 0; i < EnemyHealth; ++i) {
-            Temp.x = EnemyHeartSpawner.position.x + (-1 * i);
-            Temp.y = EnemyHeartSpawner.position.y;
-            EnemyHearts[i] = Instantiate(Heart, Temp, Quaternion.identity, canvas.transform);
+        for (int i = 0; i < enemyHealth; ++i) {
+            temp.x = enemyHeartSpawner.position.x + (-1 * i);
+            temp.y = enemyHeartSpawner.position.y;
+            enemyHearts[i] = Instantiate(heart, temp, Quaternion.identity, canvas.transform);
         }
     }
 
     private void UpdateHearts() {
-        PlayerHealth = FindObjectOfType<Paddle>().GetHP();
+        playerHealth = FindObjectOfType<Paddle>().GetHP();
 
-        if (PlayerHealth == 0) {
-            FindObjectOfType<Paddle>().SetHP(5);
-            FindObjectOfType<Enemy>().SetHP(5);
-            MakeHearts();
-        }
-        else if (PlayerHealth - 1 < PlayerHeartNum) {
-            Destroy(Hearts[PlayerHeartNum].gameObject);
-            PlayerHeartNum--;
+        //if (PlayerHealth == 0) {
+        //    FindObjectOfType<Paddle>().SetHP(5);
+        //    FindObjectOfType<Enemy>().SetHP(5);
+        //    MakeHearts();
+        //}
+        //else if
+        if (playerHealth - 1 < playerHeartNum) {
+            Destroy(hearts[playerHeartNum].gameObject);
+            playerHeartNum--;
         }
 
-        EnemyHealth = FindObjectOfType<Enemy>().GetHP();
+        enemyHealth = FindObjectOfType<Enemy>().GetHP();
 
-        if (EnemyHealth == 0) {
-            FindObjectOfType<Paddle>().SetHP(5);
-            FindObjectOfType<Enemy>().SetHP(5);
-            MakeHearts();
-        }
-        else if (EnemyHealth - 1 < EnemyHeartNum) {
-            Destroy(EnemyHearts[EnemyHeartNum].gameObject);
-            EnemyHeartNum--;
+        //if (EnemyHealth == 0) {
+        //    FindObjectOfType<Paddle>().SetHP(5);
+        //    FindObjectOfType<Enemy>().SetHP(5);
+        //    MakeHearts();
+        //}
+        //else if
+        if (enemyHealth - 1 < enemyHeartNum) {
+            Destroy(enemyHearts[enemyHeartNum].gameObject);
+            enemyHeartNum--;
         }
     }
 }
