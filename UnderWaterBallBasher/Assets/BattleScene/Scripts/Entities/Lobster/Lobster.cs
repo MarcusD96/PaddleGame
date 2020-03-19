@@ -6,6 +6,7 @@ using UnityEngine;
 public class Lobster : Enemy {
     private FireArm fireArm;
     private ShockwaveAttack shockwaveAttack;
+    public Animator animator;
     private float armFireRate = 6.0f, armNextFire = 3.0f;
     public bool noMove; //if it can shoot, it cant move
     Vector2 speed;
@@ -20,12 +21,14 @@ public class Lobster : Enemy {
         speed = new Vector2(5, 5);
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = speed;
+        animator.SetFloat("Speed", speed.sqrMagnitude);
         SetHP(5);
     }
 
     //Update is called once per frame
     private void FixedUpdate() {
-        if(noMove) {
+        animator.SetFloat("Speed", rb.velocity.sqrMagnitude);
+        if (noMove) {
             base.Update();
         }
         CheckMove();
