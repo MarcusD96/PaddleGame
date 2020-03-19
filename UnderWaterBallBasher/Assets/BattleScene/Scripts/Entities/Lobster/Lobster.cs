@@ -11,7 +11,7 @@ public class Lobster : Enemy {
     public bool noMove; //if it can shoot, it cant move
     Vector2 speed;
 
-    private int attackDecider = 1;
+    private int attackDecider = 0;
 
     // Start is called before the first frame update
     private void Start() {

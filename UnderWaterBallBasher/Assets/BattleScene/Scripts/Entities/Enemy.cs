@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices; //using dll's
+﻿using System.Runtime.InteropServices; //using dll's
 using UnityEngine;
 
 public class Enemy : BaseEntity {

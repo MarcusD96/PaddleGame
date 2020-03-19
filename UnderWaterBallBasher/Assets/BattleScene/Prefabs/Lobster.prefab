@@ -229,8 +229,8 @@ MonoBehaviour:
   arm: {fileID: 8422897600474033710, guid: c447b9fdd90749146840e6865efd20d1, type: 3}
   shoulder: {fileID: 4326709234578741184}
   arms: []
-  claw: {fileID: 21300000, guid: 058dbc16e4b836941b28a89ed896c71c, type: 3}
-  body: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  claw: {fileID: 21300000, guid: 44b657bfa9bfe9841acdc9fa37c61b8f, type: 3}
+  body: {fileID: 21300000, guid: 2f596da5c156e8e49814f82f1798d747, type: 3}
   canShoot: 0
 --- !u!114 &4326709234600919397
 MonoBehaviour:
