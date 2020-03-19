@@ -11,7 +11,7 @@ public class FireArm : MonoBehaviour {
 
     private Vector3 paddlePos;
 
-    private float extendRetractSpeed = 0.03f;
+    private float extendRetractSpeed = 0.05f;
     private bool shooting = false;
     public bool canShoot = false;
 
