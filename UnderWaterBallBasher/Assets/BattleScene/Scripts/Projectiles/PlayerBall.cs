@@ -7,8 +7,9 @@ public class PlayerBall : Projectile {
     private int COMBO;
     private Enemy EnemyHolder;
     private Paddle PlayerHolder;
+    private Collider2D TempCol;
 
-    private void Start () {
+    private void Start() {
         tag = "Ball";
         name = "Player Ball";
 
@@ -17,8 +18,8 @@ public class PlayerBall : Projectile {
         rb.AddTorque(3);
         COMBO = 0;
 
-        foreach(var c in FindObjectsOfType<TextMeshProUGUI>()) {
-            if(c.CompareTag("Combo")) {
+        foreach (var c in FindObjectsOfType<TextMeshProUGUI>()) {
+            if (c.CompareTag("Combo")) {
                 comboNum = c;
             }
         }
@@ -35,12 +36,11 @@ public class PlayerBall : Projectile {
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {
-        switch(collision.gameObject.tag) {
+        switch (collision.gameObject.tag) {
             case "Paddle":  //ball hits paddle
                 SoundManager.PlaySound("BallPaddle");
                 COMBO += 1;
                 break;
-
             case "BallSideBad": //ball hits enemy side wall
                 SoundManager.PlaySound("BallBad");
                 COMBO = 0;

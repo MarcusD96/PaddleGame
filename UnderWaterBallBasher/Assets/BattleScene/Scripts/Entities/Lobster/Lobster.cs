@@ -9,6 +9,7 @@ public class Lobster : Enemy {
     private float armFireRate = 6.0f, armNextFire = 3.0f;
     public bool noMove; //if it can shoot, it cant move
     Vector2 speed;
+    private Transform Pos1, Pos2;
 
     private int attackDecider = 1;
 
@@ -31,6 +32,9 @@ public class Lobster : Enemy {
         CheckMove();
         Movement(speed);
         Fire();
+
+        Pos1 = GetComponent<GetChildInfo>().end.transform;
+        Pos2 = GetComponent<GetChildInfo>().body.transform;
 
         switch(attackDecider) {
             case 0:

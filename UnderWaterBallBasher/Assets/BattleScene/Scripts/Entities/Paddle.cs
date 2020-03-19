@@ -10,6 +10,9 @@ public class Paddle : BaseEntity {
     private float minRot, maxRot, dt, nextFire = 0.0f, fireRate = 0.5f, hitRate = 1.0f, nextHit = 0.0f;
     private Quaternion baseQuat;
     private Vector3 mousePosition_, direction;
+    private Collider2D TempCol;
+    public PlayerBall ballHolder;
+    private Transform Pos1, Pos2, TempPos;
 
     // Start is called before the first frame update
     private void Awake() {
@@ -35,6 +38,9 @@ public class Paddle : BaseEntity {
         }
 
         SetHP(5);
+        TempCol = gameObject.GetComponent<Collider2D>();
+        Pos1 = GetComponent<GetChildInfo>().end.transform;
+        Pos2 = GetComponent<GetChildInfo>().body.transform;
     }
 
     // Update is called once per frame
@@ -47,6 +53,23 @@ public class Paddle : BaseEntity {
         rb.velocity = new Vector3(direction.x * moveSpeed * dt,
                                   direction.y * moveSpeed * dt,
                                   direction.z * moveSpeed * dt);
+
+        if (ballHolder == null) {
+            ballHolder = FindObjectOfType<PlayerBall>();
+        }
+
+        if (Pos1.position.x < Pos2.position.x) {
+            TempPos = Pos1;
+        } else {
+            TempPos = Pos2;
+        }
+
+        if (ballHolder.transform.position.x < TempPos.position.x) {
+            Physics2D.IgnoreCollision(ballHolder.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
+        }
+        else {
+            Physics2D.IgnoreCollision(ballHolder.GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
+        }
     }
 
     private void Controls() {
