@@ -9,13 +9,17 @@ public class BattleManager : GameManager {
 
     public Transform playerSpawn, enemySpawn;
 
-    private void Awake() {
+    private bool Started;
+
+    private void Startup() {
+        Started = true;
+
         //2 = zombie, 3 = lobster
         int cs = SceneManager.GetActiveScene().buildIndex;
 
         player = Instantiate(player, playerSpawn.position, Quaternion.identity);
 
-        switch(cs) {
+        switch (cs) {
             case 2:
                 zombie = Instantiate(zombie, enemySpawn.position, Quaternion.identity);
                 break;
@@ -28,24 +32,32 @@ public class BattleManager : GameManager {
     }
 
     private void LateUpdate() {
-        if(zombie || lobster) {
-            CheckEnemyHP();
+        if (!Started) {
+            if (Input.GetMouseButtonDown(0)) {
+                Startup();
+            }
         }
-        if(player) {
-            CheckPlayerHP();
+        if (Started) {
+            if (zombie || lobster) {
+                CheckEnemyHP();
+            }
+            if (player) {
+                CheckPlayerHP();
+            }
         }
     }
 
     private void CheckEnemyHP() {
         if (zombie.GetHP() <= 0) {
             FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.overworld);
-        } else if (lobster.GetHP() <= 0) {
+        }
+        else if (lobster.GetHP() <= 0) {
             FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.overworld);
-        }   
+        }
     }
 
     private void CheckPlayerHP() {
-        if(player.GetComponent<Paddle>().GetHP() <= 0) {
+        if (player.GetComponent<Paddle>().GetHP() <= 0) {
             FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.main);
         }
     }

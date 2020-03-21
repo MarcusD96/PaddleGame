@@ -11,8 +11,12 @@ public class Paddle : BaseEntity {
     private Quaternion baseQuat;
     private Vector3 mousePosition_, direction;
     private Collider2D TempCol;
-    public PlayerBall ballHolder;
+    private PlayerBall ballHolder;
     private Transform Pos1, Pos2, TempPos;
+
+    public GameObject ball;
+    public Transform pos;
+    private bool shoot;
 
     // Start is called before the first frame update
     private void Awake() {
@@ -112,6 +116,12 @@ public class Paddle : BaseEntity {
         }
         if(Input.GetKeyDown(KeyCode.F)) {
             transform.rotation = baseQuat;
+        }
+        if (Input.GetMouseButtonDown(0)) {
+            if (!shoot) {
+                Instantiate(ball, pos.position, pos.rotation).GetComponent<PlayerBall>().SetSpeed(new Vector2(5, 5));
+                shoot = true;
+            }
         }
         Vector3 currentRotation = transform.localRotation.eulerAngles;
         currentRotation.z = Mathf.Clamp(currentRotation.z, minRot, maxRot);

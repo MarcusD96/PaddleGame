@@ -16,18 +16,25 @@ public class HealtSystem : MonoBehaviour {
     private Transform[] enemyHearts;
     private int enemyHealth;
     private int enemyHeartNum;
+    private bool Started;
 
     /* Start is called before the first frame update*/
-    private void Start() {
+    private void StartUp() {
         hearts = new Transform[FindObjectOfType<Paddle>().GetHP()];
         enemyHearts = new Transform[FindObjectOfType<Enemy>().GetHP()];
 
+        Started = true;
         MakeHearts();
     }
 
     /* Update is called once per frame*/
     private void Update() {
-        UpdateHearts();
+        if (FindObjectOfType<Paddle>() != null) {
+            if (Started != true) {
+                StartUp();
+            }
+            UpdateHearts();
+        }
     }
 
     private void MakeHearts() {

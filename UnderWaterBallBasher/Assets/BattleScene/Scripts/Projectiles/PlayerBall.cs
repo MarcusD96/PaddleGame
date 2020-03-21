@@ -60,7 +60,11 @@ public class PlayerBall : Projectile {
             default:
                 break;
         }
-        comboNum.text = "COMBO: " + Mathf.Clamp(COMBO, 0, 10);
-        speed = new Vector2(x + COMBO, y + COMBO);
+        comboNum.text = "COMBO: " + COMBO;
+        if (COMBO < 10) {
+            speed = new Vector2(x + COMBO, y + COMBO);
+        } else if (COMBO >= 10) {
+            speed = new Vector2(x + 10, y + 10);
+        }
     }
 }
