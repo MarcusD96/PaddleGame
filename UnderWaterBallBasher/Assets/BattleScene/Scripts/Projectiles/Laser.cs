@@ -33,7 +33,7 @@ public class Laser : Projectile {
             case "Enemy":
                 SoundManager.PlaySound("BallWall");
                 Destroy(gameObject);
-                collision.gameObject.GetComponent<Enemy>().ReduceHP(1);
+                collision.gameObject.GetComponent<Enemy>().ReduceHP(1, transform.position);
                 break;
             case "Projectile":
                 Destroy(gameObject);
