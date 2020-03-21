@@ -7,7 +7,7 @@ public class Paddle : BaseEntity {
     public GameObject specAtk;
     private Transform shootPos;
     private Rigidbody2D rb;
-    private float minRot, maxRot, dt, nextFire = 0.0f, fireRate = 0.5f, hitRate = 1.0f, nextHit = 0.0f;
+    private float minRot, maxRot, dt, nextFire = 0.0f, fireRate = 0.5f, hitRate = 2.0f, nextHit = 0.0f;
     private Quaternion baseQuat;
     private Vector3 mousePosition_, direction;
     private Collider2D TempCol;
@@ -140,7 +140,9 @@ public class Paddle : BaseEntity {
     private void OnTriggerEnter2D(Collider2D collision) {
         if(Time.timeSinceLevelLoad > nextHit) {
             if(collision.gameObject.CompareTag("Claw")) {
-                nextHit = Time.timeSinceLevelLoad + hitRate;
+                TakeHit(1);
+            }
+            if(collision.gameObject.CompareTag("Shockwave")) {
                 TakeHit(1);
             }
         }
@@ -155,15 +157,15 @@ public class Paddle : BaseEntity {
     }
 
     IEnumerator Flash(float aTime) {
-        float alpha = transform.GetComponent<SpriteRenderer>().material.color.a;
+        float alpha = GetComponent<SpriteRenderer>().material.color.a;
         for(float t = 0.0f; t < 1.0f; t += Time.deltaTime / (aTime / 4)) {
             Color newColor = new Color(1, 1, 1, Mathf.Lerp(alpha, 0, t));
-            transform.GetComponent<SpriteRenderer>().material.color = newColor;
+            GetComponent<SpriteRenderer>().material.color = newColor;
             yield return new WaitForSeconds(0);
         }
         for(float t = 0.0f; t < 1.0f; t += Time.deltaTime / (aTime / 4)) {
             Color newColor = new Color(1, 1, 1, Mathf.Lerp(alpha, 1, t));
-            transform.GetComponent<SpriteRenderer>().material.color = newColor;
+            GetComponent<SpriteRenderer>().material.color = newColor;
             yield return new WaitForSeconds(0);
         }
     }

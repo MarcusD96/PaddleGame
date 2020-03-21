@@ -55,7 +55,7 @@ public class PlayerBall : Projectile {
                 break;
             case "EnemySide":
                 SoundManager.PlaySound("BallWall");
-                EnemyHolder.ReduceHP(1);
+                EnemyHolder.ReduceHP(1, transform.position);
                 break;
             default:
                 break;
