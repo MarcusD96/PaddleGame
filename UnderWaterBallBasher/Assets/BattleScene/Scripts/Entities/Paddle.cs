@@ -54,22 +54,21 @@ public class Paddle : BaseEntity {
                                   direction.y * moveSpeed * dt,
                                   direction.z * moveSpeed * dt);
 
-        if (ballHolder == null) {
+        if(ballHolder == null) {
             ballHolder = FindObjectOfType<PlayerBall>();
+        } else if(ballHolder.transform.position.x < TempPos.position.x) {
+            Physics2D.IgnoreCollision(ballHolder.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
+        } else {
+            Physics2D.IgnoreCollision(ballHolder.GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
         }
 
-        if (Pos1.position.x < Pos2.position.x) {
+        if(Pos1.position.x < Pos2.position.x) {
             TempPos = Pos1;
         } else {
             TempPos = Pos2;
         }
 
-        if (ballHolder.transform.position.x < TempPos.position.x) {
-            Physics2D.IgnoreCollision(ballHolder.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
-        }
-        else {
-            Physics2D.IgnoreCollision(ballHolder.GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
-        }
+
     }
 
     private void Controls() {
@@ -136,7 +135,7 @@ public class Paddle : BaseEntity {
             }
         }
     }
-    
+
     public void TakeHit(int hit) {
         if(Time.time > nextHit) {
             nextHit = Time.time + hitRate;
@@ -159,5 +158,5 @@ public class Paddle : BaseEntity {
         }
     }
 
-    
+
 }

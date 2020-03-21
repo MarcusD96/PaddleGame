@@ -15,7 +15,7 @@ public class Enemy : BaseEntity {
             ballHolder = FindObjectOfType<PlayerBall>();
         }
 
-        if (ballHolder.transform.position.x > gameObject.transform.position.x) {
+        else if (ballHolder.transform.position.x > gameObject.transform.position.x) {
             Physics2D.IgnoreCollision(ballHolder.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
         } else {
             Physics2D.IgnoreCollision(ballHolder.GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
