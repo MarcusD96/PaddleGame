@@ -36,9 +36,9 @@ public class Enemy : BaseEntity {
     }
 
     public void Fire() {
-        if(Time.time > nextFire) {
+        if(Time.timeSinceLevelLoad > nextFire) {
             Instantiate(ball, turret.position, Quaternion.identity);
-            nextFire = Time.time + fireRate;
+            nextFire = Time.timeSinceLevelLoad + fireRate;
         }
     }
 

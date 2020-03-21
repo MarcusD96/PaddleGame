@@ -79,8 +79,8 @@ public class Paddle : BaseEntity {
             transform.Rotate(Vector3.back, rotSpeed * dt);
         }
         if(Input.GetKey(KeyCode.Space)) { //shoot secondary
-            if(Time.time >= nextFire) {
-                nextFire = Time.time + fireRate;
+            if(Time.timeSinceLevelLoad >= nextFire) {
+                nextFire = Time.timeSinceLevelLoad + fireRate;
                 if(gameObject.GetComponent<GaugeBar>().GetSpecialAttack().fillAmount > 0.2f) {
                     gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.2f);
                     ShootSecondary();
@@ -92,8 +92,8 @@ public class Paddle : BaseEntity {
             }
         }
         if(Input.GetKeyDown(KeyCode.LeftShift)) { //shoot special
-            if(Time.time >= nextFire) {
-                nextFire = Time.time + fireRate;
+            if(Time.timeSinceLevelLoad >= nextFire) {
+                nextFire = Time.timeSinceLevelLoad + fireRate;
                 if(gameObject.GetComponent<GaugeBar>().GetSpecialAttack().fillAmount > 0.5f) {
                     gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.5f);
                     //ShootSpecial();
@@ -128,17 +128,17 @@ public class Paddle : BaseEntity {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        if(Time.time > nextHit) {
+        if(Time.timeSinceLevelLoad > nextHit) {
             if(collision.gameObject.CompareTag("Claw")) {
-                nextHit = Time.time + hitRate;
+                nextHit = Time.timeSinceLevelLoad + hitRate;
                 TakeHit(1);
             }
         }
     }
 
     public void TakeHit(int hit) {
-        if(Time.time > nextHit) {
-            nextHit = Time.time + hitRate;
+        if(Time.timeSinceLevelLoad > nextHit) {
+            nextHit = Time.timeSinceLevelLoad + hitRate;
             hp -= hit;
             StartCoroutine(Flash(hitRate));
         }

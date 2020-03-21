@@ -38,8 +38,8 @@ public class Lobster : Enemy {
         switch(attackDecider) {
             case 0:
                 noMove = fireArm.canShoot;
-                if(Time.time > armNextFire) {
-                    armNextFire = Time.time + armFireRate;
+                if(Time.timeSinceLevelLoad > armNextFire) {
+                    armNextFire = Time.timeSinceLevelLoad + armFireRate;
                     fireArm.canShoot = true; //allowed to shoot
                     attackDecider = Random.Range(0, 2);
                     //fireArm.shooting = true;
@@ -49,8 +49,8 @@ public class Lobster : Enemy {
 
             case 1:
                 noMove = shockwaveAttack.canShoot;
-                if(Time.time > armNextFire) {
-                    armNextFire = Time.time + armFireRate;
+                if(Time.timeSinceLevelLoad > armNextFire) {
+                    armNextFire = Time.timeSinceLevelLoad + armFireRate;
                     shockwaveAttack.canShoot = true;
                     attackDecider = Random.Range(0, 2);
                 }
