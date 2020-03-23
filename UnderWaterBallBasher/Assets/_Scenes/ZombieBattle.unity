@@ -527,7 +527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 3730849964881171420, guid: cb22a416d5e404f4497852a2607c911f, type: 3}
   zombie: {fileID: -8353815448233596452, guid: 50031a2124a13884f9df1ef97d711d71, type: 3}
-  lobster: {fileID: 7958357910932618780, guid: 78f28093d4d73ee40a6ece42a16465ff, type: 3}
+  lobster: {fileID: 4326709234600919395, guid: 78f28093d4d73ee40a6ece42a16465ff, type: 3}
   playerSpawn: {fileID: 1683313281}
   enemySpawn: {fileID: 948406599}
 --- !u!1 &209982655
@@ -1741,6 +1741,16 @@ PrefabInstance:
     - target: {fileID: 6768478533641404563, guid: daf91debb2367f24d81ab22c003ef473,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6768478535273148699, guid: daf91debb2367f24d81ab22c003ef473,
+        type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 519420031}
+    - target: {fileID: 6768478535273148699, guid: daf91debb2367f24d81ab22c003ef473,
+        type: 3}
+      propertyPath: m_RenderMode
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

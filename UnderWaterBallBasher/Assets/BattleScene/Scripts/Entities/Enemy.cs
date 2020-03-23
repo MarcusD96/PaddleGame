@@ -14,6 +14,12 @@ public class Enemy : BaseEntity {
         if(ballHolder == null) {
             ballHolder = FindObjectOfType<PlayerBall>();
         }
+
+        else if (ballHolder.transform.position.x > gameObject.transform.position.x) {
+            Physics2D.IgnoreCollision(ballHolder.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
+        } else {
+            Physics2D.IgnoreCollision(ballHolder.GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
+        }
     }
 
     public void OnTriggerEnter2D(Collider2D collision) {
@@ -30,9 +36,9 @@ public class Enemy : BaseEntity {
     }
 
     public void Fire() {
-        if(Time.time > nextFire) {
+        if(Time.timeSinceLevelLoad > nextFire) {
             Instantiate(ball, turret.position, Quaternion.identity);
-            nextFire = Time.time + fireRate;
+            nextFire = Time.timeSinceLevelLoad + fireRate;
         }
     }
 
