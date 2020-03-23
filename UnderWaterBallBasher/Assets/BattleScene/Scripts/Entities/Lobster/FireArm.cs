@@ -8,6 +8,7 @@ public class FireArm : MonoBehaviour {
     public List<GameObject> arms;
 
     public Sprite claw, body;
+    //public Animation Claw;
 
     private Vector3 paddlePos;
 
