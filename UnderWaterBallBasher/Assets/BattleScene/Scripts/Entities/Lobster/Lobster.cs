@@ -79,7 +79,6 @@ public class Lobster : Enemy {
             armNextFire = Time.timeSinceLevelLoad + armFireRate;
             fireArm.canShoot = true; //allowed to shoot
             attackDecider = Random.Range(0, 4);
-            //fireArm.shooting = true;
         }
         noMove = fireArm.canShoot;
     }
