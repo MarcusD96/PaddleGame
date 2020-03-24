@@ -8,16 +8,20 @@ public class OverworldManager : GameManager {
     public Transform playerSpawn;
 
     private void Awake() {
-        print(OverworldState.FirstStart);
         if(OverworldState.FirstStart) { //if its the first time running, set everything up
             player = Instantiate(player, playerSpawn.position, Quaternion.identity);
             OverworldState.FirstStart = false;
             
             for(int i = 0; i < enemyLocs.Capacity; i++) {  //populate the initial zombie list
                 if(i != enemyLocs.Capacity - 1) { //if its not the last one, spawn the zombies - add them to the list of zombies to save
-                    OverworldState.zombies.Add(Instantiate(enemy, enemyLocs[i].position, Quaternion.identity));
-                } else { //spawn the boss - dont need to save as if boss is killed, then level is complete
-                    Instantiate(boss, enemyLocs[i].position, Quaternion.identity);
+                    GameObject tmp = Instantiate(enemy, enemyLocs[i].position, Quaternion.identity);                    
+                    DontDestroyOnLoad(tmp); //dont kill the enemy when loading a new scene
+                    OverworldState.zombies.Add(tmp);
+                    tmp.GetComponent<ZombieId>().ID = i;
+                    
+                } else { //spawn the boss, save to list
+                    GameObject tmp = Instantiate(boss, enemyLocs[i].position, Quaternion.identity);
+                    DontDestroyOnLoad(tmp); //dont kill the boss when loading a new scene
                 }
             }
         } else {

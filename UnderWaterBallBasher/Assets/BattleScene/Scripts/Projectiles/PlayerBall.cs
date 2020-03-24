@@ -60,7 +60,9 @@ public class PlayerBall : Projectile {
             default:
                 break;
         }
-        comboNum.text = "COMBO: " + COMBO;
+        if(comboNum) {
+            comboNum.text = "COMBO: " + COMBO;
+        }
         if (COMBO < 10) {
             speed = new Vector2(x + COMBO, y + COMBO);
         } else if (COMBO >= 10) {

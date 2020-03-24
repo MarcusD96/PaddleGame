@@ -16,6 +16,7 @@ public class HealtSystem : MonoBehaviour {
     private Transform[] enemyHearts;
     private int enemyHealth;
     private int enemyHeartNum;
+
     private bool Started;
 
     /* Start is called before the first frame update*/
@@ -62,26 +63,12 @@ public class HealtSystem : MonoBehaviour {
 
     private void UpdateHearts() {
         playerHealth = FindObjectOfType<Paddle>().GetHP();
-
-        //if (PlayerHealth == 0) {
-        //    FindObjectOfType<Paddle>().SetHP(5);
-        //    FindObjectOfType<Enemy>().SetHP(5);
-        //    MakeHearts();
-        //}
-        //else if
         if (playerHealth - 1 < playerHeartNum) {
             Destroy(hearts[playerHeartNum].gameObject);
             playerHeartNum--;
         }
 
         enemyHealth = FindObjectOfType<Enemy>().GetHP();
-
-        //if (EnemyHealth == 0) {
-        //    FindObjectOfType<Paddle>().SetHP(5);
-        //    FindObjectOfType<Enemy>().SetHP(5);
-        //    MakeHearts();
-        //}
-        //else if
         if (enemyHealth - 1 < enemyHeartNum) {
             Destroy(enemyHearts[enemyHeartNum].gameObject);
             enemyHeartNum--;

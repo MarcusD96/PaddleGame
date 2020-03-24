@@ -49,16 +49,17 @@ public class BattleManager : GameManager {
 
     private void CheckEnemyHP() {
         if (zombie.GetHP() <= 0) {
+            Destroy(OverworldState.zombies[OverworldState.CurrID]);
             FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.overworld);
         }
         else if (lobster.GetHP() <= 0) {
-            FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.overworld);
+            FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.main);
         }
     }
 
     private void CheckPlayerHP() {
         if (player.GetComponent<Paddle>().GetHP() <= 0) {
-            FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.main);
+            FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.overworld);
         }
     }
 }

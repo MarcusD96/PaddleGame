@@ -8,7 +8,6 @@ public class Projectile : MonoBehaviour {
 
     protected void ProjectileUpdate (Vector2 _speed) {
         rb.velocity = _speed * (rb.velocity.normalized);
-        //rb.AddForce(speed);
     }
 
     public void SetSpeed(Vector2 _speed) {
