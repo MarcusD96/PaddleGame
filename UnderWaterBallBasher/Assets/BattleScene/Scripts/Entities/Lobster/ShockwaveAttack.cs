@@ -6,6 +6,7 @@ public class ShockwaveAttack : MonoBehaviour {
     public GameObject firstShockwave, secondShockwave, thirdShockwave;
     public Transform pos;
     public List<GameObject> shockwaves;
+    public Animator animator; 
 
     public bool canShoot = false;
     private bool shooting = false;
@@ -28,6 +29,8 @@ public class ShockwaveAttack : MonoBehaviour {
     private void FixedUpdate() {
         if (!shooting) {
             if (canShoot) {
+                animator.SetBool("isShocking", true);
+
                 StartCoroutine(FireShockwaves());
             }
         }
@@ -39,8 +42,10 @@ public class ShockwaveAttack : MonoBehaviour {
 
         int NumOfShockwavesSpawned = Random.Range(3, 6);
 
+
         for (int i = 0; i < NumOfShockwavesSpawned; i++) {
 
+            
             yield return new WaitForSeconds(1.0f);
 
             int spawnShockwave = Random.Range(0, 3);
@@ -53,6 +58,7 @@ public class ShockwaveAttack : MonoBehaviour {
 
             tmp.GetComponent<Rigidbody2D>().velocity = Vector2.left * 5;
         }
+        animator.SetBool("isShocking", false);
 
         shooting = canShoot = false;
     }
