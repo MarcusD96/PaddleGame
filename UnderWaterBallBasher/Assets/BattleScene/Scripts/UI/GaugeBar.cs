@@ -44,7 +44,7 @@ public class Mana {
 
     public Mana () {
         manaAmount = 0;
-        manaRegenAmount = 10f;
+        manaRegenAmount = 25.0f;
     }
 
     public void Update () {

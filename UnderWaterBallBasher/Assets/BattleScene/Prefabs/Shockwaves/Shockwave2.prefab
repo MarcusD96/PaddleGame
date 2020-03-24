@@ -65,6 +65,7 @@ GameObject:
   - component: {fileID: 6577378291495779560}
   - component: {fileID: 6577378291495779563}
   - component: {fileID: 4523068057422539200}
+  - component: {fileID: 587544747811042881}
   m_Layer: 0
   m_Name: ShockwavePart4
   m_TagString: Shockwave
@@ -81,7 +82,7 @@ Transform:
   m_GameObject: {fileID: 6577378291495779561}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -3, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 6577378291145897913}
   m_RootOrder: 1
@@ -125,7 +126,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0b857e4e904b2e4499d3055fff912f0a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 1, a: 0.37254903}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -161,6 +162,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5, y: 5}
   m_EdgeRadius: 0
+--- !u!114 &587544747811042881
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6577378291495779561}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d61f49fa686a9045aade41311ec245c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6577378291784715553
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,6 +185,7 @@ GameObject:
   - component: {fileID: 6577378291784715552}
   - component: {fileID: 6577378291784715555}
   - component: {fileID: 8127219788566522967}
+  - component: {fileID: 3368659024738463194}
   m_Layer: 0
   m_Name: ShockwavePart3
   m_TagString: Shockwave
@@ -188,7 +202,7 @@ Transform:
   m_GameObject: {fileID: 6577378291784715553}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: -1, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.4, z: 1}
+  m_LocalScale: {x: 0.1, y: 0.4, z: 1}
   m_Children: []
   m_Father: {fileID: 6577378291145897913}
   m_RootOrder: 0
@@ -232,7 +246,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 0b857e4e904b2e4499d3055fff912f0a, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0, g: 0, b: 1, a: 0.37254903}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -268,3 +282,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5, y: 5}
   m_EdgeRadius: 0
+--- !u!114 &3368659024738463194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6577378291784715553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8d61f49fa686a9045aade41311ec245c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

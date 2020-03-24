@@ -9,14 +9,14 @@ public class Zombie : Enemy {
     private void Awake() {
         name = "Zombie";
         rb = GetComponent<Rigidbody2D>();
-        speed = new Vector2(5, 5);
+        speed = new Vector2(3, 3);
         rb.velocity = speed;
         SetHP(5);
     }
 
     private void FixedUpdate() {
         base.Update();
-        Movement(speed); 
+        Movement(speed);
         Fire();
     }
 }

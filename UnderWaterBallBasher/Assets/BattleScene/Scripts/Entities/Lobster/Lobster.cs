@@ -11,24 +11,25 @@ public class Lobster : Enemy {
     public bool noMove; //if it can shoot, it cant move
     Vector2 speed;
 
-    private int attackDecider = 0;
+    private int attackDecider;
 
     // Start is called before the first frame update
     private void Start() {
         name = "Lobster Enemy";
         fireArm = GetComponent<FireArm>();
         shockwaveAttack = GetComponent<ShockwaveAttack>();
-        speed = new Vector2(5, 5);
+        speed = new Vector2(4, 4);
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = speed;
         animator.SetFloat("Speed", speed.sqrMagnitude);
+        attackDecider = Random.Range(0, 4);
         SetHP(5);
     }
 
     //Update is called once per frame
     private void FixedUpdate() {
         animator.SetFloat("Speed", rb.velocity.sqrMagnitude);
-        if (noMove) {
+        if(noMove) {
             base.Update();
         }
         CheckMove();
@@ -37,22 +38,21 @@ public class Lobster : Enemy {
 
         switch(attackDecider) {
             case 0:
-                noMove = fireArm.canShoot;
-                if(Time.timeSinceLevelLoad > armNextFire) {
-                    armNextFire = Time.timeSinceLevelLoad + armFireRate;
-                    fireArm.canShoot = true; //allowed to shoot
-                    attackDecider = Random.Range(0, 2);
-                    //fireArm.shooting = true;
-                }
-                noMove = fireArm.canShoot;
+                ArmFire();
+                break;
+            case 1:
+                ArmFire();
+                break;
+            case 2:
+                ArmFire();
                 break;
 
-            case 1:
-                noMove = shockwaveAttack.canShoot;
+            case 3:
+                //noMove = shockwaveAttack.canShoot;
                 if(Time.timeSinceLevelLoad > armNextFire) {
                     armNextFire = Time.timeSinceLevelLoad + armFireRate;
                     shockwaveAttack.canShoot = true;
-                    attackDecider = Random.Range(0, 2);
+                    attackDecider = Random.Range(0, 4);
                 }
                 noMove = shockwaveAttack.canShoot;
                 break;
@@ -71,5 +71,16 @@ public class Lobster : Enemy {
             }
             Movement(speed);
         }
+    }
+
+    private void ArmFire() {
+        //noMove = fireArm.canShoot;
+        if(Time.timeSinceLevelLoad > armNextFire) {
+            armNextFire = Time.timeSinceLevelLoad + armFireRate;
+            fireArm.canShoot = true; //allowed to shoot
+            attackDecider = Random.Range(0, 4);
+            //fireArm.shooting = true;
+        }
+        noMove = fireArm.canShoot;
     }
 }
