@@ -8,7 +8,7 @@ public class Paddle : BaseEntity {
     public GameObject[] specAtk = new GameObject[3];
     private Transform shootPos;
     private Rigidbody2D rb;
-    private float minRot, maxRot, dt, nextFire = 0.0f, fireRate = 0.5f, specialNextFire = 0.0f, specialFireRate = 2.0f, hitRate = 2.0f, nextHit = 0.0f;
+    private float minRot, maxRot, dt, nextFire = 0.0f, fireRate = 0.5f, specialNextFire = 0.0f, specialFireRate = 10.0f, hitRate = 2.0f, nextHit = 0.0f;
     private Quaternion baseQuat;
     private Vector3 mousePosition_, direction;
     private Collider2D TempCol;
@@ -28,8 +28,6 @@ public class Paddle : BaseEntity {
 
         transform.eulerAngles = new Vector3(0, 0, 180);
 
-        dt = Time.fixedDeltaTime;
-
         minRot = 135;
         maxRot = minRot + 90;
 
@@ -48,9 +46,8 @@ public class Paddle : BaseEntity {
         Pos2 = GetComponent<GetChildInfo>().body.transform;
     }
 
-    // Update is called once per frame
     private void FixedUpdate() {
-        Controls();
+        dt = Time.fixedDeltaTime;
 
         //follow mouse stuff
         mousePosition_ = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -74,6 +71,11 @@ public class Paddle : BaseEntity {
         }
     }
 
+    // Update is called once per frame
+    private void Update() {
+        Controls();
+    }
+
     private void Controls() {
         //rotate left
         if(Input.GetKey(KeyCode.A)) {
@@ -85,7 +87,7 @@ public class Paddle : BaseEntity {
             transform.Rotate(Vector3.back, rotSpeed * dt);
         }
 
-        //shoot secondary
+        //shoot secondary continuously
         if(Input.GetKey(KeyCode.Space)) {
             if(Time.timeSinceLevelLoad >= nextFire) {
                 if(gameObject.GetComponent<GaugeBar>().GetSpecialAttack().fillAmount > 0.2f) {
@@ -101,7 +103,7 @@ public class Paddle : BaseEntity {
         }
 
         //shoot special
-        if(Input.GetKey(KeyCode.LeftShift)) {
+        if(Input.GetKeyDown(KeyCode.LeftShift)) {
             if(Time.timeSinceLevelLoad >= specialNextFire) {
                 if(gameObject.GetComponent<GaugeBar>().GetSpecialAttack().fillAmount > 0.5f) {
                     gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.5f);
@@ -115,19 +117,24 @@ public class Paddle : BaseEntity {
             }
         }
 
-        //rotate max left
+        //rotate min left
         if(Input.GetKeyDown(KeyCode.E)) {
             transform.rotation = Quaternion.Euler(0, 0, minRot);
+            print("min");
+
         }
 
         //rotate max right
         if(Input.GetKeyDown(KeyCode.Q)) {
             transform.rotation = Quaternion.Euler(0, 0, maxRot);
+            print("max");
+
         }
 
         //center rotation
         if(Input.GetKeyDown(KeyCode.F)) {
             transform.rotation = baseQuat;
+            print("center");
         }
 
         //start scene

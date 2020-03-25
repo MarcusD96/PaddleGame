@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5820027054850355202}
   m_Layer: 0
   m_Name: EnemyBall
-  m_TagString: Projectile
+  m_TagString: Rock
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -133,7 +133,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0211fc74c554c2c45bbbe849d363baff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  x: 0
-  y: 0
-  constantSpeed: {x: 0, y: 0}

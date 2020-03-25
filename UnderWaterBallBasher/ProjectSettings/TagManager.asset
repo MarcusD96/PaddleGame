@@ -25,6 +25,7 @@ TagManager:
   - Shockwave
   - ShockwaveAttack
   - Encounter
+  - Rock
   layers:
   - Default
   - TransparentFX

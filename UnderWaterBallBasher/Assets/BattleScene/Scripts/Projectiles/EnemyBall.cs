@@ -16,7 +16,6 @@ public class EnemyBall : Projectile {
         }
         speed = new Vector2(x, y);
 
-        tag = "Projectile";
         name = "Rock";
 
         rb.velocity = speed;

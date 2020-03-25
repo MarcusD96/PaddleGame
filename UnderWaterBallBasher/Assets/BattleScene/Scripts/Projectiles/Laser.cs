@@ -33,7 +33,7 @@ public class Laser : Projectile {
                 Destroy(gameObject);
                 collision.gameObject.GetComponent<Enemy>().ReduceHP(1, transform.position);
                 break;
-            case "Projectile":
+            case "Rock":
                 Destroy(gameObject);
                 Destroy(collision.gameObject);
                 break;
