@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public static class OverworldState {
+public static class GameState {
 
     public static List<GameObject> zombies = new List<GameObject>();
 
@@ -24,4 +24,8 @@ public static class OverworldState {
         }
         return tmp;
     }
+
+    public static int NextLevel { get; set; }
+
+    public static int EquippedWeapon { get; set; } = 0; 
 }

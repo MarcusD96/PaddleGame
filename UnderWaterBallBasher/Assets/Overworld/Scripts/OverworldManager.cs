@@ -8,15 +8,15 @@ public class OverworldManager : GameManager {
     public Transform playerSpawn;
 
     private void Awake() {
-        if(OverworldState.FirstStart) { //if its the first time running, set everything up
+        if(GameState.FirstStart) { //if its the first time running, set everything up
             player = Instantiate(player, playerSpawn.position, Quaternion.identity);
-            OverworldState.FirstStart = false;
+            GameState.FirstStart = false;
             
             for(int i = 0; i < enemyLocs.Capacity; i++) {  //populate the initial zombie list
                 if(i != enemyLocs.Capacity - 1) { //if its not the last one, spawn the zombies - add them to the list of zombies to save
                     GameObject tmp = Instantiate(enemy, enemyLocs[i].position, Quaternion.identity);                    
                     DontDestroyOnLoad(tmp); //dont kill the enemy when loading a new scene
-                    OverworldState.zombies.Add(tmp);
+                    GameState.zombies.Add(tmp);
                     tmp.GetComponent<ZombieId>().ID = i;
                     
                 } else { //spawn the boss, save to list
@@ -25,11 +25,11 @@ public class OverworldManager : GameManager {
                 }
             }
         } else {
-            player = Instantiate(player, OverworldState.PlayerPos, Quaternion.identity);
+            player = Instantiate(player, GameState.PlayerPos, Quaternion.identity);
         }
         player.name = "Player";
     }
     private void Update() {
-        OverworldState.PlayerPos = player.transform.position;
+        GameState.PlayerPos = player.transform.position;
     }
 }

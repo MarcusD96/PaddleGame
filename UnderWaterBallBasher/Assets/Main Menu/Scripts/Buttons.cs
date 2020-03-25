@@ -44,10 +44,19 @@ public class Buttons : MonoBehaviour {
     public void OnExit() {
         //if played in unity vs played in its own application
 #if UNITY_EDITOR
-        // UnityEditor.EditorApplication.isPlaying need to be set to false to end the game
         UnityEditor.EditorApplication.isPlaying = false;
 #else
          Application.Quit();
 #endif
+    }
+
+    public void SetShield() {
+        GameState.EquippedWeapon = 1;
+        FindObjectOfType<LevelLoader>().LoadNextLevel((Levels)GameState.NextLevel);
+    }
+
+    public void SetTimeSlow() {
+        GameState.EquippedWeapon = 2;
+        FindObjectOfType<LevelLoader>().LoadNextLevel((Levels)GameState.NextLevel);
     }
 }

@@ -13,8 +13,9 @@ public class Player : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.CompareTag("Finish")) {
-            if(OverworldState.AllZombies()) {
-                FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.lobster);
+            if(GameState.AllZombies()) {
+                GameState.NextLevel = (int)Levels.lobster;
+                FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.selection);
             } else {
                 if(!text.IsActive()) {
                     StartCoroutine(NoFight()); 
@@ -30,9 +31,10 @@ public class Player : MonoBehaviour {
 
     private void OnCollisionEnter2D(Collision2D collision) {
         if(collision.gameObject.CompareTag("Encounter")) {
-            OverworldState.CurrID = collision.gameObject.GetComponent<ZombieId>().ID;
+            GameState.NextLevel = (int)Levels.zombie;
+            GameState.CurrID = collision.gameObject.GetComponent<ZombieId>().ID;
             transform.position = new Vector3(transform.position.x - 1, transform.position.y, -1);
-            FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.zombie);
+            FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.selection);
         }
     }
 

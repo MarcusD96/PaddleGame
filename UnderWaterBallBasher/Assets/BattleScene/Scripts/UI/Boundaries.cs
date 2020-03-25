@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Boundaries : MonoBehaviour {
-    public SpriteRenderer playerBounds;
+    private SpriteRenderer playerBounds;
     private Vector2 screenBounds;
     private float objectWidth, objectHeight; 
     public float xOffsetL, xOffsetR, yOffset;

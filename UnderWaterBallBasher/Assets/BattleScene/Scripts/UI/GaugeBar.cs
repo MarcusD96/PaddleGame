@@ -6,7 +6,7 @@ using TMPro;
 
 public class GaugeBar : MonoBehaviour {
     private Mana mana;
-    public Image spAtkBarImage;
+    private Image spAtkBarImage;
 
     private void Start () {
         mana = new Mana();

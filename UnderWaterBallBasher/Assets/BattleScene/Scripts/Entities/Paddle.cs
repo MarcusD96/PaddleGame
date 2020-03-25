@@ -4,10 +4,11 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class Paddle : BaseEntity {
 
-    public GameObject specAtk;
+    public GameObject secondaryAtk;
+    public GameObject[] specAtk = new GameObject[3];
     private Transform shootPos;
     private Rigidbody2D rb;
-    private float minRot, maxRot, dt, nextFire = 0.0f, fireRate = 0.5f, hitRate = 2.0f, nextHit = 0.0f;
+    private float minRot, maxRot, dt, nextFire = 0.0f, fireRate = 0.5f, specialNextFire = 0.0f, specialFireRate = 2.0f, hitRate = 2.0f, nextHit = 0.0f;
     private Quaternion baseQuat;
     private Vector3 mousePosition_, direction;
     private Collider2D TempCol;
@@ -71,22 +72,25 @@ public class Paddle : BaseEntity {
         } else {
             TempPos = Pos2;
         }
-
-
     }
 
     private void Controls() {
-        if(Input.GetKey(KeyCode.A)) { //rotate ccw
+        //rotate left
+        if(Input.GetKey(KeyCode.A)) {
             transform.Rotate(Vector3.forward, rotSpeed * dt);
         }
-        if(Input.GetKey(KeyCode.D)) { //rotate cw
+
+        //rotate right
+        if(Input.GetKey(KeyCode.D)) {
             transform.Rotate(Vector3.back, rotSpeed * dt);
         }
-        if(Input.GetKey(KeyCode.Space)) { //shoot secondary
+
+        //shoot secondary
+        if(Input.GetKey(KeyCode.Space)) {
             if(Time.timeSinceLevelLoad >= nextFire) {
-                nextFire = Time.timeSinceLevelLoad + fireRate;
                 if(gameObject.GetComponent<GaugeBar>().GetSpecialAttack().fillAmount > 0.2f) {
                     gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.2f);
+                    nextFire = Time.timeSinceLevelLoad + fireRate;
                     ShootSecondary();
                 } else {
                     Debug.Log("not enough PP for this");
@@ -95,12 +99,14 @@ public class Paddle : BaseEntity {
                 Debug.Log("On cooldown");
             }
         }
-        if(Input.GetKeyDown(KeyCode.LeftShift)) { //shoot special
-            if(Time.timeSinceLevelLoad >= nextFire) {
-                nextFire = Time.timeSinceLevelLoad + fireRate;
+
+        //shoot special
+        if(Input.GetKey(KeyCode.LeftShift)) {
+            if(Time.timeSinceLevelLoad >= specialNextFire) {
                 if(gameObject.GetComponent<GaugeBar>().GetSpecialAttack().fillAmount > 0.5f) {
                     gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.5f);
-                    //ShootSpecial();
+                    ShootSpecial();
+                    specialNextFire = Time.timeSinceLevelLoad + specialFireRate;
                 } else {
                     Debug.Log("not enough PP for this");
                 }
@@ -108,17 +114,25 @@ public class Paddle : BaseEntity {
                 Debug.Log("On cooldown");
             }
         }
+
+        //rotate max left
         if(Input.GetKeyDown(KeyCode.E)) {
             transform.rotation = Quaternion.Euler(0, 0, minRot);
         }
+
+        //rotate max right
         if(Input.GetKeyDown(KeyCode.Q)) {
             transform.rotation = Quaternion.Euler(0, 0, maxRot);
         }
+
+        //center rotation
         if(Input.GetKeyDown(KeyCode.F)) {
             transform.rotation = baseQuat;
         }
-        if (Input.GetMouseButtonDown(0)) {
-            if (!shoot) {
+
+        //start scene
+        if(Input.GetMouseButtonDown(0)) {
+            if(!shoot) {
                 Instantiate(ball, pos.position, pos.rotation).GetComponent<PlayerBall>().SetSpeed(new Vector2(5, 5));
                 shoot = true;
             }
@@ -130,11 +144,17 @@ public class Paddle : BaseEntity {
     }
 
     private void ShootSecondary() {
-        Instantiate(specAtk, shootPos.position, specAtk.transform.rotation);
+        Instantiate(secondaryAtk, shootPos.position, secondaryAtk.transform.rotation);
     }
 
     private void ShootSpecial() {
-        Instantiate(specAtk, shootPos.position, specAtk.transform.rotation);
+        if(GameState.EquippedWeapon == 0) {
+            print("no special equipped");
+        } else {
+            var atk = specAtk[GameState.EquippedWeapon];
+            Instantiate(atk, shootPos.position, atk.transform.rotation);
+        }
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SpriteFade : MonoBehaviour {
-    public SpriteRenderer NML;
+    private SpriteRenderer NML;
 
     private void Start() {
         foreach (var i in FindObjectsOfType<SpriteRenderer>()) {
