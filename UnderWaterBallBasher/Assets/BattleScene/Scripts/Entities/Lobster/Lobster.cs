@@ -29,21 +29,20 @@ public class Lobster : Enemy {
     //Update is called once per frame
     private void FixedUpdate() {
         animator.SetFloat("Speed", rb.velocity.sqrMagnitude);
-        if(noMove) {
-            base.Update();
-        }
         CheckMove();
-        Movement(speed);
         Fire();
 
         switch(attackDecider) {
             case 0:
+                noMove = true;
                 ArmFire();
                 break;
             case 1:
+                noMove = true;
                 ArmFire();
                 break;
             case 2:
+                noMove = true;
                 ArmFire();
                 break;
 
