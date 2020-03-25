@@ -20,10 +20,10 @@ public class BattleManager : GameManager {
         player = Instantiate(player, playerSpawn.position, Quaternion.identity);
 
         switch (cs) {
-            case 2:
+            case 3:
                 zombie = Instantiate(zombie, enemySpawn.position, Quaternion.identity);
                 break;
-            case 3:
+            case 4:
                 lobster = Instantiate(lobster, enemySpawn.position, Quaternion.identity);
                 break;
             default:
