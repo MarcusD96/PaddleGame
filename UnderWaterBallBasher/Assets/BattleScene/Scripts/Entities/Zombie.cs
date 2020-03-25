@@ -11,7 +11,7 @@ public class Zombie : Enemy {
         rb = GetComponent<Rigidbody2D>();
         speed = new Vector2(3, 3);
         rb.velocity = speed;
-        SetHP(5);
+        SetHP(3);
     }
 
     private void FixedUpdate() {
