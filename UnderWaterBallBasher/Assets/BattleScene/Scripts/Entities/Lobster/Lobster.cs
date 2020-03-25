@@ -22,7 +22,7 @@ public class Lobster : Enemy {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = speed;
         animator.SetFloat("Speed", speed.sqrMagnitude);
-        attackDecider = Random.Range(0, 4);
+        attackDecider = 3;
         SetHP(5);
     }
 
@@ -47,7 +47,7 @@ public class Lobster : Enemy {
                 break;
 
             case 3:
-                noMove = shockwaveAttack.canShoot;
+                //noMove = shockwaveAttack.canShoot;
                 if(Time.timeSinceLevelLoad > armNextFire) {
                     armNextFire = Time.timeSinceLevelLoad + armFireRate;
                     shockwaveAttack.canShoot = true;
