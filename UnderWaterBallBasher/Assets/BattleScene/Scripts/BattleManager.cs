@@ -59,7 +59,8 @@ public class BattleManager : GameManager {
 
     private void CheckPlayerHP() {
         if (player.GetComponent<Paddle>().GetHP() <= 0) {
-            FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.overworld);
+            OverworldState.FirstStart = true;
+            FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.main);
         }
     }
 }

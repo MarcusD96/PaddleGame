@@ -30,8 +30,7 @@ public class ShockwaveAttack : MonoBehaviour {
     private void FixedUpdate() {
         if (!shooting) {
             if (canShoot) {
-                //animator.SetBool("isShocking", true);
-
+                
                 StartCoroutine(FireShockwaves());
             }
         }

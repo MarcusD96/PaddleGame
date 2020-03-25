@@ -35,10 +35,10 @@ public class Paddle : BaseEntity {
         baseQuat = transform.rotation;
 
         if(moveSpeed == 0) {
-            moveSpeed = 400;
+            moveSpeed = 500;
         }
         if(rotSpeed == 0) {
-            rotSpeed = 150;
+            rotSpeed = 200;
         }
 
         SetHP(5);
