@@ -6,6 +6,7 @@ public class ShockwaveAttack : MonoBehaviour {
     public GameObject firstShockwave, secondShockwave, thirdShockwave;
     public Transform pos;
     public List<GameObject> shockwaves;
+    public Animator animator; 
 
     public bool canShoot = false;
     private bool shooting = false;
@@ -28,42 +29,33 @@ public class ShockwaveAttack : MonoBehaviour {
     private void FixedUpdate() {
         if (!shooting) {
             if (canShoot) {
+                animator.SetBool("isShocking", true);
                 StartCoroutine(FireShockwaves());
             }
         }
     }
 
-
     public IEnumerator FireShockwaves() {
         shooting = true;
 
-        int NumOfShockwavesSpawned = Random.Range(3, 6);
+        int NumOfShockwavesSpawned = Random.Range(2, 5);
+
 
         for (int i = 0; i < NumOfShockwavesSpawned; i++) {
 
+            
             yield return new WaitForSeconds(1.0f);
 
             int spawnShockwave = Random.Range(0, 3);
 
             var sw = shockwaves[spawnShockwave];
 
-            GameObject tmp;
-
-            tmp = Instantiate(sw, pos.position, sw.transform.rotation);
+            GameObject tmp = Instantiate(sw, pos.position, sw.transform.rotation);
 
             tmp.GetComponent<Rigidbody2D>().velocity = Vector2.left * 5;
         }
+        animator.SetBool("isShocking", false);
 
         shooting = canShoot = false;
-    }
-
-    private void OnCollisionEnter2D(Collision2D collision) {
-        switch (collision.gameObject.tag) {
-            case "Paddle":  //ball hits paddle
-                SoundManager.PlaySound("BallBad");
-                collision.gameObject.GetComponent<Paddle>().TakeHit(1);
-                Destroy(gameObject);
-                break;
-        }
     }
 }

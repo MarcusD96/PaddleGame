@@ -8,11 +8,11 @@ public class FireArm : MonoBehaviour {
     public List<GameObject> arms;
 
     public Sprite claw, body;
-    //public Animation Claw;
+    public Animator lobster;
 
     private Vector3 paddlePos;
 
-    private float extendRetractSpeed = 0.08f;
+    private readonly float extendRetractSpeed = 0.025f;
     private bool shooting = false;
     public bool canShoot = false;
 
@@ -48,10 +48,13 @@ public class FireArm : MonoBehaviour {
                 arms.Add(Instantiate(arm, arms[i].GetComponent<GetChildInfo>().GetEndPos(), AngleToPaddle(paddlePos, pos)));
                 i++;
                 arms[i - 1].GetComponent<GetChildInfo>().SetBodySprite(body);
+                
                 arms[i].GetComponent<GetChildInfo>().SetBodySprite(claw);
+
+                lobster.SetBool("isExtending", true);
             }
 
-            if(i > 30) { //fail-safe
+            if(i > 50) { //fail-safe
                 break;
             }
             arms[i].name = "Arm Segment"; //not 'clone'
@@ -69,6 +72,8 @@ public class FireArm : MonoBehaviour {
             }
             yield return new WaitForSeconds(extendRetractSpeed);
         }
+        lobster.SetBool("isExtending", false);
+
         arms.Clear();
         shooting = canShoot = false;
     }
