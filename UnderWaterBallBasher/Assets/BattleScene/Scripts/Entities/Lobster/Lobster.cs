@@ -47,7 +47,7 @@ public class Lobster : Enemy {
                 break;
 
             case 3:
-                //noMove = shockwaveAttack.canShoot;
+                noMove = shockwaveAttack.canShoot;
                 if(Time.timeSinceLevelLoad > armNextFire) {
                     armNextFire = Time.timeSinceLevelLoad + armFireRate;
                     shockwaveAttack.canShoot = true;
@@ -73,7 +73,7 @@ public class Lobster : Enemy {
     }
 
     private void ArmFire() {
-        //noMove = fireArm.canShoot;
+        noMove = fireArm.canShoot;
         if(Time.timeSinceLevelLoad > armNextFire) {
             armNextFire = Time.timeSinceLevelLoad + armFireRate;
             fireArm.canShoot = true; //allowed to shoot

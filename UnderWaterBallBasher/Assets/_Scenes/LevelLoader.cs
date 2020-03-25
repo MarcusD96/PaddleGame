@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public enum Levels {
     main,
     overworld,
+    selection,
     zombie,
     lobster
 }
