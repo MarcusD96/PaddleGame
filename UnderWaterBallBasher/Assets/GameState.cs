@@ -9,6 +9,10 @@ public static class GameState {
 
     public static bool FirstStart { get; set; } = true;
 
+    public static bool HasShield { get; set; } = false;
+
+    public static bool HasSlow { get; set; } = false;
+
     public static int CurrID { get; set; }
 
     public static bool AllZombies() {
