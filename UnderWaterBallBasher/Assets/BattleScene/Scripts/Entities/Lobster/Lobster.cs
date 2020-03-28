@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Lobster : Enemy {
     private FireArm fireArm;
@@ -10,6 +7,7 @@ public class Lobster : Enemy {
     private float armFireRate = 6.0f, armNextFire = 3.0f;
     public bool noMove; //if it can shoot, it cant move
     Vector2 speed;
+    int startHP;
 
     private int attackDecider;
 
@@ -22,10 +20,10 @@ public class Lobster : Enemy {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = speed;
         animator.SetFloat("Speed", speed.sqrMagnitude);
-        animator.SetBool("isDamaged", false);
-        
-        attackDecider = 3;
+
+        attackDecider = Random.Range(0, 4);
         SetHP(5);
+        startHP = hp;
     }
 
     //Update is called once per frame
@@ -33,7 +31,12 @@ public class Lobster : Enemy {
         animator.SetFloat("Speed", rb.velocity.sqrMagnitude);
         CheckMove();
         Fire();
-        NormOrDam();
+
+        if(hp <= startHP / 2) { //check for damaged state at teh end of attack
+            if(!animator.GetBool("Damaged")) {
+                animator.SetBool("Damaged", true); 
+            }
+        }
 
         switch(attackDecider) {
             case 0:
@@ -50,13 +53,14 @@ public class Lobster : Enemy {
                 break;
 
             case 3:
-                //noMove = shockwaveAttack.canShoot;
                 if(Time.timeSinceLevelLoad > armNextFire) {
                     armNextFire = Time.timeSinceLevelLoad + armFireRate;
-                    shockwaveAttack.canShoot = true;
-                    attackDecider = Random.Range(0, 4);
+                    shockwaveAttack.canShoot = noMove = true;
+                    attackDecider = Random.Range(0, 4);                    
                 }
+                animator.SetBool("isShocking", noMove); //if noMove is true, then its going to be atcking
                 noMove = shockwaveAttack.canShoot;
+                print(noMove);
                 break;
 
             default:
@@ -84,12 +88,7 @@ public class Lobster : Enemy {
             attackDecider = Random.Range(0, 4);
         }
         noMove = fireArm.canShoot;
-        Debug.Log(noMove);
-    }
-
-    private void NormOrDam() {
-        if(hp < 3) {
-            animator.SetBool("isDamaged", true);
-        }
+        animator.SetBool("isExtending", noMove);
+        print(noMove);
     }
 }
