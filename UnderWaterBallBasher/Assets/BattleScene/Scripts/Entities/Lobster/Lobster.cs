@@ -22,6 +22,8 @@ public class Lobster : Enemy {
         rb = GetComponent<Rigidbody2D>();
         rb.velocity = speed;
         animator.SetFloat("Speed", speed.sqrMagnitude);
+        animator.SetBool("isDamaged", false);
+        
         attackDecider = 3;
         SetHP(5);
     }
@@ -31,6 +33,7 @@ public class Lobster : Enemy {
         animator.SetFloat("Speed", rb.velocity.sqrMagnitude);
         CheckMove();
         Fire();
+        NormOrDam();
 
         switch(attackDecider) {
             case 0:
@@ -73,6 +76,7 @@ public class Lobster : Enemy {
     }
 
     private void ArmFire() {
+        Debug.Log(noMove);
         noMove = fireArm.canShoot;
         if(Time.timeSinceLevelLoad > armNextFire) {
             armNextFire = Time.timeSinceLevelLoad + armFireRate;
@@ -80,5 +84,12 @@ public class Lobster : Enemy {
             attackDecider = Random.Range(0, 4);
         }
         noMove = fireArm.canShoot;
+        Debug.Log(noMove);
+    }
+
+    private void NormOrDam() {
+        if(hp < 3) {
+            animator.SetBool("isDamaged", true);
+        }
     }
 }

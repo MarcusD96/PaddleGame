@@ -10,11 +10,13 @@ public class ShockwaveAttack : MonoBehaviour {
 
     public bool canShoot = false;
     private bool shooting = false;
-    public bool isAnimating = true;
+    //public bool isAnimating = true;
 
+    private Vector2 movement;
 
     // Start is called before the first frame update
     void Start() {
+
         shockwaves.Add(firstShockwave);
         shockwaves.Add(secondShockwave);
         shockwaves.Add(thirdShockwave);
@@ -28,11 +30,8 @@ public class ShockwaveAttack : MonoBehaviour {
     }
 
     private void FixedUpdate() {
-        if (!shooting) {
-            if (canShoot) {
-                
-                StartCoroutine(FireShockwaves());
-            }
+        if (!shooting && canShoot) {    
+            StartCoroutine(FireShockwaves());
         }
     }
 
@@ -41,12 +40,12 @@ public class ShockwaveAttack : MonoBehaviour {
 
         int NumOfShockwavesSpawned = Random.Range(2, 5);
 
-
+        
         for (int i = 0; i < NumOfShockwavesSpawned; i++) {
 
-            if (isAnimating == true) {
+            //if (isAnimating == true) {
                 animator.SetBool("isShocking", true);
-            }
+            //}
 
             yield return new WaitForSeconds(1.0f);
 
@@ -58,11 +57,11 @@ public class ShockwaveAttack : MonoBehaviour {
 
             tmp.GetComponent<Rigidbody2D>().velocity = Vector2.left * 5;
 
-            isAnimating = false;
+            //isAnimating = false;
         }
         animator.SetBool("isShocking", false);
 
         shooting = canShoot = false;
-        isAnimating = true;
+        //isAnimating = true;
     }
 }
