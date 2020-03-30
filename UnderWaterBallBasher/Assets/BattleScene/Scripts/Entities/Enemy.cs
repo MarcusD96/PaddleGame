@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Enemy : BaseEntity {
 
-    public float fireRate = 3.0f, nextFire = 3.0f;
+    private float fireRate = 1.0f, nextFire = 1.0f;
 
     public Transform turret;
     public GameObject ball;

@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.SceneManagement;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class Buttons : MonoBehaviour {
@@ -48,6 +45,10 @@ public class Buttons : MonoBehaviour {
 #else
          Application.Quit();
 #endif
+    }
+
+    public void Next() {
+        FindObjectOfType<LevelLoader>().LoadNextLevel((Levels)GameState.NextLevel);
     }
 
     public void SetShield() {

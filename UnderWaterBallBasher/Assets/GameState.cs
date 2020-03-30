@@ -31,5 +31,5 @@ public static class GameState {
 
     public static int NextLevel { get; set; }
 
-    public static int EquippedWeapon { get; set; } = 0; 
+    public static int EquippedWeapon { get; set; } = 1; 
 }

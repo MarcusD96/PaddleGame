@@ -26,6 +26,7 @@ TagManager:
   - ShockwaveAttack
   - Encounter
   - Rock
+  - SpecialCountdown
   layers:
   - Default
   - TransparentFX
