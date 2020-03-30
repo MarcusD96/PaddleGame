@@ -46,8 +46,8 @@ public class Paddle : BaseEntity {
         Pos2 = GetComponent<GetChildInfo>().body.transform;
     }
 
-    private void FixedUpdate() {
-        dt = Time.fixedDeltaTime;
+    private void LateUpdate() { //vs fixed update?
+        dt = Time.deltaTime;
 
         //follow mouse stuff
         mousePosition_ = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -106,8 +106,10 @@ public class Paddle : BaseEntity {
         if(Input.GetKeyDown(KeyCode.LeftShift)) {
             if(Time.timeSinceLevelLoad >= specialNextFire) {
                 if(gameObject.GetComponent<GaugeBar>().GetSpecialAttack().fillAmount > 0.5f) {
-                    gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.5f);
-                    ShootSpecial();
+                    if(ShootSpecial()) {
+                        gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.5f); 
+                    }
+
                     specialNextFire = Time.timeSinceLevelLoad + specialFireRate;
                 } else {
                     Debug.Log("not enough PP for this");
@@ -154,12 +156,14 @@ public class Paddle : BaseEntity {
         Instantiate(secondaryAtk, shootPos.position, secondaryAtk.transform.rotation);
     }
 
-    private void ShootSpecial() {
+    private bool ShootSpecial() {
         if(GameState.EquippedWeapon == 0) {
             print("no special equipped");
+            return false;
         } else {
             var atk = specAtk[GameState.EquippedWeapon];
             Instantiate(atk, shootPos.position, atk.transform.rotation);
+            return true;
         }
 
     }
