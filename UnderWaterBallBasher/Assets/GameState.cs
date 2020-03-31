@@ -3,13 +3,9 @@ using UnityEngine;
 
 public static class GameState {
 
-    public static Vector3 PlayerPos { get; set; }
+    public static Vector3 PlayerPos { get; set; } //player pos in the overworld
 
-    public static bool FirstStart { get; set; } = true;
-
-    public static bool HasShield { get; set; } = false;
-
-    public static bool HasSlow { get; set; } = false;
+    public static bool FirstStart { get; set; } = true; //check if the world has been initialized yet
 
     public static int CurrID { get; set; }
 
@@ -37,5 +33,23 @@ public static class GameState {
 
     public static List<Sprite> availableRewards;
 
-    public static List<Sprite> earnedRewards;
+    public static bool HasShield { get; set; } = false;
+
+    public static bool HasSlow { get; set; } = false;
+
+    public static bool HasDodge { get; set; } = false;
+
+    public static bool HasSpeed { get; set; } = false;
+
+    public static bool HasCash { get; set; } = false;
+
+    public static bool HasRange { get; set; } = false;
+}
+
+public enum Levels {
+    main,
+    overworld,
+    selection,
+    zombie,
+    lobster
 }
