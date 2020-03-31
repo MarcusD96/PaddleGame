@@ -21,7 +21,7 @@ public class Lobster : Enemy {
         rb.velocity = speed;
         animator.SetFloat("Speed", speed.sqrMagnitude);
 
-        attackDecider = Random.Range(0, 4);
+        attackDecider = Random.Range(0, 3);
         SetHP(5);
         startHP = hp;
     }
@@ -47,16 +47,12 @@ public class Lobster : Enemy {
                 noMove = true;
                 ArmFire();
                 break;
-            case 2:
-                noMove = true;
-                ArmFire();
-                break;
 
-            case 3:
+            case 2:
                 if(Time.timeSinceLevelLoad > armNextFire) {
                     armNextFire = Time.timeSinceLevelLoad + armFireRate;
                     shockwaveAttack.canShoot = noMove = true;
-                    attackDecider = Random.Range(0, 4);                    
+                    attackDecider = Random.Range(0, 3);                    
                 }
                 animator.SetBool("isShocking", noMove); //if noMove is true, then its going to be atcking
                 noMove = shockwaveAttack.canShoot;
