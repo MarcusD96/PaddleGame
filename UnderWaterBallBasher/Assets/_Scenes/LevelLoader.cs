@@ -2,14 +2,6 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public enum Levels {
-    main,
-    overworld,
-    selection,
-    zombie,
-    lobster
-}
-
 public class LevelLoader : MonoBehaviour {
 
     public Animator transition;
