@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using Unity;
+using System.Runtime.InteropServices;
 
 public static class GameState {
 
@@ -40,11 +41,11 @@ public static class GameState {
 
     public static bool HasDodge { get; set; } = false;
 
-    public static bool HasSpeed { get; set; } = false;
-
-    public static bool HasCash { get; set; } = false;
-
-    public static bool HasRange { get; set; } = false;
+    [DllImport("AgvSpdSpc", CallingConvention = CallingConvention.Cdecl)] public extern static float GetStat(int statNum); //use enums
+    
+    [DllImport("AgvSpdSpc", CallingConvention = CallingConvention.Cdecl)] public extern static void SetStat(int statIndex, int stat); //use enums
+    
+    [DllImport("AgvSpdSpc", CallingConvention = CallingConvention.Cdecl)] public extern static void DefaultStats();
 }
 
 public enum Levels {
@@ -54,4 +55,10 @@ public enum Levels {
     rewards,
     zombie,
     lobster
+}
+
+public enum Stats {
+    agressiveness,
+    speed,
+    special
 }

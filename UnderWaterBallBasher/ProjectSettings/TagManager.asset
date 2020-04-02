@@ -27,6 +27,7 @@ TagManager:
   - Encounter
   - Rock
   - SpecialCountdown
+  - Reset
   layers:
   - Default
   - TransparentFX

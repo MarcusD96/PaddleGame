@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using UnityEngine;
 
 public class RandomReward : MonoBehaviour {
@@ -56,14 +57,14 @@ public class RandomReward : MonoBehaviour {
                 GameState.HasDodge = true;
                 GameState.availableRewards.RemoveAt(rewardIndex); //delete from available rewards
                 break;
+            case "upgrade_agressiveness":
+                GameState.SetStat((int)Stats.agressiveness, 25);
+                break;
             case "upgrade_speed":
-                GameState.HasSpeed = true;
+                GameState.SetStat((int)Stats.speed, 25);
                 break;
-            case "upgrade_cash":
-                GameState.HasCash = true;
-                break;
-            case "upgrade_range":
-                GameState.HasRange = true;
+            case "upgrade_special":
+
                 break;
             default:
                 break;

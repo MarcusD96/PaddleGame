@@ -3,10 +3,10 @@ using UnityEngine.UI;
 
 public class Buttons : MonoBehaviour {
     //Button back; //used when bringing up settings and lowering it
-    GameObject buttons; //"          "
-    Image img; //refers to the settings background
+    private GameObject buttons; //"          "
+    private Image settings, reset; //refers to the settings background
 
-    void Start() {
+    void Awake() {
         foreach(var i in Resources.FindObjectsOfTypeAll<GameObject>()) {
             switch(i.tag) {
                 case "Buttons":
@@ -17,8 +17,13 @@ public class Buttons : MonoBehaviour {
             }
         }
         foreach(var i in Resources.FindObjectsOfTypeAll<Image>()) {
-            if(i.CompareTag("Settings")) { 
-                img = i; //find the group of settings items to set inactive/active later on
+            if(i.CompareTag("Settings")) {
+                settings = i; //find the group of settings items to set inactive/active later on
+            }
+            if(i.CompareTag("Reset")) {
+                reset = i; //find the group of settings items to set inactive/active later on
+            }
+            if(settings != null && reset != null) {
                 break;
             }
         }
@@ -30,11 +35,21 @@ public class Buttons : MonoBehaviour {
 
     public void OnSettingsStart() {
         buttons.gameObject.SetActive(false); //make the buttons and title invisible when going into settings
-        img.gameObject.SetActive(true); //makes settings popup visible
+        settings.gameObject.SetActive(true); //makes settings popup visible
     }
 
     public void OnSettingsStop() {
-        img.gameObject.SetActive(false); //makes settings popup invisible
+        settings.gameObject.SetActive(false); //makes settings popup invisible
+        buttons.SetActive(true); //make the buttons and title visible when coming out of settings
+    }
+
+    public void OnResetStart() {
+        buttons.gameObject.SetActive(false); //make the buttons and title invisible when going into settings
+        reset.gameObject.SetActive(true); //makes settings popup visible
+    }
+
+    public void OnResetStop() {
+        reset.gameObject.SetActive(false); //makes settings popup invisible
         buttons.SetActive(true); //make the buttons and title visible when coming out of settings
     }
 
@@ -47,10 +62,15 @@ public class Buttons : MonoBehaviour {
 #endif
     }
 
+    public void ResetStats() {
+        OnResetStop();
+        GameState.DefaultStats();
+    }
+
     public void Next() {
         FindObjectOfType<LevelLoader>().LoadNextLevel((Levels)GameState.NextLevel);
     }
-    
+
     public void NextToOverworld() {
         FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.overworld);
     }

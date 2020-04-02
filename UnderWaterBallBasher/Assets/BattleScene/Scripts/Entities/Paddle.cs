@@ -34,12 +34,8 @@ public class Paddle : BaseEntity {
 
         baseQuat = transform.rotation;
 
-        if(moveSpeed == 0) {
-            moveSpeed = 500;
-        }
-        if(rotSpeed == 0) {
-            rotSpeed = 200;
-        }
+        moveSpeed = 500 + GameState.GetStat((int)Stats.speed);
+        rotSpeed = 200 + GameState.GetStat((int)Stats.speed);
 
         SetHP(5);
         TempCol = gameObject.GetComponent<Collider2D>();
@@ -113,7 +109,7 @@ public class Paddle : BaseEntity {
             if(Time.timeSinceLevelLoad >= specialNextFire) {
                 if(gameObject.GetComponent<GaugeBar>().GetSpecialAttack().fillAmount > 0.5f) {
                     if(ShootSpecial()) {
-                        gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.5f); 
+                        gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.5f);
                     }
 
                     specialNextFire = Time.timeSinceLevelLoad + specialFireRate;
