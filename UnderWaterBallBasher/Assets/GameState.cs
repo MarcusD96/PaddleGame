@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using Unity;
 
 public static class GameState {
 
@@ -27,7 +28,7 @@ public static class GameState {
 
     public static int NextLevel { get; set; }
 
-    public static int EquippedWeapon { get; set; } = 1;
+    public static int EquippedWeapon { get; set; } = 0;
 
     public static bool FirstReward { get; set; } = true;
 
@@ -50,6 +51,7 @@ public enum Levels {
     main,
     overworld,
     selection,
+    rewards,
     zombie,
     lobster
 }

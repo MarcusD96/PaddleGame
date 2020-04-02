@@ -14,6 +14,7 @@ public class Paddle : BaseEntity {
     private Collider2D TempCol;
     private PlayerBall ballHolder;
     private Transform Pos1, Pos2, TempPos;
+    public SpriteRenderer sr;
 
     public GameObject ball;
     public Transform pos;
@@ -74,6 +75,11 @@ public class Paddle : BaseEntity {
     // Update is called once per frame
     private void Update() {
         Controls();
+        if(Time.timeSinceLevelLoad >= 3.0f && !shoot) {
+            Instantiate(ball, pos.position, pos.rotation).GetComponent<PlayerBall>().SetSpeed(new Vector2(5, 5));
+            sr.enabled = false;
+            shoot = true;
+        }
     }
 
     private void Controls() {

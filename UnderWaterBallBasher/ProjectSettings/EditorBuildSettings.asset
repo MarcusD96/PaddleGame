@@ -15,12 +15,12 @@ EditorBuildSettings:
     path: Assets/_Scenes/02_Selection Screen.unity
     guid: d24136da5af921c4c874a9d597e4652c
   - enabled: 1
+    path: Assets/_Scenes/05_Rewards.unity
+    guid: 3a7904fc4049f4d4f9944d5278c341d2
+  - enabled: 1
     path: Assets/_Scenes/03_ZombieBattle.unity
     guid: 0f219ac37a16c294eb52adbf9d7c1cbb
   - enabled: 1
     path: Assets/_Scenes/04_LobsterBattle.unity
     guid: 3011af2f08d3a2c46b046150c35e1bea
-  - enabled: 1
-    path: Assets/_Scenes/05_Rewards.unity
-    guid: 3a7904fc4049f4d4f9944d5278c341d2
   m_configObjects: {}

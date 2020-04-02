@@ -135,7 +135,7 @@ PrefabInstance:
     - target: {fileID: 6768478533641404560, guid: daf91debb2367f24d81ab22c003ef473,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6768478533641404563, guid: daf91debb2367f24d81ab22c003ef473,
         type: 3}
@@ -394,6 +394,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f30369290bd4af4f87255c56fc72fce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  button: {fileID: 2025163321}
   sr: {fileID: 409983059}
   specialRewards:
   - {fileID: 21300240, guid: 1e627bcafe9e32d40ad554880f36b5eb, type: 3}
@@ -1030,12 +1031,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2025163321}
-        m_MethodName: 
+      - m_Target: {fileID: 2025163326}
+        m_MethodName: NextToOverworld
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

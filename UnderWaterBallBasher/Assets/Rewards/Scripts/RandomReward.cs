@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class RandomReward : MonoBehaviour {
 
+    public GameObject button;
     public SpriteRenderer sr;
     public List<Sprite> specialRewards = new List<Sprite>();
 
     private void Start() {
+        button.SetActive(false);
         sr = GetComponent<SpriteRenderer>();
         if(GameState.FirstReward) {
             GameState.availableRewards = specialRewards;
@@ -17,39 +19,42 @@ public class RandomReward : MonoBehaviour {
     }
 
     IEnumerator SpinRewards() {
+        yield return new WaitForSeconds(1.0f);
         var rewards = GameState.availableRewards; //temp
         var endTime = Time.time + 3.0f; //how long the rolling will last
-        int i = Random.Range(0, rewards.Count); //produce first pick
+        int rewardIndex = Random.Range(0, rewards.Count); //produce first pick
 
         do {
-            i++;
-            if(i >= rewards.Count) { //restart index
-                i = 0;
+            rewardIndex++;
+            if(rewardIndex >= rewards.Count) { //restart index
+                rewardIndex = 0;
             }
-            sr.sprite = rewards[i]; //set the sprite
+            sr.sprite = rewards[rewardIndex]; //set the sprite
             yield return new WaitForSeconds(0.1f);
         } while(Time.time < endTime);
 
-        GameState.availableRewards.RemoveAt(i); //delete from available rewards
-
         var tmp = sr.sprite;
         //blink
-        for(i = 0; i < 3; i++) {
+        for(int j = 0; j < 3; j++) {
             sr.sprite = null;
             yield return new WaitForSeconds(0.2f);
             sr.sprite = tmp;
             yield return new WaitForSeconds(0.5f); 
         }
+        button.SetActive(true);
 
         switch(sr.sprite.name.ToLower()) {
             case "upgrade_shield":
                 GameState.HasShield = true;
+                GameState.availableRewards.RemoveAt(rewardIndex); //delete from available rewards
                 break;
             case "upgrade_time":
                 GameState.HasSlow = true;
+                GameState.availableRewards.RemoveAt(rewardIndex); //delete from available rewards
                 break;
             case "upgrade_dodge":
                 GameState.HasDodge = true;
+                GameState.availableRewards.RemoveAt(rewardIndex); //delete from available rewards
                 break;
             case "upgrade_speed":
                 GameState.HasSpeed = true;

@@ -14,16 +14,16 @@ public class BattleManager : GameManager {
     private void Startup() {
         Started = true;
 
-        //2 = zombie, 3 = lobster
+        //4 = zombie, 5 = lobster
         int cs = SceneManager.GetActiveScene().buildIndex;
 
         player = Instantiate(player, playerSpawn.position, Quaternion.identity);
 
         switch (cs) {
-            case 3:
+            case 4:
                 zombie = Instantiate(zombie, enemySpawn.position, Quaternion.identity);
                 break;
-            case 4:
+            case 5:
                 lobster = Instantiate(lobster, enemySpawn.position, Quaternion.identity);
                 break;
             default:
@@ -50,10 +50,10 @@ public class BattleManager : GameManager {
     private void CheckEnemyHP() {
         if (zombie.GetHP() <= 0) {
             Destroy(GameState.zombies[GameState.CurrID]);
-            FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.overworld);
+            FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.rewards);
         }
         else if (lobster.GetHP() <= 0) {
-            FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.main);
+            FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.rewards);
         }
     }
 

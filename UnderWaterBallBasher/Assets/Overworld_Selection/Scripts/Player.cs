@@ -26,7 +26,6 @@ public class Player : MonoBehaviour {
 
     private void OnTriggerExit2D(Collider2D collision) {
         StopCoroutine(NoFight());
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision) {

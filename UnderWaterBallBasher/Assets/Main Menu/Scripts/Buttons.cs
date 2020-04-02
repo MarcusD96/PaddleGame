@@ -50,6 +50,10 @@ public class Buttons : MonoBehaviour {
     public void Next() {
         FindObjectOfType<LevelLoader>().LoadNextLevel((Levels)GameState.NextLevel);
     }
+    
+    public void NextToOverworld() {
+        FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.overworld);
+    }
 
     public void SetShield() {
         GameState.EquippedWeapon = 1;
