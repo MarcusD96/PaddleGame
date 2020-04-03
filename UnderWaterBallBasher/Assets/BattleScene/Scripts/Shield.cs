@@ -2,12 +2,11 @@
 using TMPro;
 
 public class Shield : MonoBehaviour {
-    private float speed, startTime;
+    private float startTime;
     public float stopTime;
     private TextMeshProUGUI text;
 
     private void Start() {
-        speed = 1.0f;
         startTime = Time.timeSinceLevelLoad;
         stopTime = 10.0f;
 

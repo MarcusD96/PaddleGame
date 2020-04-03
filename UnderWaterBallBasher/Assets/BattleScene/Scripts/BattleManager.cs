@@ -60,6 +60,9 @@ public class BattleManager : GameManager {
     private void CheckPlayerHP() {
         if (player.GetComponent<Paddle>().GetHP() <= 0) {
             GameState.FirstStart = true;
+            foreach(var z in GameState.zombies) {
+                Destroy(z);
+            }
             FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.overworld);
         }
     }

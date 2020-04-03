@@ -1,11 +1,14 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class OverworldManager : GameManager {
 
     public GameObject player, enemy, boss;
     public List<Transform> enemyLocs =  new List<Transform>();
     public Transform playerSpawn;
+    public Image pause;
+    private bool paused;
 
     private void Awake() {
         if(GameState.FirstStart) { //if its the first time running, set everything up
@@ -14,9 +17,25 @@ public class OverworldManager : GameManager {
             player = Instantiate(player, GameState.PlayerPos, Quaternion.identity);
         }
         player.name = "Player";
+        pause.gameObject.SetActive(false);
+        paused = false;
     }
 
     private void Update() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if(!paused) {
+                pause.gameObject.SetActive(true);
+                paused = true;
+                Time.timeScale = 0;
+            } else {
+                pause.gameObject.SetActive(false);
+                paused = false;
+                Time.timeScale = 1;
+            }
+        }
+    }
+
+    private void FixedUpdate() {
         GameState.PlayerPos = player.transform.position;
     }
 

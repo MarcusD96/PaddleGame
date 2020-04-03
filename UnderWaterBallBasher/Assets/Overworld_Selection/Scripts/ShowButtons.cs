@@ -4,32 +4,28 @@ using System.Collections.Generic;
 
 public class ShowButtons : MonoBehaviour {
     public TextMeshProUGUI noWep;
-    public List<GameObject> choices = new List<GameObject>();
+    public List<Transform> spaces = new List<Transform>(); //0 - left, 1 - middle, 2 - right
 
     private void Awake() {
-        //0 both, 1 shield, 2 slow
-        if(!GameState.HasShield) { //none
-            if(!GameState.HasSlow) {
+        switch(GameState.earnedRewards.Count) {
+            case 0:
                 noWep.gameObject.SetActive(true);
-            }
-        }
+                break;
 
-        if(GameState.HasShield) { //shield and slow
-            if(GameState.HasSlow) {
-                choices[0].SetActive(true);
-            }
-        }
+            case 1:
+                Instantiate(GameState.earnedRewards[0], spaces[1]);
+                break;
 
-        if(GameState.HasShield) { //shield only
-            if(!GameState.HasSlow) {
-                choices[1].SetActive(true);
-            }
-        }
+            case 2:
+                Instantiate(GameState.earnedRewards[0], spaces[0]);
+                Instantiate(GameState.earnedRewards[1], spaces[2]);
+                break;
 
-        if(GameState.HasSlow) { //slow only
-            if(!GameState.HasShield) {
-                choices[2].SetActive(true);
-            }
+            case 3:
+                Instantiate(GameState.earnedRewards[0], spaces[0]);
+                Instantiate(GameState.earnedRewards[1], spaces[1]);
+                Instantiate(GameState.earnedRewards[2], spaces[2]);
+                break;
         }
     }
 }

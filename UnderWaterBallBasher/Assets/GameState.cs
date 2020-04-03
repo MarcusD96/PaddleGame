@@ -33,13 +33,15 @@ public static class GameState {
 
     public static bool FirstReward { get; set; } = true;
 
-    public static List<Sprite> availableRewards;
+    public static List<Sprite> availableRewards = new List<Sprite>();
 
     public static bool HasShield { get; set; } = false;
 
     public static bool HasSlow { get; set; } = false;
 
     public static bool HasDodge { get; set; } = false;
+
+    public static List<Sprite> earnedRewards = new List<Sprite>();
 
     [DllImport("AgvSpdSpc", CallingConvention = CallingConvention.Cdecl)] public extern static float GetStat(int statNum); //use enums
     

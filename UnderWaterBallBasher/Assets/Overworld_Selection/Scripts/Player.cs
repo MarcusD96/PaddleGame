@@ -32,7 +32,7 @@ public class Player : MonoBehaviour {
         if(collision.gameObject.CompareTag("Encounter")) {
             GameState.NextLevel = (int)Levels.zombie;
             GameState.CurrID = collision.gameObject.GetComponent<ZombieId>().ID;
-            transform.position = new Vector3(transform.position.x - 1, transform.position.y, -1);
+            //transform.position = new Vector3(transform.position.x - 1, transform.position.y, -1);
             FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.selection);
         }
     }

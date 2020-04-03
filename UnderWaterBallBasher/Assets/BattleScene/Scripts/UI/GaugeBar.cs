@@ -39,7 +39,6 @@ public class GaugeBar : MonoBehaviour {
 
 public class Mana {
     public const int MAX_MANA = 100;
-
     private float manaAmount, manaRegenAmount;
 
     public Mana () {

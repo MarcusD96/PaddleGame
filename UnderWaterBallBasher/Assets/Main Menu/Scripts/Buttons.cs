@@ -49,7 +49,7 @@ public class Buttons : MonoBehaviour {
     }
 
     public void OnResetStop() {
-        reset.gameObject.SetActive(false); //makes settings popup invisible
+        reset.gameObject.SetActive(false); //makes rest popup invisible
         buttons.SetActive(true); //make the buttons and title visible when coming out of settings
     }
 
@@ -75,6 +75,11 @@ public class Buttons : MonoBehaviour {
         FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.overworld);
     }
 
+    public void NextToMainMenu() {
+        FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.main);
+        Time.timeScale = 1;
+    }
+
     public void SetShield() {
         GameState.EquippedWeapon = 1;
         FindObjectOfType<LevelLoader>().LoadNextLevel((Levels)GameState.NextLevel);
@@ -82,6 +87,11 @@ public class Buttons : MonoBehaviour {
 
     public void SetTimeSlow() {
         GameState.EquippedWeapon = 2;
+        FindObjectOfType<LevelLoader>().LoadNextLevel((Levels)GameState.NextLevel);
+    }
+
+    public void SetDodge() {
+        GameState.EquippedWeapon = 3;
         FindObjectOfType<LevelLoader>().LoadNextLevel((Levels)GameState.NextLevel);
     }
 }

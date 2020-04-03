@@ -9,7 +9,7 @@ public class Zombie : Enemy {
         rb = GetComponent<Rigidbody2D>();
         speed = new Vector2(3, 3);
         rb.velocity = speed;
-        SetHP(3);
+        SetHP(Random.Range(2, 5));
     }
 
     private void FixedUpdate() {

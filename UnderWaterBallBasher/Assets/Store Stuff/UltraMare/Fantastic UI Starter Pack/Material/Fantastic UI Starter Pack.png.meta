@@ -58,7 +58,7 @@ TextureImporter:
     second: Fantastic UI Starter Pack_17
   - first:
       213: 21300036
-    second: Upgrade_Range
+    second: Fantastic UI Starter Pack_21
   - first:
       213: 21300038
     second: Fantastic UI Starter Pack_19
@@ -67,13 +67,13 @@ TextureImporter:
     second: Fantastic UI Starter Pack_20
   - first:
       213: 21300042
-    second: Upgrade_Time
+    second: Special_Time
   - first:
       213: 21300044
     second: Fantastic UI Starter Pack_22
   - first:
       213: 21300046
-    second: Fantastic UI Starter Pack_23
+    second: Upgrade_Special
   - first:
       213: 21300048
     second: Fantastic UI Starter Pack_24
@@ -91,13 +91,13 @@ TextureImporter:
     second: Fantastic UI Starter Pack_28
   - first:
       213: 21300058
-    second: Upgrade_Cash
+    second: Fantastic UI Starter Pack_29
   - first:
       213: 21300060
     second: Fantastic UI Starter Pack_30
   - first:
       213: 21300062
-    second: Fantastic UI Starter Pack_31
+    second: Upgrade_Aggressive
   - first:
       213: 21300064
     second: Fantastic UI Starter Pack_32
@@ -151,7 +151,7 @@ TextureImporter:
     second: Fantastic UI Starter Pack_48
   - first:
       213: 21300098
-    second: Upgrade_Dodge
+    second: Special_Dodge
   - first:
       213: 21300100
     second: Fantastic UI Starter Pack_50
@@ -364,7 +364,7 @@ TextureImporter:
     second: Fantastic UI Starter Pack_119
   - first:
       213: 21300240
-    second: Upgrade_Shield
+    second: Special_Shield
   - first:
       213: 21300242
     second: Fantastic UI Starter Pack_121
@@ -848,7 +848,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Upgrade_Range
+      name: Fantastic UI Starter Pack_21
       rect:
         serializedVersion: 2
         x: 1675
@@ -911,7 +911,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Upgrade_Time
+      name: Special_Time
       rect:
         serializedVersion: 2
         x: 436
@@ -953,7 +953,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fantastic UI Starter Pack_23
+      name: Upgrade_Special
       rect:
         serializedVersion: 2
         x: 632
@@ -1079,7 +1079,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Upgrade_Cash
+      name: Fantastic UI Starter Pack_29
       rect:
         serializedVersion: 2
         x: 1113
@@ -1121,7 +1121,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Fantastic UI Starter Pack_31
+      name: Upgrade_Aggressive
       rect:
         serializedVersion: 2
         x: 1323
@@ -1499,7 +1499,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Upgrade_Dodge
+      name: Special_Dodge
       rect:
         serializedVersion: 2
         x: 1704
@@ -2990,7 +2990,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Upgrade_Shield
+      name: Special_Shield
       rect:
         serializedVersion: 2
         x: 1483

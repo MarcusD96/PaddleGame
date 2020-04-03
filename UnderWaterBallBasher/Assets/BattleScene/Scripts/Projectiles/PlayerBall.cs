@@ -63,10 +63,11 @@ public class PlayerBall : Projectile {
         if(comboNum) {
             comboNum.text = "COMBO: " + COMBO;
         }
-        if (COMBO < 10) {
+        var i = 5 + GameState.GetStat((int)Stats.agressiveness);
+        if (COMBO < i) {
             speed = new Vector2(x + COMBO, y + COMBO);
-        } else if (COMBO >= 10) {
-            speed = new Vector2(x + 10, y + 10);
+        } else if (COMBO >= i) {
+            speed = new Vector2(x + i, y + i);
         }
     }
 }
