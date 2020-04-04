@@ -280,7 +280,7 @@ MonoBehaviour:
   secondaryAtk: {fileID: 3824648457451206170, guid: 22ef765fda5e4734e8873a6171788813,
     type: 3}
   specAtk:
-  - {fileID: 0}
+  - {fileID: 5155871230820758088, guid: 012a5713ee72a0e4e860834e33855ce5, type: 3}
   - {fileID: 7306875247588759371, guid: dc276cbb40d63694b802c7043974bf36, type: 3}
   - {fileID: 7317559625519088773, guid: 189c521acf17fca4ca225a9f0bebaad2, type: 3}
   sr: {fileID: 4706310143672212980}

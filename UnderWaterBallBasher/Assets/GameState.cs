@@ -28,18 +28,24 @@ public static class GameState {
     }
 
     public static int NextLevel { get; set; }
+        
+    public static bool FirstReward { get; set; } = true;
 
     public static int EquippedWeapon { get; set; } = 0;
 
-    public static bool FirstReward { get; set; } = true;
+    public static void FindEquippedWeapon() {
+
+    }
 
     public static List<Sprite> availableRewards = new List<Sprite>();
 
+    //////////////////////////////////////////////////////// used in rewards
     public static bool HasShield { get; set; } = false;
 
     public static bool HasSlow { get; set; } = false;
 
     public static bool HasDodge { get; set; } = false;
+    ////////////////////////////////////////////////////////
 
     public static List<Sprite> earnedRewards = new List<Sprite>();
 

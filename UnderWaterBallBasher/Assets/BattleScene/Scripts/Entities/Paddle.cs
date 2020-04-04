@@ -8,7 +8,7 @@ public class Paddle : BaseEntity {
     public GameObject[] specAtk = new GameObject[3];
     private Transform shootPos;
     private Rigidbody2D rb;
-    private float minRot, maxRot, dt, nextFire = 0.0f, fireRate = 0.5f, specialNextFire = 0.0f, specialFireRate = 10.0f, hitRate = 2.0f, nextHit = 0.0f;
+    private float minRot, maxRot, dt, nextFire = 0.0f, fireRate = 0.5f, specialNextFire = 0.0f, specialFireRate = 7.0f - GameState.GetStat((int)Stats.special), hitRate = 2.0f, nextHit = 0.0f;
     private Quaternion baseQuat;
     private Vector3 mousePosition_, direction;
     private Collider2D TempCol;
@@ -38,7 +38,7 @@ public class Paddle : BaseEntity {
         rotSpeed = 200 + GameState.GetStat((int)Stats.speed);
 
         SetHP(5);
-        TempCol = gameObject.GetComponent<Collider2D>();
+        //TempCol = gameObject.GetComponent<Collider2D>();
         Pos1 = GetComponent<GetChildInfo>().end.transform;
         Pos2 = GetComponent<GetChildInfo>().body.transform;
     }

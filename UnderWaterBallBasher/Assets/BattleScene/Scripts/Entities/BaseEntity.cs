@@ -16,7 +16,7 @@ public class BaseEntity : MonoBehaviour {
     } 
 
     public float GetMoveSpeed() { return moveSpeed; }
-    public void GetMoveSpeed(float _moveSpeed) { moveSpeed =  _moveSpeed; }
+    public void SetMoveSpeed(float _moveSpeed) { moveSpeed =  _moveSpeed; }
     public float GetRotSpeed() { return rotSpeed; }
-    public void GetRotSpeed(float _rotSpeed) { rotSpeed = _rotSpeed; }
+    public void SetRotSpeed(float _rotSpeed) { rotSpeed = _rotSpeed; }
 }

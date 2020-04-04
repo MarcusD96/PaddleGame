@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Buttons : MonoBehaviour {
     //Button back; //used when bringing up settings and lowering it
@@ -80,18 +81,24 @@ public class Buttons : MonoBehaviour {
         Time.timeScale = 1;
     }
 
-    public void SetShield() {
-        GameState.EquippedWeapon = 1;
-        FindObjectOfType<LevelLoader>().LoadNextLevel((Levels)GameState.NextLevel);
-    }
+    public void SetWeapon() {
+        string tmp = GetComponentInChildren<TextMeshProUGUI>().name;
+        switch(tmp.ToLower()) {
+            case "special_shield":
+                GameState.EquippedWeapon = 1;
+                break;
 
-    public void SetTimeSlow() {
-        GameState.EquippedWeapon = 2;
-        FindObjectOfType<LevelLoader>().LoadNextLevel((Levels)GameState.NextLevel);
-    }
+            case "special_time":
+                GameState.EquippedWeapon = 2;
+                break;
 
-    public void SetDodge() {
-        GameState.EquippedWeapon = 3;
+            case "special_dodge":
+                GameState.EquippedWeapon = 3;
+                break;
+
+            default:
+                break;
+        }
         FindObjectOfType<LevelLoader>().LoadNextLevel((Levels)GameState.NextLevel);
     }
 }
