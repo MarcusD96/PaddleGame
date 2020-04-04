@@ -10,17 +10,13 @@ public class ShowButtons : MonoBehaviour {
     string wep0, wep1, wep2;
 
     private void Awake() {
-        foreach(var i in GameState.earnedRewards) {
-            print(i); 
-        }
-        print(GameState.earnedRewards.Count);
-        if(GameState.earnedRewards[0]) {
+        if(GameState.earnedRewards.Count > 0) {
             wep0 = GameState.earnedRewards[0].name;
         }
-        if(GameState.earnedRewards[1]) {
+        if(GameState.earnedRewards.Count > 1) {
             wep1 = GameState.earnedRewards[1].name;
         }
-        if(GameState.earnedRewards[2]) {
+        if(GameState.earnedRewards.Count > 2) {
             wep2 = GameState.earnedRewards[2].name; 
         }
 

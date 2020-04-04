@@ -31,11 +31,7 @@ public static class GameState {
         
     public static bool FirstReward { get; set; } = true;
 
-    public static int EquippedWeapon { get; set; } = 0;
-
-    public static void FindEquippedWeapon() {
-
-    }
+    public static int EquippedWeapon { get; set; } = 4;
 
     public static List<Sprite> availableRewards = new List<Sprite>();
 

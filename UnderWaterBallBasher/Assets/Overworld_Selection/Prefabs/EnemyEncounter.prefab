@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8109587514065381305}
   - component: {fileID: 8109587514065381306}
   - component: {fileID: 8109587514065381285}
-  - component: {fileID: 2475821808920799446}
+  - component: {fileID: -5912361252485217563}
   m_Layer: 0
   m_Name: EnemyEncounter
   m_TagString: Encounter
@@ -138,7 +138,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8109587514065381310}
-  m_BodyType: 2
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -151,7 +151,7 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
---- !u!114 &2475821808920799446
+--- !u!114 &-5912361252485217563
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

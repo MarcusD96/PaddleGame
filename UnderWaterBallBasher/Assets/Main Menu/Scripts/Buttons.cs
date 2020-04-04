@@ -82,18 +82,18 @@ public class Buttons : MonoBehaviour {
     }
 
     public void SetWeapon() {
-        string tmp = GetComponentInChildren<TextMeshProUGUI>().name;
+        string tmp = gameObject.GetComponentInChildren<TextMeshProUGUI>().text;
         switch(tmp.ToLower()) {
             case "special_shield":
-                GameState.EquippedWeapon = 1;
+                GameState.EquippedWeapon = 0;
                 break;
 
             case "special_time":
-                GameState.EquippedWeapon = 2;
+                GameState.EquippedWeapon = 1;
                 break;
 
             case "special_dodge":
-                GameState.EquippedWeapon = 3;
+                GameState.EquippedWeapon = 2;
                 break;
 
             default:

@@ -73,7 +73,7 @@ public class Paddle : BaseEntity {
         Controls();
         if(Time.timeSinceLevelLoad >= 3.0f && !shoot) {
             Instantiate(ball, pos.position, pos.rotation).GetComponent<PlayerBall>().SetSpeed(new Vector2(5, 5));
-            sr.enabled = false;
+            sr.sprite = null;
             shoot = true;
         }
     }
@@ -145,6 +145,7 @@ public class Paddle : BaseEntity {
         if(Input.GetMouseButtonDown(0)) {
             if(!shoot) {
                 Instantiate(ball, pos.position, pos.rotation).GetComponent<PlayerBall>().SetSpeed(new Vector2(5, 5));
+                sr.sprite = null;
                 shoot = true;
             }
         }
@@ -159,7 +160,8 @@ public class Paddle : BaseEntity {
     }
 
     private bool ShootSpecial() {
-        if(GameState.EquippedWeapon == 0) {
+        print(GameState.EquippedWeapon);
+        if(GameState.EquippedWeapon == 4) {
             print("no special equipped");
             return false;
         } else {

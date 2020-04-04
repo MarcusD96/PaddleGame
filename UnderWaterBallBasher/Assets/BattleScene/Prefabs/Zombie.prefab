@@ -205,8 +205,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c66f27f401f6a5a4085603b29fa3d6f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fireRate: 3
-  nextFire: 3
+  damage: {fileID: 0}
   turret: {fileID: 2364506549972105131}
   ball: {fileID: 5820027054850355200, guid: 995ae78821d7205498a862b3618b99f7, type: 3}
-  BallHolder: {fileID: 0}
+  ballHolder: {fileID: 0}

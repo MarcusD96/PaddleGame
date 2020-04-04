@@ -406,9 +406,6 @@ MonoBehaviour:
   - {fileID: 21300240, guid: 1e627bcafe9e32d40ad554880f36b5eb, type: 3}
   - {fileID: 21300042, guid: 1e627bcafe9e32d40ad554880f36b5eb, type: 3}
   - {fileID: 21300098, guid: 1e627bcafe9e32d40ad554880f36b5eb, type: 3}
-  - {fileID: 21300062, guid: 1e627bcafe9e32d40ad554880f36b5eb, type: 3}
-  - {fileID: 21300090, guid: 1e627bcafe9e32d40ad554880f36b5eb, type: 3}
-  - {fileID: 21300046, guid: 1e627bcafe9e32d40ad554880f36b5eb, type: 3}
 --- !u!212 &409983059
 SpriteRenderer:
   m_ObjectHideFlags: 0

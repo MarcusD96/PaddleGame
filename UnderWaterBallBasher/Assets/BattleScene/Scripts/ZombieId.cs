@@ -1,5 +1,5 @@
 ﻿using UnityEngine;
 
 public class ZombieId : MonoBehaviour {
-    public int ID = 0;
+    public int ID;
 }
