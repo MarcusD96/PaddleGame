@@ -33,7 +33,7 @@ public class RandomReward : MonoBehaviour {
                 rewardIndex = 0;
             }
             sr.sprite = rewards[rewardIndex]; //set the sprite
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.05f);
         } while(Time.time < endTime);
 
         text.text = sr.sprite.name.ToLower();
