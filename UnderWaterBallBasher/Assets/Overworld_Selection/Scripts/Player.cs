@@ -7,8 +7,12 @@ public class Player : MonoBehaviour {
     private TextMeshProUGUI text;
 
     private void Start() {
-        text = FindObjectOfType<TextMeshProUGUI>();
-        text.gameObject.SetActive(false);
+        foreach(var t in Resources.FindObjectsOfTypeAll<TextMeshProUGUI>()) {
+            if(t.CompareTag("Notice")) {
+                text = t;
+                t.gameObject.SetActive(false);
+            }
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {

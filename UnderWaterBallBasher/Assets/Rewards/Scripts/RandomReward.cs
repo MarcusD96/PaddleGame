@@ -49,7 +49,7 @@ public class RandomReward : MonoBehaviour {
         }
         button.SetActive(true);
 
-        switch(sr.sprite.name.ToLower()) {
+        switch(text.text) {
             case "special_shield":
                 GameState.HasShield = true;
                 GameState.earnedRewards.Add(sr.sprite);
@@ -66,7 +66,7 @@ public class RandomReward : MonoBehaviour {
                 GameState.availableRewards.RemoveAt(rewardIndex); //delete from available rewards
                 break;
             case "upgrade_agressiveness":
-                GameState.SetStat((int)Stats.agressiveness, 2); //increase 
+                GameState.SetStat((int)Stats.agressiveness, 2);
                 break;
             case "upgrade_speed":
                 GameState.SetStat((int)Stats.speed, 25);

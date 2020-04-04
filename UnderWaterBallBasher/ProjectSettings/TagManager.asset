@@ -28,6 +28,7 @@ TagManager:
   - Rock
   - SpecialCountdown
   - Reset
+  - Notice
   layers:
   - Default
   - TransparentFX
