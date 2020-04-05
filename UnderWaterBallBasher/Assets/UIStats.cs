@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UIStats : MonoBehaviour {
-    public TextMeshProUGUI agg, spec, speed;
+    public TextMeshProUGUI agg, spec, speed, points;
     public GameObject stats;
     public Image shield, time, dodge;
     public Animator animator;
@@ -13,6 +13,7 @@ public class UIStats : MonoBehaviour {
         agg.text = GameState.GetStat((int)Stats.agressiveness).ToString();
         spec.text = GameState.GetStat((int)Stats.special).ToString();
         speed.text = GameState.GetStat((int)Stats.speed).ToString();
+        points.text = "Points: " + GameState.Points.ToString();
 
         if(GameState.HasShield) {
             shield.gameObject.SetActive(true);

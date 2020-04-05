@@ -3,19 +3,21 @@ using UnityEngine;
 
 public class Enemy : BaseEntity {
 
-    private float fireRate = 1.0f, nextFire = 1.0f;
+    protected float fireRate, nextFire = 1.0f;
 
     public Transform turret;
     public GameObject ball;
     public PlayerBall ballHolder;
     protected Rigidbody2D rb;
 
+    [DllImport("TestAI", CallingConvention = CallingConvention.Cdecl)] public static extern float FollowB(float _BY, float _EY, float _Sped);
+
     protected virtual void Update() {
         if(ballHolder == null) {
             ballHolder = FindObjectOfType<PlayerBall>();
         }
 
-        else if (ballHolder.transform.position.x > gameObject.transform.position.x) {
+        else if (ballHolder.transform.position.x >= gameObject.transform.position.x) {
             Physics2D.IgnoreCollision(ballHolder.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
         } else {
             Physics2D.IgnoreCollision(ballHolder.GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
@@ -46,12 +48,16 @@ public class Enemy : BaseEntity {
         hp -= n;
     }
 
-    [DllImport("TestAI", CallingConvention = CallingConvention.Cdecl)]
-    public static extern float FollowB(float _BY, float _EY, float _Sped);
-
     public void Movement(Vector2 speed) {
         if(ballHolder != null) {
-            rb.velocity = new Vector2(rb.velocity.x, FollowB(ballHolder.gameObject.transform.position.y, gameObject.transform.position.y, speed.y));
+            var tmp = new Vector2(rb.velocity.x, FollowB(ballHolder.gameObject.transform.position.y, gameObject.transform.position.y, speed.y));
+            if(tmp.x > 0 && tmp.x < 1) {
+                tmp.x = 1;
+            }
+            if(tmp.x < 0 && tmp.x > -1) {
+                tmp.x = -1;
+            }
+            rb.velocity = tmp;
         }
         rb.velocity = speed * rb.velocity.normalized;
     }

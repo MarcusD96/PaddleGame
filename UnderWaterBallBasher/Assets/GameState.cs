@@ -27,6 +27,8 @@ public static class GameState {
         return tmp;
     }
 
+    public static int Points { get; set; } = 0;
+
     public static int NextLevel { get; set; }
         
     public static bool FirstReward { get; set; } = true;

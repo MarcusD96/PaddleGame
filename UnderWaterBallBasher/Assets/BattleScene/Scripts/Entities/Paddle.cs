@@ -34,7 +34,7 @@ public class Paddle : BaseEntity {
 
         baseQuat = transform.rotation;
 
-        moveSpeed = 500 + GameState.GetStat((int)Stats.speed);
+        moveSpeed = 550 + GameState.GetStat((int)Stats.speed);
         rotSpeed = 200 + GameState.GetStat((int)Stats.speed);
 
         SetHP(5);

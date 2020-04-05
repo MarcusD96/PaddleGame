@@ -6,14 +6,11 @@ public class Laser : Projectile {
     private void Start() {
         rb = GetComponent<Rigidbody2D>();
         if (x == 0) {
-            x = 10;
+            x = 20;
         }
         if (y != 0) {
             y = 0;
         }
-        //rot = FindObjectOfType<Paddle>().GetComponent<Rigidbody2D>().rotation;  //trying to shoot laser in direction
-        //rot *= -1;
-        //rb.rotation = rot;
         speed = new Vector2(x, y);
         rb.velocity = speed;
     }
@@ -28,14 +25,15 @@ public class Laser : Projectile {
             case "EnemySide":    //laser hits player side wall
                 Destroy(gameObject);
                 break;
-            case "Enemy":
-                SoundManager.PlaySound("BallWall");
-                Destroy(gameObject);
-                collision.gameObject.GetComponent<Enemy>().ReduceHP(1, transform.position);
-                break;
+            //case "Enemy":
+            //    SoundManager.PlaySound("BallWall");
+            //    Destroy(gameObject);
+            //    collision.gameObject.GetComponent<Enemy>().ReduceHP(1, transform.position);
+            //    break;
             case "Rock":
                 Destroy(gameObject);
                 Destroy(collision.gameObject);
+                GameState.Points++;
                 break;
             default:
                 break;

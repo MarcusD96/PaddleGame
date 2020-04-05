@@ -7,7 +7,14 @@ public class Projectile : MonoBehaviour {
 
 
     protected void ProjectileUpdate (Vector2 _speed) {
-        rb.velocity = _speed * (rb.velocity.normalized);
+        var tmp = _speed * (rb.velocity.normalized);
+        if (tmp.x > 0 && tmp.x < 1) {
+            tmp.x = 1;
+        }
+        if (tmp.x < 0 && tmp.x > -1) {
+            tmp.x = -1;
+        }
+        rb.velocity = tmp;
     }
 
     public void SetSpeed(Vector2 _speed) {

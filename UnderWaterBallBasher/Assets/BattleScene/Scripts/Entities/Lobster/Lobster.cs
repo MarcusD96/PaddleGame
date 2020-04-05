@@ -13,6 +13,7 @@ public class Lobster : Enemy {
 
     // Start is called before the first frame update
     private void Start() {
+        fireRate = 2.5f;
         name = "Lobster Enemy";
         fireArm = GetComponent<FireArm>();
         shockwaveAttack = GetComponent<ShockwaveAttack>();
@@ -28,9 +29,9 @@ public class Lobster : Enemy {
 
     //Update is called once per frame
     private void FixedUpdate() {
+        base.Update();
         animator.SetFloat("Speed", rb.velocity.sqrMagnitude);
         CheckMove();
-        Fire();
 
         if(hp <= startHP / 2) { //check for damaged state at teh end of attack
             if(!animator.GetBool("Damaged")) {

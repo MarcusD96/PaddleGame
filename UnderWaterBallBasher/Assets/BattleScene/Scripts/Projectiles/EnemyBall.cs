@@ -22,8 +22,8 @@ public class EnemyBall : Projectile {
         rb.AddTorque(3.0f);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
-        switch (collision.gameObject.tag) {
+    private void OnTriggerEnter2D(Collider2D collision) {
+        switch(collision.gameObject.tag) {
             case "Paddle":  //ball hits paddle
                 SoundManager.PlaySound("BallBad");
                 collision.gameObject.GetComponent<Paddle>().TakeHit(1);
