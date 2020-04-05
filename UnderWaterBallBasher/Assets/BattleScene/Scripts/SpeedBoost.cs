@@ -15,8 +15,10 @@ public class SpeedBoost : MonoBehaviour {
         start = true;
         var paddle = FindObjectOfType<Paddle>();
         paddle.SetMoveSpeed(paddle.GetMoveSpeed() * 5.0f);
+        print(paddle.GetMoveSpeed());
         yield return new WaitForSeconds(5.0f);
         paddle.SetMoveSpeed(paddle.GetMoveSpeed() / 5.0f);
+        print(paddle.GetMoveSpeed());
         start = false;
     }
 }
