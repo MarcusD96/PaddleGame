@@ -42,10 +42,12 @@ public class Lobster : Enemy {
         switch(attackDecider) {
             case 0:
                 noMove = true;
+                //Debug.Log(noMove + " in case 0");
                 ArmFire();
                 break;
             case 1:
                 noMove = true;
+                //Debug.Log(noMove + " in case 1");
                 ArmFire();
                 break;
 
@@ -53,11 +55,12 @@ public class Lobster : Enemy {
                 if(Time.timeSinceLevelLoad > armNextFire) {
                     armNextFire = Time.timeSinceLevelLoad + armFireRate;
                     shockwaveAttack.canShoot = noMove = true;
-                    attackDecider = Random.Range(0, 3);                    
+                    attackDecider = Random.Range(0, 3);
+                    //Debug.Log("Hi in the shockwave attack");
                 }
                 animator.SetBool("isShocking", noMove); //if noMove is true, then its going to be atcking
                 noMove = shockwaveAttack.canShoot;
-                print(noMove);
+                print(noMove + " after shockwave attack");
                 break;
 
             default:
@@ -68,8 +71,9 @@ public class Lobster : Enemy {
     private void CheckMove() {
         if(noMove) {
             Movement(Vector2.zero);
+            Debug.Log("Hi");
         } else {
-            if(rb.velocity.magnitude <= 0) {
+            if (rb.velocity.magnitude <= 0) {
                 rb.velocity = speed;
             }
             Movement(speed);
@@ -77,15 +81,19 @@ public class Lobster : Enemy {
     }
 
     private void ArmFire() {
-        Debug.Log(noMove);
+        //Debug.Log(noMove);
         noMove = fireArm.canShoot;
+        Debug.Log(fireArm.canShoot + " fireArm.canShoot");
         if(Time.timeSinceLevelLoad > armNextFire) {
             armNextFire = Time.timeSinceLevelLoad + armFireRate;
             fireArm.canShoot = true; //allowed to shoot
-            attackDecider = Random.Range(0, 4);
+
+            attackDecider = Random.Range(0, 3);
+            //Debug.Log("Hi in ArmFire");
         }
-        noMove = fireArm.canShoot;
+
         animator.SetBool("isExtending", noMove);
-        print(noMove);
+        noMove = fireArm.canShoot;
+        //Debug.Log(noMove + " after armNextFire IF statement");
     }
 }
