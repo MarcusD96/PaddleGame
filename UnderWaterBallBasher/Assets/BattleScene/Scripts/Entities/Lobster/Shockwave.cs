@@ -8,7 +8,6 @@ public class Shockwave : MonoBehaviour {
     private void OnTriggerEnter2D(Collider2D collision) {
         switch(collision.gameObject.tag) {
             case "Paddle":  //shockwave hits paddle
-                SoundManager.PlaySound("BallBad");
                 collision.gameObject.GetComponent<Paddle>().TakeHit(1);
                 Destroy(gameObject);
                 break;
