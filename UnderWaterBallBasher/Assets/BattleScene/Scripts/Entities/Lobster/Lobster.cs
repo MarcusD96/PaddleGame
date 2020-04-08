@@ -31,36 +31,26 @@ public class Lobster : Enemy {
     private void FixedUpdate() {
         base.Update();
         animator.SetFloat("Speed", rb.velocity.sqrMagnitude);
+
         CheckMove();
 
-        if(hp <= startHP / 2) { //check for damaged state at teh end of attack
-            if(!animator.GetBool("Damaged")) {
-                animator.SetBool("Damaged", true); 
+        if (hp <= startHP / 2) { //check for damaged state at teh end of attack
+            if (!animator.GetBool("Damaged")) {
+                animator.SetBool("Damaged", true);
             }
         }
 
-        switch(attackDecider) {
+        switch (attackDecider) {
             case 0:
                 noMove = true;
-                //Debug.Log(noMove + " in case 0");
                 ArmFire();
                 break;
             case 1:
                 noMove = true;
-                //Debug.Log(noMove + " in case 1");
                 ArmFire();
                 break;
-
             case 2:
-                if(Time.timeSinceLevelLoad > armNextFire) {
-                    armNextFire = Time.timeSinceLevelLoad + armFireRate;
-                    shockwaveAttack.canShoot = noMove = true;
-                    attackDecider = Random.Range(0, 3);
-                    //Debug.Log("Hi in the shockwave attack");
-                }
-                animator.SetBool("isShocking", noMove); //if noMove is true, then its going to be atcking
-                noMove = shockwaveAttack.canShoot;
-                print(noMove + " after shockwave attack");
+                PerformShockwave();
                 break;
 
             default:
@@ -69,10 +59,10 @@ public class Lobster : Enemy {
     }
 
     private void CheckMove() {
-        if(noMove) {
+        if (noMove) {
             Movement(Vector2.zero);
-            Debug.Log("Hi");
-        } else {
+        }
+        else {
             if (rb.velocity.magnitude <= 0) {
                 rb.velocity = speed;
             }
@@ -81,19 +71,26 @@ public class Lobster : Enemy {
     }
 
     private void ArmFire() {
-        //Debug.Log(noMove);
-        noMove = fireArm.canShoot;
-        Debug.Log(fireArm.canShoot + " fireArm.canShoot");
-        if(Time.timeSinceLevelLoad > armNextFire) {
-            armNextFire = Time.timeSinceLevelLoad + armFireRate;
-            fireArm.canShoot = true; //allowed to shoot
-
-            attackDecider = Random.Range(0, 3);
-            //Debug.Log("Hi in ArmFire");
+        if (shockwaveAttack.canShoot == false) {
+            if (Time.timeSinceLevelLoad > armNextFire) {
+                armNextFire = Time.timeSinceLevelLoad + armFireRate;
+                fireArm.canShoot = noMove = true; //allowed to shoot
+                attackDecider = Random.Range(0, 3);
+            }
+            animator.SetBool("isExtending is ", noMove);
+            noMove = fireArm.canShoot;
         }
+    }
 
-        animator.SetBool("isExtending", noMove);
-        noMove = fireArm.canShoot;
-        //Debug.Log(noMove + " after armNextFire IF statement");
+    private void PerformShockwave() {
+        if (fireArm.canShoot == false) {
+            if (Time.timeSinceLevelLoad > armNextFire) {
+                armNextFire = Time.timeSinceLevelLoad + armFireRate;
+                shockwaveAttack.canShoot = noMove = true;
+                attackDecider = Random.Range(0, 3);
+            }
+            animator.SetBool("isShocking", noMove); //if noMove is true, then it's going to be attacking
+            noMove = shockwaveAttack.canShoot;
+        }
     }
 }
