@@ -18,6 +18,8 @@ public class FireArm : MonoBehaviour {
 
     // Start is called before the first frame update
     private void Start() {
+        canShoot = GetComponent<Lobster>().noMove;
+
         paddle = FindObjectOfType<Paddle>().gameObject;
         paddlePos = paddle.transform.position;
     }
