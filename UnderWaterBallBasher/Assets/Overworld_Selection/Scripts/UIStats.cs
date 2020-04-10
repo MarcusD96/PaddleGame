@@ -6,6 +6,7 @@ public class UIStats : MonoBehaviour {
     public TextMeshProUGUI agg, spec, speed, points;
     public Image shield, time, boost;
     public Animator animator;
+    private float start;
 
     // Update is called once per frame
     private void Awake() {
@@ -28,10 +29,15 @@ public class UIStats : MonoBehaviour {
     private void Update() {
         if(Input.GetKeyDown(KeyCode.E)) {
             if(!animator.GetBool("Enabled")) { //not enabled
-                animator.SetBool("Enabled", true);
+                animator.SetBool("Enabled", true); // enable it
+                start = Time.time;
             } else {
-                animator.SetBool("Enabled", false);
+                animator.SetBool("Enabled", false); //if enabled, disable it
             }
+        }
+
+        if (Time.time >= start + 5.0f && animator.GetBool("Enabled")) {
+            animator.SetBool("Enabled", false); //if it has been 5 secs, disable it
         }
     }
 }
