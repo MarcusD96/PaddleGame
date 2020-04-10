@@ -53,16 +53,16 @@ public class PlayerBall : Projectile {
                 break;
 
             case "BallSide":    //ball hits other sides + corners
-
+                //sound
                 break;
 
             case "Enemy": //ball hits enemy
-
+                //sound
                 break;
 
             case "EnemySide": //ball hits enemy side
                 sound.Play("EnemyWallDamage");
-                EnemyHolder.ReduceHP(1, transform.position);
+                EnemyHolder.ReduceHP(1);
                 break;
 
             default:

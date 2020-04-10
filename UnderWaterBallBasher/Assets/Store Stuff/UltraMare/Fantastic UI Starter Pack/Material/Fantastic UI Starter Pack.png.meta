@@ -151,7 +151,7 @@ TextureImporter:
     second: Fantastic UI Starter Pack_48
   - first:
       213: 21300098
-    second: Special_Dodge
+    second: Special_Boost
   - first:
       213: 21300100
     second: Fantastic UI Starter Pack_50
@@ -1499,10 +1499,10 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Special_Dodge
+      name: Special_Boost
       rect:
         serializedVersion: 2
-        x: 1704
+        x: 1707
         y: 1134
         width: 64
         height: 59

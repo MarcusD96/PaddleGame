@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using UnityEngine;
 public class HealtSystem : MonoBehaviour {
 
     public Canvas canvas;
@@ -39,12 +36,11 @@ public class HealtSystem : MonoBehaviour {
     }
 
     private void MakeHearts() {
-        Vector2 temp;
-
         playerHealth = FindObjectOfType<Paddle>().GetHP();
         playerHeartNum = FindObjectOfType<Paddle>().GetHP() - 1;
 
-        for (int i = 0; i < playerHealth; ++i) {
+        Vector2 temp;
+        for(int i = 0; i < playerHealth; ++i) {
             temp.x = heartSpawner.position.x + (1 * i);
             temp.y = heartSpawner.position.y;
             hearts[i] = Instantiate(heart, temp, Quaternion.identity, canvas.transform);

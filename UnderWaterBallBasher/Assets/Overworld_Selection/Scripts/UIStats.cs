@@ -4,7 +4,6 @@ using UnityEngine.UI;
 
 public class UIStats : MonoBehaviour {
     public TextMeshProUGUI agg, spec, speed, points;
-    public GameObject stats;
     public Image shield, time, dodge;
     public Animator animator;
 
@@ -21,7 +20,7 @@ public class UIStats : MonoBehaviour {
         if(GameState.HasSlow) {
             time.gameObject.SetActive(true);
         }
-        if(GameState.HasDodge) {
+        if(GameState.HasBoost) {
             dodge.gameObject.SetActive(true);
         }
     }

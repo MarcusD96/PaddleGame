@@ -53,23 +53,26 @@ public class RandomReward : MonoBehaviour {
             case "special_shield":
                 GameState.HasShield = true;
                 GameState.earnedRewards.Add(sr.sprite);
+                FindObjectOfType<SoundManager>().Play("Pickup_Shield");
                 GameState.availableRewards.RemoveAt(rewardIndex); //delete from available rewards
                 break;
             case "special_time":
                 GameState.HasSlow = true;
                 GameState.earnedRewards.Add(sr.sprite);
+                FindObjectOfType<SoundManager>().Play("Pickup_Time");
                 GameState.availableRewards.RemoveAt(rewardIndex); //delete from available rewards
                 break;
-            case "special_dodge":
-                GameState.HasDodge = true;
+            case "special_boost":
+                GameState.HasBoost = true;
                 GameState.earnedRewards.Add(sr.sprite);
+                FindObjectOfType<SoundManager>().Play("Pickup_Boost");
                 GameState.availableRewards.RemoveAt(rewardIndex); //delete from available rewards
                 break;
             case "upgrade_agressiveness":
                 GameState.SetStat((int)Stats.agressiveness, 2);
                 break;
             case "upgrade_speed":
-                GameState.SetStat((int)Stats.speed, 25);
+                GameState.SetStat((int)Stats.speed, 100);
                 break;
             case "upgrade_special":
                 GameState.SetStat((int)Stats.special, 2);

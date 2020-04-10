@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5155871230820758094}
-  - component: {fileID: 5155871230820758089}
+  - component: {fileID: 3456642519906030914}
   m_Layer: 0
-  m_Name: Dodge
+  m_Name: Speed Boost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31,7 +31,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5155871230820758089
+--- !u!114 &3456642519906030914
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -40,6 +40,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 5155871230820758088}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ef55d42a47600d4cbf043c9c3d472f4, type: 3}
+  m_Script: {fileID: 11500000, guid: 4e8886a05cde01d4fa4c20488927c67b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

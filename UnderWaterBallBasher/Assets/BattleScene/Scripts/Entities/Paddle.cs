@@ -8,10 +8,9 @@ public class Paddle : BaseEntity {
     public GameObject[] specAtk = new GameObject[3];
     private Transform shootPos;
     private Rigidbody2D rb;
-    private float minRot, maxRot, dt, nextFire = 0.0f, fireRate = 0.5f, specialNextFire = 0.0f, specialFireRate = 7.0f - GameState.GetStat((int)Stats.special), hitRate = 2.0f, nextHit = 0.0f;
+    private float minRot, maxRot, dt, nextFire = 0.0f, fireRate = 0.5f, specialNextFire = 0.0f, specialFireRate = 8.0f - GameState.GetStat((int)Stats.special), hitRate = 3.0f, nextHit = 0.0f;
     private Quaternion baseQuat;
     private Vector3 mousePosition_, direction;
-    private Collider2D TempCol;
     private PlayerBall ballHolder;
     private Transform Pos1, Pos2, TempPos;
     public SpriteRenderer sr;
@@ -187,23 +186,20 @@ public class Paddle : BaseEntity {
         if(Time.timeSinceLevelLoad > nextHit) {
             nextHit = Time.timeSinceLevelLoad + hitRate;
             hp -= hit;
-            StartCoroutine(Flash(hitRate));
+            StartCoroutine(Flash());
         }
     }
 
-    IEnumerator Flash(float aTime) {
-        float alpha = GetComponent<SpriteRenderer>().material.color.a;
-        for(float t = 0.0f; t < 1.0f; t += Time.deltaTime / (aTime / 4)) {
-            Color newColor = new Color(1, 1, 1, Mathf.Lerp(alpha, 0, t));
-            GetComponent<SpriteRenderer>().material.color = newColor;
-            yield return new WaitForSeconds(0);
-        }
-        for(float t = 0.0f; t < 1.0f; t += Time.deltaTime / (aTime / 4)) {
-            Color newColor = new Color(1, 1, 1, Mathf.Lerp(alpha, 1, t));
-            GetComponent<SpriteRenderer>().material.color = newColor;
-            yield return new WaitForSeconds(0);
-        }
+    IEnumerator Flash() {
+        var paddle = gameObject.GetComponent<SpriteRenderer>();
+        var tmp = paddle.sprite;
+
+        var stop = Time.time + hitRate;
+        do {
+            paddle.sprite = null;
+            yield return new WaitForSeconds(0.2f);
+            paddle.sprite = tmp;
+            yield return new WaitForSeconds(0.2f);
+        } while(Time.time < stop);
     }
-
-
 }

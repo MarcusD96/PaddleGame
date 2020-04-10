@@ -42,7 +42,7 @@ public static class GameState {
 
     public static bool HasSlow { get; set; } = false;
 
-    public static bool HasDodge { get; set; } = false;
+    public static bool HasBoost { get; set; } = false;
     ////////////////////////////////////////////////////////
 
     public static List<Sprite> earnedRewards = new List<Sprite>();

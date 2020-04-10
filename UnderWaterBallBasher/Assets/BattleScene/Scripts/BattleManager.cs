@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class BattleManager : GameManager {
 
@@ -8,6 +9,8 @@ public class BattleManager : GameManager {
     public Lobster lobster;
 
     public Transform playerSpawn, enemySpawn;
+
+    public TextMeshProUGUI clicktostart;
 
     private bool Started;
 
@@ -35,6 +38,7 @@ public class BattleManager : GameManager {
         if (!Started) {
             if (Input.GetMouseButtonDown(0)) {
                 Startup();
+                clicktostart.gameObject.SetActive(false);
             }
         }
         if (Started) {
