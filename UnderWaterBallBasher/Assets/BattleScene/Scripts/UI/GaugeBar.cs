@@ -43,7 +43,7 @@ public class Mana {
 
     public Mana () {
         manaAmount = 0;
-        manaRegenAmount = 25.0f;
+        manaRegenAmount = 25.0f + GameState.GetStat((int)Stats.special);
     }
 
     public void Update () {
