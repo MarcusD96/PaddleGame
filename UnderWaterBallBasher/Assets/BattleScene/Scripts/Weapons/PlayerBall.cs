@@ -73,9 +73,9 @@ public class PlayerBall : Projectile {
         }
         var i = 8 + GameState.GetStat((int)Stats.agressiveness);
         if (COMBO < i) {
-            speed = new Vector2(x + COMBO, y + COMBO);
+            speed = new Vector2(x + COMBO/2, y + COMBO/2);
         } else if (COMBO >= i) {
-            speed = new Vector2(x + i, y + i);
+            speed = new Vector2(x + i/2, y + i/2);
         }
     }
 }

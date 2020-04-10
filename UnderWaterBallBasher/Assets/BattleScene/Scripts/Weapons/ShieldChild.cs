@@ -11,7 +11,7 @@ public class ShieldChild : MonoBehaviour {
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
+    private void OnTriggerEnter2D(Collider2D collision) {
         if(collision.gameObject.CompareTag("Rock")) {
             Destroy(collision.gameObject);
             transform.parent.gameObject.GetComponent<Shield>().stopTime -= 0.5f;

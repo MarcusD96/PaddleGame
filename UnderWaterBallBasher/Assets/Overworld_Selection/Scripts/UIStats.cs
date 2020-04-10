@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class UIStats : MonoBehaviour {
     public TextMeshProUGUI agg, spec, speed, points;
-    public Image shield, time, dodge;
+    public Image shield, time, boost;
     public Animator animator;
 
     // Update is called once per frame
@@ -21,7 +21,7 @@ public class UIStats : MonoBehaviour {
             time.gameObject.SetActive(true);
         }
         if(GameState.HasBoost) {
-            dodge.gameObject.SetActive(true);
+            boost.gameObject.SetActive(true);
         }
     }
 

@@ -8,7 +8,7 @@ public class Paddle : BaseEntity {
     public GameObject[] specAtk = new GameObject[3];
     private Transform shootPos;
     private Rigidbody2D rb;
-    private float minRot, maxRot, dt, nextFire = 0.0f, fireRate = 0.5f, specialNextFire = 0.0f, specialFireRate = 8.0f - GameState.GetStat((int)Stats.special), hitRate = 3.0f, nextHit = 0.0f;
+    private float startTime, minRot, maxRot, dt, nextFire = 0.0f, fireRate = 0.5f, specialNextFire = 0.0f, specialFireRate = 8.0f - GameState.GetStat((int)Stats.special), hitRate = 3.0f, nextHit = 0.0f;
     private Quaternion baseQuat;
     private Vector3 mousePosition_, direction;
     private PlayerBall ballHolder;
@@ -33,13 +33,14 @@ public class Paddle : BaseEntity {
 
         baseQuat = transform.rotation;
 
-        moveSpeed = 550 + GameState.GetStat((int)Stats.speed);
+        moveSpeed = 600 + GameState.GetStat((int)Stats.speed);
         rotSpeed = 200 + GameState.GetStat((int)Stats.speed);
 
         SetHP(5);
         //TempCol = gameObject.GetComponent<Collider2D>();
         Pos1 = GetComponent<GetChildInfo>().end.transform;
         Pos2 = GetComponent<GetChildInfo>().body.transform;
+        startTime = FindObjectOfType<BattleManager>().startTime;
     }
 
     private void LateUpdate() { //vs fixed update?
@@ -69,8 +70,8 @@ public class Paddle : BaseEntity {
 
     // Update is called once per frame
     private void Update() {
-        Controls();
-        if(Time.timeSinceLevelLoad >= 3.0f && !shoot) {
+        Controls();;
+        if(Time.time >= startTime + 3.0f && !shoot) {
             Instantiate(ball, pos.position, pos.rotation).GetComponent<PlayerBall>().SetSpeed(new Vector2(5, 5));
             sr.sprite = null;
             shoot = true;
@@ -96,10 +97,8 @@ public class Paddle : BaseEntity {
                     nextFire = Time.timeSinceLevelLoad + fireRate;
                     ShootSecondary();
                 } else {
-                    Debug.Log("not enough PP for this");
                 }
             } else {
-                Debug.Log("On cooldown");
             }
         }
 
@@ -113,7 +112,6 @@ public class Paddle : BaseEntity {
 
                     specialNextFire = Time.timeSinceLevelLoad + specialFireRate;
                 } else {
-                    Debug.Log("not enough PP for this");
                 }
             } else {
                 Debug.Log("On cooldown");
@@ -123,21 +121,18 @@ public class Paddle : BaseEntity {
         //rotate min left
         if(Input.GetKeyDown(KeyCode.E)) {
             transform.rotation = Quaternion.Euler(0, 0, minRot);
-            print("min");
 
         }
 
         //rotate max right
         if(Input.GetKeyDown(KeyCode.Q)) {
             transform.rotation = Quaternion.Euler(0, 0, maxRot);
-            print("max");
 
         }
 
         //center rotation
         if(Input.GetKeyDown(KeyCode.F)) {
             transform.rotation = baseQuat;
-            print("center");
         }
 
         //start scene
@@ -159,9 +154,7 @@ public class Paddle : BaseEntity {
     }
 
     private bool ShootSpecial() {
-        print(GameState.EquippedWeapon);
         if(GameState.EquippedWeapon == 4) {
-            print("no special equipped");
             return false;
         } else {
             var atk = specAtk[GameState.EquippedWeapon];

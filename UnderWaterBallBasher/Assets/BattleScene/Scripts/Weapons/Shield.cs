@@ -25,13 +25,6 @@ public class Shield : MonoBehaviour {
 
         transform.position = FindObjectOfType<Paddle>().transform.position;
 
-        //Vector2 direction = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        //float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        //Quaternion rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        //transform.rotation = Quaternion.Slerp(transform.rotation, rotation, speed * Time.fixedDeltaTime);
-
-
-
         if (Time.timeSinceLevelLoad >= stopTime + startTime) { //5 or more seconds has past
             text.gameObject.SetActive(false);
             Destroy(gameObject);

@@ -497,7 +497,8 @@ MonoBehaviour:
   lobster: {fileID: 4326709234600919395, guid: 78f28093d4d73ee40a6ece42a16465ff, type: 3}
   playerSpawn: {fileID: 1683313281}
   enemySpawn: {fileID: 948406599}
-  clicktostart: {fileID: 0}
+  clicktostart: {fileID: 1353222858}
+  startTime: 0
 --- !u!4 &235164038 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 725549797309317359, guid: d79eb3c2e7181e444bec72db3676d6e4,

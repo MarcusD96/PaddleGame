@@ -21,20 +21,25 @@ public class Laser : Projectile {
     }
 
     private void OnTriggerEnter2D(Collider2D collision) {
-        switch (collision.gameObject.tag) {
-            case "EnemySide":    //laser hits player side wall
+        switch (collision.gameObject.tag.ToLower()) {
+            case "enemyside":    //laser hits player side wall
                 Destroy(gameObject);
                 break;
-            //case "Enemy":
-            //    SoundManager.PlaySound("BallWall");
-            //    Destroy(gameObject);
-            //    collision.gameObject.GetComponent<Enemy>().ReduceHP(1, transform.position);
-            //    break;
-            case "Rock":
+
+            case "enemy": //laser hits enemy
+                          //FindObjectOfType<SoundManager>().Play("");
+#if UNITY_EDITOR
+                Destroy(gameObject);
+                collision.gameObject.GetComponent<Enemy>().ReduceHP(1); 
+#endif
+                break;
+
+            case "rock": //laser hits enemy projectile
                 Destroy(gameObject);
                 Destroy(collision.gameObject);
                 GameState.Points++;
                 break;
+
             default:
                 break;
         }

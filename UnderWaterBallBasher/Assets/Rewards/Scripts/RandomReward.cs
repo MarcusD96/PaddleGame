@@ -45,7 +45,7 @@ public class RandomReward : MonoBehaviour {
             sr.sprite = null;
             yield return new WaitForSeconds(0.2f);
             sr.sprite = tmp;
-            yield return new WaitForSeconds(0.5f); 
+            yield return new WaitForSeconds(0.5f);
         }
         button.SetActive(true);
 

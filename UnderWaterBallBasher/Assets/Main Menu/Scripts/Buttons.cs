@@ -103,7 +103,7 @@ public class Buttons : MonoBehaviour {
                 GameState.EquippedWeapon = 1;
                 break;
 
-            case "special_dodge":
+            case "special_boost":
                 FindObjectOfType<SoundManager>().Play("Pickup_Boost");
                 GameState.EquippedWeapon = 2;
                 break;

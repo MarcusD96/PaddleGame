@@ -13,16 +13,18 @@ public class BattleManager : GameManager {
     public TextMeshProUGUI clicktostart;
 
     private bool Started;
+    public float startTime;
 
     private void Startup() {
         Started = true;
+        startTime = Time.time;
 
         //4 = zombie, 5 = lobster
         int cs = SceneManager.GetActiveScene().buildIndex;
 
         player = Instantiate(player, playerSpawn.position, Quaternion.identity);
 
-        switch (cs) {
+        switch (cs) { //current scene
             case 4:
                 zombie = Instantiate(zombie, enemySpawn.position, Quaternion.identity);
                 break;
@@ -57,7 +59,7 @@ public class BattleManager : GameManager {
             FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.rewards);
         }
         else if (lobster.GetHP() <= 0) {
-            FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.rewards);
+            FindObjectOfType<LevelLoader>().LoadNextLevel(Levels.main);
         }
     }
 

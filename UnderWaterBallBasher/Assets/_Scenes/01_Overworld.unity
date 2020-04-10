@@ -5249,7 +5249,7 @@ GameObject:
   - component: {fileID: 493988074}
   - component: {fileID: 493988073}
   m_Layer: 5
-  m_Name: Dodge
+  m_Name: Boost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42925,7 +42925,7 @@ MonoBehaviour:
   points: {fileID: 656732879}
   shield: {fileID: 215857767}
   time: {fileID: 428920773}
-  dodge: {fileID: 493988073}
+  boost: {fileID: 493988073}
   animator: {fileID: 583797303}
 --- !u!1 &1752754722
 GameObject:
