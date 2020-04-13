@@ -96,4 +96,8 @@ public class PauseMenu : MonoBehaviour {
     public void SetQuality(int quality) {
         QualitySettings.SetQualityLevel(quality);
     }
+
+    public void MainMenu() {
+        FindObjectOfType<LevelLoader>().LoadNextLevel((int)Levels.main);
+    }
 }
