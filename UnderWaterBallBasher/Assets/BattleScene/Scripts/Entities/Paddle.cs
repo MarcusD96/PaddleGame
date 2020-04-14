@@ -120,24 +120,24 @@ public class Paddle : BaseEntity {
         }
 
         //rotate min left
-        if(Input.GetKeyDown(KeyCode.E)) {
+        if(Input.GetKey(KeyCode.E)) {
             transform.rotation = Quaternion.Euler(0, 0, minRot);
 
         }
 
         //rotate max right
-        if(Input.GetKeyDown(KeyCode.Q)) {
+        if(Input.GetKey(KeyCode.Q)) {
             transform.rotation = Quaternion.Euler(0, 0, maxRot);
 
         }
 
         //center rotation
-        if(Input.GetKeyDown(KeyCode.F)) {
+        if(Input.GetKey(KeyCode.F)) {
             transform.rotation = baseQuat;
         }
 
         //start scene
-        if(Input.GetMouseButtonDown(0)) {
+        if(Input.GetMouseButton(0)) {
             if(!shoot) {
                 Instantiate(ball, pos.position, pos.rotation).GetComponent<PlayerBall>().SetSpeed(new Vector2(5, 5));
                 sr.sprite = null;
