@@ -5,7 +5,7 @@
 
 TEST_API float Random() {
 	//return number between 0 and 9
-	return (float)(rand() % 10);
+	return (float) (rand() % 10);
 }
 
 TEST_API void Sort(int a[], int length) {
@@ -19,16 +19,14 @@ TEST_API const char* SendHello() {
 TEST_API const char* MakeString(const char* s1, const char* s2) {
 	//make tmp literal string so arguments are not overridden
 	std::string* tmp = nullptr;
-	if (s1 == nullptr) {
+	if(s1 == nullptr) {
 		return s2;
-	}
-	else if (s2 == nullptr) {
+	} else if(s2 == nullptr) {
 		return s1;
-	}
-	else {
+	} else {
 		tmp->push_back(*s1);
 		tmp->push_back(*s2);
-		return (const char*)tmp;
+		return (const char*) tmp;
 	}
 }
 
@@ -37,19 +35,16 @@ TEST_API float Move() {
 }
 
 TEST_API float FollowB(float _BY, float _EY, float _Sped) {
-	if (_BY >= _EY ) {
-		if (_Sped >= 0) {
+	if(_BY >= _EY) {
+		if(_Sped >= 0) {
 			return  _Sped;
-		}
-		else {
+		} else {
 			return -_Sped;
 		}
-	}
-	else {
-		if (_Sped >= 0) {
+	} else {
+		if(_Sped >= 0) {
 			return  -_Sped;
-		}
-		else {
+		} else {
 			return _Sped;
 		}
 	}
