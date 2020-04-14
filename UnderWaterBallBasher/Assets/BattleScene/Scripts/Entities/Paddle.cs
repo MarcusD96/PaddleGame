@@ -104,7 +104,7 @@ public class Paddle : BaseEntity {
         }
 
         //shoot special
-        if(Input.GetKeyDown(KeyCode.LeftShift)) {
+        if(Input.GetKey(KeyCode.LeftShift)) {
             if(Time.timeSinceLevelLoad >= specialNextFire) {
                 if(gameObject.GetComponent<GaugeBar>().GetSpecialAttack().fillAmount > 0.5f) {
                     if(ShootSpecial()) {
