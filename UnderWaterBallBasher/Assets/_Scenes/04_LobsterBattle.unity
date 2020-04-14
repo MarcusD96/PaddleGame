@@ -1061,10 +1061,10 @@ RectTransform:
   - {fileID: 13209696}
   - {fileID: 530117510}
   - {fileID: 8194608543114036430}
+  - {fileID: 1353222857}
   - {fileID: 1654460191}
   - {fileID: 87544156}
   - {fileID: 1238670128007881201}
-  - {fileID: 1353222857}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1742,7 +1742,7 @@ RectTransform:
   m_LocalScale: {x: 1.0000799, y: 1.0000799, z: 1.0000799}
   m_Children: []
   m_Father: {fileID: 488450067}
-  m_RootOrder: 7
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -1771,7 +1771,7 @@ MonoBehaviour:
 
     A/D to rotate
 
-    Q/E to max rotate
+    F to reset rotation
 
     click: spawn ball
 
@@ -1850,10 +1850,10 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_textInfo:
     textComponent: {fileID: 1353222858}
-    characterCount: 134
+    characterCount: 136
     spriteCount: 0
     spaceCount: 24
-    wordCount: 26
+    wordCount: 25
     linkCount: 0
     lineCount: 8
     pageCount: 1
@@ -3503,7 +3503,7 @@ PrefabInstance:
     - target: {fileID: 1514579255575295412, guid: 167f810dde9f78c4c8ebfae332c4f5f0,
         type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1514579255575295412, guid: 167f810dde9f78c4c8ebfae332c4f5f0,
         type: 3}
