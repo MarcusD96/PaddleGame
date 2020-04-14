@@ -8,7 +8,7 @@ public class Paddle : BaseEntity {
     public GameObject[] specAtk = new GameObject[3];
     private Transform shootPos;
     private Rigidbody2D rb;
-    private float startTime, minRot, maxRot, dt, nextFire = 0.0f, fireRate = 0.5f, specialNextFire = 0.0f, specialFireRate = 8.0f - GameState.GetStat((int)Stats.special), hitRate = 3.0f, nextHit = 0.0f;
+    private float startTime, minRot, maxRot, timeChange, nextFire = 0.0f, fireRate = 0.5f, specialNextFire = 0.0f, specialFireRate = 8.0f - GameState.GetStat((int)Stats.special), hitRate = 3.0f, nextHit = 0.0f;
     private Quaternion baseQuat;
     private Vector3 mousePosition_, direction;
     private PlayerBall ballHolder;
@@ -33,25 +33,27 @@ public class Paddle : BaseEntity {
 
         baseQuat = transform.rotation;
 
-        moveSpeed = 600 + GameState.GetStat((int)Stats.speed);
-        rotSpeed = 200 + GameState.GetStat((int)Stats.speed);
+        moveSpeed = 400 + GameState.GetStat((int)Stats.speed);
+        rotSpeed = 200 + GameState.GetStat((int)Stats.speed/2);
 
         SetHP(5);
         //TempCol = gameObject.GetComponent<Collider2D>();
         Pos1 = GetComponent<GetChildInfo>().end.transform;
         Pos2 = GetComponent<GetChildInfo>().body.transform;
         startTime = FindObjectOfType<BattleManager>().startTime;
+        timeChange = Time.fixedDeltaTime;
     }
 
-    private void LateUpdate() { //vs fixed update?
-        dt = Time.deltaTime;
+    private void FixedUpdate() { //vs fixed update?
 
         //follow mouse stuff
         mousePosition_ = Camera.main.ScreenToWorldPoint(Input.mousePosition);
         direction = (mousePosition_ - transform.position).normalized;
-        rb.velocity = new Vector3(direction.x * moveSpeed * dt,
-                                  direction.y * moveSpeed * dt,
-                                  direction.z * moveSpeed * dt);
+        rb.velocity = new Vector3(direction.x * moveSpeed * timeChange,
+                                  direction.y * moveSpeed * timeChange,
+                                  direction.z * moveSpeed * timeChange);
+
+        Controls();
 
         if(ballHolder == null) {
             ballHolder = FindObjectOfType<PlayerBall>();
@@ -70,7 +72,6 @@ public class Paddle : BaseEntity {
 
     // Update is called once per frame
     private void Update() {
-        Controls();;
         if(Time.time >= startTime + 3.0f && !shoot) {
             Instantiate(ball, pos.position, pos.rotation).GetComponent<PlayerBall>().SetSpeed(new Vector2(5, 5));
             sr.sprite = null;
@@ -81,12 +82,12 @@ public class Paddle : BaseEntity {
     private void Controls() {
         //rotate left
         if(Input.GetKey(KeyCode.A)) {
-            transform.Rotate(Vector3.forward, rotSpeed * dt);
+            transform.Rotate(Vector3.forward, rotSpeed * timeChange);
         }
 
         //rotate right
         if(Input.GetKey(KeyCode.D)) {
-            transform.Rotate(Vector3.back, rotSpeed * dt);
+            transform.Rotate(Vector3.back, rotSpeed * timeChange);
         }
 
         //shoot secondary continuously
