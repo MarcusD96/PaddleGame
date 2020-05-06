@@ -97,9 +97,7 @@ public class Paddle : BaseEntity {
                     gameObject.GetComponent<GaugeBar>().UpdatePlayerSpAtk(0.2f);
                     nextFire = Time.timeSinceLevelLoad + fireRate;
                     ShootSecondary();
-                } else {
                 }
-            } else {
             }
         }
 
@@ -112,7 +110,6 @@ public class Paddle : BaseEntity {
                     }
 
                     specialNextFire = Time.timeSinceLevelLoad + specialFireRate;
-                } else {
                 }
             } else {
                 Debug.Log("On cooldown");
@@ -122,7 +119,6 @@ public class Paddle : BaseEntity {
         //rotate min left
         if(Input.GetKey(KeyCode.E)) {
             transform.rotation = Quaternion.Euler(0, 0, minRot);
-
         }
 
         //rotate max right

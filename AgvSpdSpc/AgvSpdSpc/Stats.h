@@ -1,4 +1,6 @@
 #pragma once
+// Stats.h : Declares the exported functions for the DLL application.
+//
 
 #include <cstdlib>
 

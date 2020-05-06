@@ -55,7 +55,5 @@ public class OverworldManager : GameManager {
                 DontDestroyOnLoad(tmp); //dont kill the boss when loading a new scene
             }
         }
-
-
     }
 }
